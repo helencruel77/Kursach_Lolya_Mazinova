@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractUniversity", "AbstractUniversity\AbstractUniversity.csproj", "{2A69717E-5010-4614-8D9C-2012846BFBCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractUniversityBusinessLogic", "AbstractUniversityBusinessLogic\AbstractUniversityBusinessLogic.csproj", "{7E0F0E57-3FB4-474B-B36A-324D4D28CA40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbstractUniversityBusinessLogic", "AbstractUniversityBusinessLogic\AbstractUniversityBusinessLogic.csproj", "{7E0F0E57-3FB4-474B-B36A-324D4D28CA40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractUniversityImplementation", "AbstractUniversityImplementation\AbstractUniversityImplementation.csproj", "{3DEA2D2C-3A71-4912-9900-4DB53D0CAC9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7E0F0E57-3FB4-474B-B36A-324D4D28CA40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E0F0E57-3FB4-474B-B36A-324D4D28CA40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E0F0E57-3FB4-474B-B36A-324D4D28CA40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DEA2D2C-3A71-4912-9900-4DB53D0CAC9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DEA2D2C-3A71-4912-9900-4DB53D0CAC9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DEA2D2C-3A71-4912-9900-4DB53D0CAC9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DEA2D2C-3A71-4912-9900-4DB53D0CAC9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
