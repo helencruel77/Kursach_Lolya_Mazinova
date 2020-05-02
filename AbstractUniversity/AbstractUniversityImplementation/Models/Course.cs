@@ -21,5 +21,6 @@ namespace AbstractUniversityImplementation.Models
         public bool IsReserved { get; set; }
         [ForeignKey("ClientId")]
         public virtual List<Client> Clients { get; set; }
+        public virtual DisciplineCourse DisciplineCourse { get; set; }
     }
 }
