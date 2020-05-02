@@ -6,7 +6,7 @@ using System.Text;
 namespace AbstractUniversityBusinessLogic.BindingModels
 {
     [DataContract]
-    public class CourseDisciplineBindingModel
+    public class DisciplineCourseBindingModel
     {
         [DataMember]
         public int DisciplineId { get; set; }
