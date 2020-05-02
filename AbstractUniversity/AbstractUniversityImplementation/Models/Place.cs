@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace AbstractUniversityImplementation.Models
 {
-    public class Discipline
+    public class Place
     {
         public int Id { get; set; }
         [Required]
-        public string DisciplineName { get; set; }
-        [Required]
-        public int Price { get; set; }
-        public virtual List<DisciplineCourse> DisciplineCourse { get; set; }
+        public string TypePlace { get; set; }
+
+        [ForeignKey("PlaceId")]
         public virtual List<PlaceDiscipline> PlaceDiscipline { get; set; }
+
+        [ForeignKey("PlaceId")]
+        public virtual List<RequestPlace> RequestPlace { get; set; }
     }
 }
