@@ -18,6 +18,6 @@ namespace AbstractUniversityImplementation.Models
         public string Password { get; set; }
         [Required]
         public string Login { get; set; }
-        public virtual Course Course { get; set; }
+        public virtual List<Course> Courses { get; set; }
     }
 }
