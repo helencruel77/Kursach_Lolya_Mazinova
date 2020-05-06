@@ -10,5 +10,6 @@ namespace AbstractUniversityBusinessLogic.BindingModels
         public int CourseId { get; set; }
         public string DisciplineName { get; set; }
         public int Price { get; set; }
+        public Dictionary<int, (string, int)> PlaceDisciplines { get; set; }
     }
 }
