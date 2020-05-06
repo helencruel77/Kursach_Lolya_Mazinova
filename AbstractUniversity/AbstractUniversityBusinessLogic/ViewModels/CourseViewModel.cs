@@ -11,7 +11,7 @@ namespace AbstractUniversityBusinessLogic.ViewModels
         [DataMember]
         public int Id { get; set; }
         [DataMember]
-        public string ClientId { get; set; }
+        public int ClientId { get; set; }
         [DataMember]
         [DisplayName("Имя клиента")]
         public string ClientName { get; set; }

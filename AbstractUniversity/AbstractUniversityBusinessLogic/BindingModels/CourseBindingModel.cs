@@ -7,7 +7,7 @@ namespace AbstractUniversityBusinessLogic.BindingModels
     public class CourseBindingModel //order
     {
         public int? Id { get; set; }
-        public string ClientId { get; set; }
+        public int? ClientId { get; set; }
         public string ClientName { get; set; }
         public string ClientLastName { get; set; }
         public int Price { get; set; }

@@ -9,17 +9,13 @@ namespace AbstractUniversityImplementation.Models
     public class Course
     {
         public int Id { get; set; }
-        [Required]
-        public string ClientName { get; set; }
-        [Required]
-        public string ClientLastName { get; set; }
+        public int ClientId { get; set; }
         [Required]
         public int Price { get; set; }
         [Required]
         public DateTime DataCreate { get; set; }
         [Required]
         public bool IsReserved { get; set; }
-        [ForeignKey("ClientId")]
         public virtual List<DisciplineCourse> DisciplineCourse { get; set; }
         public virtual Client Client { get; set; }
     }
