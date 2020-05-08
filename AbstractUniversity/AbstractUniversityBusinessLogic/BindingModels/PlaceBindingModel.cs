@@ -6,5 +6,7 @@ namespace AbstractUniversityBusinessLogic.BindingModels
 {
     public class PlaceBindingModel
     {
+        public int? Id { get; set; }
+        public string TypePlace { get; set; }
     }
 }

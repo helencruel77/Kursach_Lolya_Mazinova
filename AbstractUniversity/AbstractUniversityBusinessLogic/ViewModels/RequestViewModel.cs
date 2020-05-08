@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace AbstractUniversityBusinessLogic.ViewModels
@@ -9,7 +10,10 @@ namespace AbstractUniversityBusinessLogic.ViewModels
     {
         public int Id { get; set; }
         [DisplayName("Название заявки")]
-        public string DisciplineName { get; set; }
-        public List<RequestPlaceViewModel> RequestPlace { get; set; }
+        public string RequestName { get; set; }
+        [DataMember]
+        [DisplayName("Дата создания")]
+        public DateTime DataCreate { get; set; }
+        public Dictionary<int, (string, int)> RequestPlaces { get; set; }
     }
 }

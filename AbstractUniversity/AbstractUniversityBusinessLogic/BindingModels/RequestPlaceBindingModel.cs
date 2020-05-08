@@ -4,11 +4,11 @@ using System.Text;
 
 namespace AbstractUniversityBusinessLogic.BindingModels
 {
-    public class PlaceDisciplineBindingModel
+    public class RequestPlaceBindingModel
     {
         public int Id { get; set; }
+        public int RequestId { get; set; }
         public int PlaceId { get; set; }
-        public int DisciplineId { get; set; }
         public int Count { get; set; }
     }
 }
