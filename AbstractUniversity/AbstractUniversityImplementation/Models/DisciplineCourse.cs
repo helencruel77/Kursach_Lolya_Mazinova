@@ -7,6 +7,8 @@ namespace AbstractUniversityImplementation.Models
 {
     public class DisciplineCourse
     {
+        public int Id { get; set; }
+
         public int CourseId { get; set; }
 
         public int DisciplineId { get; set; }

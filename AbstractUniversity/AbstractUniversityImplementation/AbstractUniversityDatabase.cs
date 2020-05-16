@@ -13,6 +13,7 @@ namespace AbstractUniversityImplementation
             if (optionsBuilder.IsConfigured == false)
             {
                 optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-1L0DP37\SQLEXPRESS;Initial Catalog=AbstractUniversity;Integrated Security=True;MultipleActiveResultSets=True;");
+                ///////не забудь сменить data sourse//////////////вот это
             }
             base.OnConfiguring(optionsBuilder);
         }
