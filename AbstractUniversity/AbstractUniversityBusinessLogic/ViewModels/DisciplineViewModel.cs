@@ -11,7 +11,7 @@ namespace AbstractUniversityBusinessLogic.ViewModels
         [DisplayName("Название дисциплины")]
         public string DisciplineName { get; set; }
         [DisplayName("Цена")]
-        public int Price { get; set; }
+        public decimal Price { get; set; }
         public Dictionary<int, (string, int)> PlaceDisciplines { get; set; }
     }
 }

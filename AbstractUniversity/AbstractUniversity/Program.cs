@@ -28,6 +28,8 @@ namespace AbstractUniversity
             var currentContainer = new UnityContainer();
             currentContainer.RegisterType<IPlaceLogic, PlaceLogic>(new
            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IDisciplineLogic, DisciplineLogic>(new
+           HierarchicalLifetimeManager());
             return currentContainer;
         }
     }

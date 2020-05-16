@@ -19,5 +19,11 @@ namespace AbstractUniversity
             var form = Container.Resolve<FormPlaces>();
             form.ShowDialog();
         }
+
+        private void дисциплиныToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormDisciplines>();
+            form.ShowDialog();
+        }
     }
 }

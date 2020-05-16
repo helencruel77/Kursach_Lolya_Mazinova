@@ -31,6 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.местоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.дисциплиныToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +48,8 @@
             // справочникиToolStripMenuItem
             // 
             this.справочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.местоToolStripMenuItem});
+            this.местоToolStripMenuItem,
+            this.дисциплиныToolStripMenuItem});
             this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.справочникиToolStripMenuItem.Text = "Справочники";
@@ -56,8 +58,15 @@
             // 
             this.местоToolStripMenuItem.Name = "местоToolStripMenuItem";
             this.местоToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.местоToolStripMenuItem.Text = "Место";
+            this.местоToolStripMenuItem.Text = "Места";
             this.местоToolStripMenuItem.Click += new System.EventHandler(this.местоToolStripMenuItem_Click);
+            // 
+            // дисциплиныToolStripMenuItem
+            // 
+            this.дисциплиныToolStripMenuItem.Name = "дисциплиныToolStripMenuItem";
+            this.дисциплиныToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.дисциплиныToolStripMenuItem.Text = "Дисциплины";
+            this.дисциплиныToolStripMenuItem.Click += new System.EventHandler(this.дисциплиныToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -67,7 +76,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
-            this.Text = "Form1";
+            this.Text = "Меню";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -80,6 +89,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem справочникиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem местоToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem дисциплиныToolStripMenuItem;
     }
 }
 
