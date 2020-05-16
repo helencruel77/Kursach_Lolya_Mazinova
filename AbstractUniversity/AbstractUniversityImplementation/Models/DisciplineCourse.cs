@@ -7,9 +7,12 @@ namespace AbstractUniversityImplementation.Models
 {
     public class DisciplineCourse
     {
-        [ForeignKey("CourseId")]
+        public int CourseId { get; set; }
+
+        public int DisciplineId { get; set; }
+
         public virtual Course Course { get; set; }
-        [ForeignKey("DisciplineId")]
+
         public virtual Discipline Discipline { get; set; }
     }
 }
