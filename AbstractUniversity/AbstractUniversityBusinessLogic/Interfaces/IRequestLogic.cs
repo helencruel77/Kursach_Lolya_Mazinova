@@ -13,6 +13,6 @@ namespace AbstractUniversityBusinessLogic.Interfaces
         void CreateOrUpdate(RequestBindingModel model);
 
         void Delete(RequestBindingModel model);
-        void СompletedRequest(RequestPlaceBindingModel model);
+        void AddPlace(RequestPlaceBindingModel model);
     }
 }

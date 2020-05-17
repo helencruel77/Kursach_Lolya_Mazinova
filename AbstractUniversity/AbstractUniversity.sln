@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractUniversity", "AbstractUniversity\AbstractUniversity.csproj", "{2A69717E-5010-4614-8D9C-2012846BFBCA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractUniversityView", "AbstractUniversity\AbstractUniversityView.csproj", "{2A69717E-5010-4614-8D9C-2012846BFBCA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbstractUniversityBusinessLogic", "AbstractUniversityBusinessLogic\AbstractUniversityBusinessLogic.csproj", "{7E0F0E57-3FB4-474B-B36A-324D4D28CA40}"
 EndProject

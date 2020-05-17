@@ -26,10 +26,10 @@ namespace AbstractUniversity
         private static IUnityContainer BuildUnityContainer()
         {
             var currentContainer = new UnityContainer();
-            currentContainer.RegisterType<IPlaceLogic, PlaceLogic>(new
-           HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IDisciplineLogic, DisciplineLogic>(new
-           HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IPlaceLogic, PlaceLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IDisciplineLogic, DisciplineLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ICourseLogic, CourseLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IRequestLogic, RequestLogic>(new HierarchicalLifetimeManager());
             return currentContainer;
         }
     }

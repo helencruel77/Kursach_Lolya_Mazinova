@@ -88,6 +88,7 @@ namespace AbstractUniversityImplementation.Implements
                 {
                     Id = rec.Id,
                     RequestName = rec.RequestName,
+                    DataCreate = rec.DataCreate,
                     RequestPlaces = context.RequestPlaces
                                                 .Include(recWC => recWC.Place)
                                                 .Where(recWC => recWC.RequestId == rec.Id)
@@ -99,7 +100,7 @@ namespace AbstractUniversityImplementation.Implements
             }
         }
 
-        public void СompletedRequest(RequestPlaceBindingModel model)
+        public void AddPlace(RequestPlaceBindingModel model)
         {
             using (var context = new AbstractUniversityDatabase())
             {

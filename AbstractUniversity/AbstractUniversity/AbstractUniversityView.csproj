@@ -168,6 +168,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormCreateRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCreateRequest.Designer.cs">
+      <DependentUpon>FormCreateRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDiscipline.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,8 +210,23 @@
     <Compile Include="FormPlaces.Designer.cs">
       <DependentUpon>FormPlaces.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRequest.Designer.cs">
+      <DependentUpon>FormRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRequests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRequests.Designer.cs">
+      <DependentUpon>FormRequests.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormCreateRequest.resx">
+      <DependentUpon>FormCreateRequest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDiscipline.resx">
       <DependentUpon>FormDiscipline.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,6 +244,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPlaces.resx">
       <DependentUpon>FormPlaces.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRequest.resx">
+      <DependentUpon>FormRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRequests.resx">
+      <DependentUpon>FormRequests.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

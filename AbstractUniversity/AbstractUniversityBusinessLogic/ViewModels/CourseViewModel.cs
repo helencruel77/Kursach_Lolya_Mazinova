@@ -19,6 +19,9 @@ namespace AbstractUniversityBusinessLogic.ViewModels
         [DisplayName("Фамилия клиента")]
         public string ClientLastName { get; set; }
         [DataMember]
+        [DisplayName("Название дисциплины")]
+        public string DisciplineName { get; set; }
+        [DataMember]
         [DisplayName("Стоимость")]
         public int Price { get; set; }
         [DataMember]
