@@ -32,8 +32,8 @@
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.местоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.дисциплиныToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.заявкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.buttonCreateRequest = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -64,16 +64,23 @@
             // местоToolStripMenuItem
             // 
             this.местоToolStripMenuItem.Name = "местоToolStripMenuItem";
-            this.местоToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.местоToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
             this.местоToolStripMenuItem.Text = "Места";
             this.местоToolStripMenuItem.Click += new System.EventHandler(this.местоToolStripMenuItem_Click);
             // 
             // дисциплиныToolStripMenuItem
             // 
             this.дисциплиныToolStripMenuItem.Name = "дисциплиныToolStripMenuItem";
-            this.дисциплиныToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.дисциплиныToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
             this.дисциплиныToolStripMenuItem.Text = "Дисциплины";
             this.дисциплиныToolStripMenuItem.Click += new System.EventHandler(this.дисциплиныToolStripMenuItem_Click);
+            // 
+            // заявкиToolStripMenuItem
+            // 
+            this.заявкиToolStripMenuItem.Name = "заявкиToolStripMenuItem";
+            this.заявкиToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.заявкиToolStripMenuItem.Text = "Заявки";
+            this.заявкиToolStripMenuItem.Click += new System.EventHandler(this.заявкиToolStripMenuItem_Click);
             // 
             // dataGridView
             // 
@@ -85,16 +92,9 @@
             this.dataGridView.Size = new System.Drawing.Size(867, 428);
             this.dataGridView.TabIndex = 7;
             // 
-            // заявкиToolStripMenuItem
-            // 
-            this.заявкиToolStripMenuItem.Name = "заявкиToolStripMenuItem";
-            this.заявкиToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.заявкиToolStripMenuItem.Text = "Заявки";
-            this.заявкиToolStripMenuItem.Click += new System.EventHandler(this.заявкиToolStripMenuItem_Click);
-            // 
             // buttonCreateRequest
             // 
-            this.buttonCreateRequest.Location = new System.Drawing.Point(906, 32);
+            this.buttonCreateRequest.Location = new System.Drawing.Point(897, 31);
             this.buttonCreateRequest.Name = "buttonCreateRequest";
             this.buttonCreateRequest.Size = new System.Drawing.Size(150, 34);
             this.buttonCreateRequest.TabIndex = 8;
@@ -111,7 +111,7 @@
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMain";
             this.Text = "Меню";
             this.Load += new System.EventHandler(this.FormMain_Load);

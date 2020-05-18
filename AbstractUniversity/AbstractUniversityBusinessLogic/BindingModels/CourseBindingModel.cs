@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AbstractUniversityBusinessLogic.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,6 +13,9 @@ namespace AbstractUniversityBusinessLogic.BindingModels
         public string ClientLastName { get; set; }
         public int Price { get; set; }
         public DateTime DataCreate { get; set; }
-        public bool IsReserved { get; set; }
+        public CourseStatus Status { get; set; }
+        public decimal Sum { get; set; }
+        public int DisciplineId { get; set; }
+        public int Count { get; set; }
     }
 }

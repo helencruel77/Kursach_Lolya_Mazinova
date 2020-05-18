@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AbstractUniversityBusinessLogic.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.Serialization;
@@ -10,6 +11,7 @@ namespace AbstractUniversityBusinessLogic.ViewModels
     {
         [DataMember]
         public int Id { get; set; }
+        public int DisciplineId { get; set; }
         [DataMember]
         public int ClientId { get; set; }
         [DataMember]
@@ -21,14 +23,17 @@ namespace AbstractUniversityBusinessLogic.ViewModels
         [DataMember]
         [DisplayName("Название дисциплины")]
         public string DisciplineName { get; set; }
+        [DisplayName("Количество")] 
+        public int Count { get; set; }
         [DataMember]
         [DisplayName("Стоимость")]
         public int Price { get; set; }
         [DataMember]
+        [DisplayName("Статус")]
+        public CourseStatus Status { get; set; }
+        [DataMember]
         [DisplayName("Дата создания")]
         public DateTime DataCreate { get; set; }
-        [DataMember]
-        [DisplayName("Резервирование")]
-        public bool IsReserved { get; set; }
+     
     }
 }
