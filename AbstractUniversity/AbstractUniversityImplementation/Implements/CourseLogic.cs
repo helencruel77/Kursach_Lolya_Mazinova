@@ -33,7 +33,8 @@ namespace AbstractUniversityImplementation.Implements
                 element.ClientId = model.ClientId == 0 ? element.ClientId : (int)model.ClientId;
                 element.Price = model.Price;
                 element.DataCreate = model.DataCreate;
-                element.IsReserved = model.IsReserved;
+             //   element.IsReserved = model.IsReserved; 
+             //Я убрала потому что мы заменили на статус, не знаю надо тут че менять или нет
                 context.SaveChanges();
             }
         }
@@ -70,7 +71,7 @@ namespace AbstractUniversityImplementation.Implements
                      ClientId = rec.ClientId,
                      Price = rec.Price,
                      DataCreate = rec.DataCreate,
-                     IsReserved = rec.IsReserved,
+             //        IsReserved = rec.IsReserved,
                      ClientName = rec.Client.ClientName,
                      ClientLastName = rec.Client.ClientLastName,
                  })

@@ -14,11 +14,14 @@ namespace AbstractUniversity
         public new IUnityContainer Container { get; set; }
         private readonly MainLogic logic;
         private readonly ICourseLogic сourseLogic;
-        
-        public FormMain(MainLogic logic, ICourseLogic сourseLogic)
+        private readonly ReportLogic reportLogic;
+
+
+        public FormMain(MainLogic logic, ReportLogic reportLogic, ICourseLogic сourseLogic)
         {
             InitializeComponent();
             this.logic = logic;
+            this.reportLogic = reportLogic;
             this.сourseLogic = сourseLogic;
         }
         private void FormMain_Load(object sender, EventArgs e)
@@ -67,6 +70,30 @@ namespace AbstractUniversity
         {
             var form = Container.Resolve<FormCreateRequest>();
             form.ShowDialog();
+        }
+
+        private void списокЗаказовExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new SaveFileDialog { Filter = "xlsx|*.xlsx" })
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        reportLogic.SaveRequestPlaceToExcelFile(new ReportBindingModel
+                        {
+                            FileName = dialog.FileName
+                        });
+                        MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+                       MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }

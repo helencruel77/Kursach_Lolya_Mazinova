@@ -1,4 +1,5 @@
-﻿using AbstractUniversityBusinessLogic.Interfaces;
+﻿using AbstractUniversityBusinessLogic.BuisnessLogic;
+using AbstractUniversityBusinessLogic.Interfaces;
 using AbstractUniversityImplementation.Implements;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ namespace AbstractUniversity
             currentContainer.RegisterType<IDisciplineLogic, DisciplineLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ICourseLogic, CourseLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IRequestLogic, RequestLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ReportLogic>(new HierarchicalLifetimeManager());
             return currentContainer;
         }
     }

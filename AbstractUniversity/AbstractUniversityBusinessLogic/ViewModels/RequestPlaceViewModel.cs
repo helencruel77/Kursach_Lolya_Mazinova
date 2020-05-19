@@ -14,7 +14,7 @@ namespace AbstractUniversityBusinessLogic.ViewModels
         public int PlaceId { get; set; }
 
         [DisplayName("Тип места")]
-        public string PlaceType { get; set; }
+        public string TypePlace { get; set; }
 
         [DisplayName("Количество")]
         public int Count { get; set; }
