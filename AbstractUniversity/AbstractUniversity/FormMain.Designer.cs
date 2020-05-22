@@ -33,10 +33,11 @@
             this.местоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.дисциплиныToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.заявкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.buttonCreateRequest = new System.Windows.Forms.Button();
             this.отчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокЗаказовExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.buttonCreateRequest = new System.Windows.Forms.Button();
+            this.списокЗаказовWordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -85,6 +86,22 @@
             this.заявкиToolStripMenuItem.Text = "Заявки";
             this.заявкиToolStripMenuItem.Click += new System.EventHandler(this.заявкиToolStripMenuItem_Click);
             // 
+            // отчетToolStripMenuItem
+            // 
+            this.отчетToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.списокЗаказовExcelToolStripMenuItem,
+            this.списокЗаказовWordToolStripMenuItem});
+            this.отчетToolStripMenuItem.Name = "отчетToolStripMenuItem";
+            this.отчетToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
+            this.отчетToolStripMenuItem.Text = "Отчет";
+            // 
+            // списокЗаказовExcelToolStripMenuItem
+            // 
+            this.списокЗаказовExcelToolStripMenuItem.Name = "списокЗаказовExcelToolStripMenuItem";
+            this.списокЗаказовExcelToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
+            this.списокЗаказовExcelToolStripMenuItem.Text = "Список заказов Excel";
+            this.списокЗаказовExcelToolStripMenuItem.Click += new System.EventHandler(this.списокЗаказовExcelToolStripMenuItem_Click);
+            // 
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -105,20 +122,12 @@
             this.buttonCreateRequest.UseVisualStyleBackColor = true;
             this.buttonCreateRequest.Click += new System.EventHandler(this.buttonCreateRequest_Click);
             // 
-            // отчетToolStripMenuItem
+            // списокЗаказовWordToolStripMenuItem
             // 
-            this.отчетToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.списокЗаказовExcelToolStripMenuItem});
-            this.отчетToolStripMenuItem.Name = "отчетToolStripMenuItem";
-            this.отчетToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
-            this.отчетToolStripMenuItem.Text = "Отчет";
-            // 
-            // списокЗаказовExcelToolStripMenuItem
-            // 
-            this.списокЗаказовExcelToolStripMenuItem.Name = "списокЗаказовExcelToolStripMenuItem";
-            this.списокЗаказовExcelToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
-            this.списокЗаказовExcelToolStripMenuItem.Text = "Список заказов Excel";
-            this.списокЗаказовExcelToolStripMenuItem.Click += new System.EventHandler(this.списокЗаказовExcelToolStripMenuItem_Click);
+            this.списокЗаказовWordToolStripMenuItem.Name = "списокЗаказовWordToolStripMenuItem";
+            this.списокЗаказовWordToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
+            this.списокЗаказовWordToolStripMenuItem.Text = "Список заказов Word";
+            this.списокЗаказовWordToolStripMenuItem.Click += new System.EventHandler(this.списокЗаказовWordToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -152,6 +161,7 @@
         private System.Windows.Forms.Button buttonCreateRequest;
         private System.Windows.Forms.ToolStripMenuItem отчетToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem списокЗаказовExcelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem списокЗаказовWordToolStripMenuItem;
     }
 }
 

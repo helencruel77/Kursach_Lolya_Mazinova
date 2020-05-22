@@ -95,5 +95,17 @@ namespace AbstractUniversity
                 }
             }
         }
+
+        private void списокЗаказовWordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new SaveFileDialog { Filter = "docx|*.docx" })
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    reportLogic.SaveProductsToWordFile(new ReportBindingModel { FileName = dialog.FileName });
+                    MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
     }
 }

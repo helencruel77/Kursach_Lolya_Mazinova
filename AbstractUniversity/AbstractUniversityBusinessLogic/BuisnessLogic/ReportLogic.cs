@@ -54,6 +54,15 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
                 RequestPlaces = GetProductComponent()
             });
         }
+        public void SaveProductsToWordFile(ReportBindingModel model)
+        {
+            SaveToWord.CreateDoc(new WordInfo
+            {
+                FileName = model.FileName,
+                Title = "Список заявок",
+                RequestPlaces = GetProductComponent()
+            });
+        }
 
 
     }
