@@ -117,12 +117,10 @@ namespace AbstractUniversityImplementation.Implements
                     element = new RequestPlace();
 
                     context.RequestPlaces.Add(element);
-                }
-
-                element.RequestId = model.RequestId;
-                element.PlaceId = model.PlaceId;
-                element.Count = model.Count;
-
+                    element.RequestId = model.RequestId;
+                    element.PlaceId = model.PlaceId;
+                    element.Count = model.Count;
+                }          
                 context.SaveChanges();
             }
         }
