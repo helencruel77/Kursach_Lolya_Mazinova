@@ -83,7 +83,7 @@
 				<tr>
 					<td class="auto-style11"></td>
 					<td class="auto-style12"></td>
-					<td class="auto-style13">Почта(логин):</td>
+					<td class="auto-style13">Логин(почта):</td>
 					<td class="auto-style14">
 						<asp:TextBox ID="TextBoxEmail" runat="server" Width="142px"></asp:TextBox>
 					</td>
