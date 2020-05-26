@@ -11,7 +11,7 @@
 			width: 100%;
 		}
 		.auto-style2 {
-			width: 129px;
+			width: 132px;
 		}
 		.auto-style7 {
 			width: 175px;
@@ -24,7 +24,7 @@
 			height: 26px;
 		}
 		.auto-style4 {
-			width: 129px;
+			width: 132px;
 			height: 26px;
 		}
 		.auto-style6 {
@@ -49,12 +49,27 @@
 			height: 28px;
 		}
 		.auto-style13 {
-			width: 129px;
+			width: 132px;
 			height: 28px;
 		}
 		.auto-style14 {
 			width: 175px;
 			height: 28px;
+		}
+		.auto-style15 {
+			height: 25px;
+		}
+		.auto-style16 {
+			width: 80px;
+			height: 25px;
+		}
+		.auto-style17 {
+			width: 132px;
+			height: 25px;
+		}
+		.auto-style18 {
+			width: 175px;
+			height: 25px;
 		}
 	</style>
 </head>
@@ -85,7 +100,7 @@
 					<td class="auto-style12"></td>
 					<td class="auto-style13">Логин(почта):</td>
 					<td class="auto-style14">
-						<asp:TextBox ID="TextBoxEmail" runat="server" Width="142px"></asp:TextBox>
+						<asp:TextBox ID="TextBoxEmail" runat="server" Width="195px"></asp:TextBox>
 					</td>
 					<td class="auto-style11"></td>
 					<td class="auto-style11"></td>
@@ -96,20 +111,20 @@
 					<td class="auto-style9"></td>
 					<td class="auto-style4">Пароль:</td>
 					<td class="auto-style6">
-						<asp:TextBox ID="TextBoxPassword" runat="server" Width="142px"></asp:TextBox>
+						<asp:TextBox ID="TextBoxPassword" runat="server" Width="195px"></asp:TextBox>
 					</td>
 					<td class="auto-style3"></td>
 					<td class="auto-style3"></td>
 					<td class="auto-style3"></td>
 				</tr>
 				<tr>
-					<td>&nbsp;</td>
-					<td class="auto-style8">&nbsp;</td>
-					<td class="auto-style2">&nbsp;</td>
-					<td class="auto-style5">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
+					<td class="auto-style15"></td>
+					<td class="auto-style16"></td>
+					<td class="auto-style17"></td>
+					<td class="auto-style18"></td>
+					<td class="auto-style15"></td>
+					<td class="auto-style15"></td>
+					<td class="auto-style15"></td>
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
