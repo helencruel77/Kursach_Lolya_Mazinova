@@ -24,13 +24,13 @@ namespace AbstractUniversityClientView
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// TextBoxEmail элемент управления.
+        /// TextBoxLogin элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxEmail;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxLogin;
 
         /// <summary>
         /// TextBoxPassword элемент управления.

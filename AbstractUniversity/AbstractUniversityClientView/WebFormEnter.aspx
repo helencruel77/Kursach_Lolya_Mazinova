@@ -98,9 +98,9 @@
 				<tr>
 					<td class="auto-style11"></td>
 					<td class="auto-style12"></td>
-					<td class="auto-style13">Логин(почта):</td>
+					<td class="auto-style13">Логин:</td>
 					<td class="auto-style14">
-						<asp:TextBox ID="TextBoxEmail" runat="server" Width="195px"></asp:TextBox>
+						<asp:TextBox ID="TextBoxLogin" runat="server" Width="195px" OnTextChanged="TextBoxLogin_TextChanged"></asp:TextBox>
 					</td>
 					<td class="auto-style11"></td>
 					<td class="auto-style11"></td>
@@ -133,7 +133,7 @@
 						<asp:Button ID="ButtonRegister" runat="server" OnClick="ButtonRegister_Click" Text="Регистрация" Width="116px" />
 					</td>
 					<td class="auto-style5">
-						<asp:Button ID="ButtonEnter" runat="server" CssClass="auto-style10" Text="Вход" Width="116px" />
+						<asp:Button ID="ButtonEnter" runat="server" CssClass="auto-style10" Text="Вход" Width="116px" OnClick="ButtonEnter_Click" />
 					</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>

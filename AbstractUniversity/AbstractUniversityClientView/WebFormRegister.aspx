@@ -65,7 +65,7 @@
 				<td>&nbsp;</td>
 				<td class="auto-style8">&nbsp;</td>
 				<td class="auto-style2">
-					<asp:Label ID="Label1" runat="server" Text="ФИО:"></asp:Label>
+					<asp:Label ID="LabelLastname" runat="server" Text="Фамилия:"></asp:Label>
 				</td>
 				<td class="auto-style5">
 					<asp:TextBox ID="TextBoxFIO" runat="server" Width="195px"></asp:TextBox>
@@ -77,7 +77,9 @@
 			<tr>
 				<td class="auto-style3"></td>
 				<td class="auto-style9"></td>
-				<td class="auto-style2">Почта:</td>
+				<td class="auto-style2">
+					<asp:Label ID="LabelName" runat="server" Text="Имя:"></asp:Label>
+				</td>
 				<td class="auto-style5">
 					<asp:TextBox ID="TextBoxEmail" runat="server" Width="195px"></asp:TextBox>
 				</td>
@@ -88,7 +90,7 @@
 			<tr>
 				<td>&nbsp;</td>
 				<td class="auto-style8">&nbsp;</td>
-				<td class="auto-style4">Пароль:</td>
+				<td class="auto-style2">Почта:</td>
 				<td class="auto-style6">
 					<asp:TextBox ID="TextBoxPassword" runat="server" Width="195px"></asp:TextBox>
 				</td>
@@ -99,8 +101,10 @@
 			<tr>
 				<td>&nbsp;</td>
 				<td class="auto-style8">&nbsp;</td>
-				<td class="auto-style2">&nbsp;</td>
-				<td class="auto-style5">&nbsp;</td>
+				<td class="auto-style4">Пароль:</td>
+				<td class="auto-style5">
+					<asp:TextBox ID="TextBoxPassword0" runat="server" Width="195px"></asp:TextBox>
+				</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
@@ -110,7 +114,17 @@
 				<td class="auto-style8">&nbsp;</td>
 				<td class="auto-style2">&nbsp;</td>
 				<td class="auto-style5">
-					<asp:Button ID="Button1" runat="server" Text="Регистрация" Width="148px" />
+					&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td class="auto-style8">&nbsp;</td>
+				<td class="auto-style2">&nbsp;</td>
+				<td class="auto-style5">
+					<asp:Button ID="ButtonRegister" runat="server" Text="Регистрация" Width="148px" OnClick="ButtonRegister_Click" />
 				</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>

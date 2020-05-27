@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AbstractUniversityImplementation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,11 @@ namespace AbstractUniversityClientView
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void ButtonRegister_Click(object sender, EventArgs e)
+        {
+            AbstractUniversityDatabase db = new AbstractUniversityDatabase();
         }
     }
 }
