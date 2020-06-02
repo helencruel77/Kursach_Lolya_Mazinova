@@ -78,12 +78,21 @@ namespace AbstractUniversityClientView
         protected global::System.Web.UI.WebControls.TextBox TextBoxPassword;
 
         /// <summary>
-        /// ButtonRegister элемент управления.
+        /// ButtonRegister0 элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonRegister;
+        protected global::System.Web.UI.WebControls.Button ButtonRegister0;
+
+        /// <summary>
+        /// ButtonBack элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonBack;
     }
 }

@@ -10,7 +10,7 @@ namespace AbstractUniversityClientView
 {
     public partial class WebFormRegister : System.Web.UI.Page
     {
-        private readonly IClientLogic service = Program.Container.Resolve<ClientLogic>();
+        private readonly IClientLogic logic = Program.Container.Resolve<ClientLogic>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,7 +28,7 @@ namespace AbstractUniversityClientView
 
                 if (!string.IsNullOrEmpty(lastName) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
                 {
-                    service.CreateOrUpdate(new ClientBindingModel
+                    logic.CreateOrUpdate(new ClientBindingModel
                     {
                         ClientName = name,
                         ClientLastName = lastName,
@@ -48,6 +48,11 @@ namespace AbstractUniversityClientView
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('" + ex.Message + "');</script>");
             }
+        }
+
+        protected void ButtonEnter_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/WebFormEnter.aspx");
         }
     }
 }

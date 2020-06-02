@@ -207,6 +207,7 @@
   <ItemGroup>
     <Content Include="Web.config" />
     <Content Include="WebFormEnter.aspx" />
+    <Content Include="WebFormMain.aspx" />
     <Content Include="WebFormRegister.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -218,6 +219,13 @@
     </Compile>
     <Compile Include="WebFormEnter.aspx.designer.cs">
       <DependentUpon>WebFormEnter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormMain.aspx.cs">
+      <DependentUpon>WebFormMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormMain.aspx.designer.cs">
+      <DependentUpon>WebFormMain.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebFormRegister.aspx.cs">
       <DependentUpon>WebFormRegister.aspx</DependentUpon>

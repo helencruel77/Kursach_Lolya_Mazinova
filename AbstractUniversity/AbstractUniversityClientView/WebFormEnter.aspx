@@ -39,7 +39,7 @@
 			height: 26px;
 		}
 		.auto-style10 {
-			margin-left: 13px;
+			margin-left: 86px;
 		}
 		.auto-style11 {
 			height: 28px;
@@ -120,8 +120,12 @@
 				<tr>
 					<td class="auto-style15"></td>
 					<td class="auto-style16"></td>
-					<td class="auto-style17"></td>
-					<td class="auto-style18"></td>
+					<td class="auto-style17">
+						<asp:Button ID="ButtonRegister" runat="server" OnClick="ButtonRegister_Click" Text="Регистрация" Width="116px" />
+					</td>
+					<td class="auto-style18">
+						<asp:Button ID="ButtonEnter" runat="server" CssClass="auto-style10" Text="Вход" Width="116px" OnClick="ButtonEnter_Click" />
+					</td>
 					<td class="auto-style15"></td>
 					<td class="auto-style15"></td>
 					<td class="auto-style15"></td>
@@ -130,11 +134,9 @@
 					<td>&nbsp;</td>
 					<td class="auto-style8">&nbsp;</td>
 					<td class="auto-style2">
-						<asp:Button ID="ButtonRegister" runat="server" OnClick="ButtonRegister_Click" Text="Регистрация" Width="116px" />
-					</td>
+						&nbsp;</td>
 					<td class="auto-style5">
-						<asp:Button ID="ButtonEnter" runat="server" CssClass="auto-style10" Text="Вход" Width="116px" OnClick="ButtonEnter_Click" />
-					</td>
+						&nbsp;</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
