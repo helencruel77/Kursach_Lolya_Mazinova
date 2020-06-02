@@ -16,7 +16,12 @@ namespace AbstractUniversityClientView
 
         protected void ButtonRegister_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/WebFormRegister.aspx")
+            Response.Redirect("/WebFormRegister.aspx");
+        }
+
+        protected void ButtonEnter_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

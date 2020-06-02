@@ -100,7 +100,7 @@
 					<td class="auto-style12"></td>
 					<td class="auto-style13">Логин:</td>
 					<td class="auto-style14">
-						<asp:TextBox ID="TextBoxLogin" runat="server" Width="195px" OnTextChanged="TextBoxLogin_TextChanged"></asp:TextBox>
+						<asp:TextBox ID="TextBoxLogin" runat="server" Width="195px"></asp:TextBox>
 					</td>
 					<td class="auto-style11"></td>
 					<td class="auto-style11"></td>

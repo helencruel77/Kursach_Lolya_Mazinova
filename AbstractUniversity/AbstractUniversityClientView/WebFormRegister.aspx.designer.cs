@@ -33,13 +33,13 @@ namespace AbstractUniversityClientView
         protected global::System.Web.UI.WebControls.Label LabelLastname;
 
         /// <summary>
-        /// TextBoxFIO элемент управления.
+        /// TextBoxLastName элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxFIO;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxLastName;
 
         /// <summary>
         /// LabelName элемент управления.
@@ -49,6 +49,15 @@ namespace AbstractUniversityClientView
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelName;
+
+        /// <summary>
+        /// TextBoxName элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxName;
 
         /// <summary>
         /// TextBoxEmail элемент управления.
@@ -67,15 +76,6 @@ namespace AbstractUniversityClientView
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxPassword;
-
-        /// <summary>
-        /// TextBoxPassword0 элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxPassword0;
 
         /// <summary>
         /// ButtonRegister элемент управления.

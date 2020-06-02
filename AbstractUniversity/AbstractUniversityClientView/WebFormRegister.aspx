@@ -68,7 +68,7 @@
 					<asp:Label ID="LabelLastname" runat="server" Text="Фамилия:"></asp:Label>
 				</td>
 				<td class="auto-style5">
-					<asp:TextBox ID="TextBoxFIO" runat="server" Width="195px"></asp:TextBox>
+					<asp:TextBox ID="TextBoxLastName" runat="server" Width="195px"></asp:TextBox>
 				</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
@@ -81,7 +81,7 @@
 					<asp:Label ID="LabelName" runat="server" Text="Имя:"></asp:Label>
 				</td>
 				<td class="auto-style5">
-					<asp:TextBox ID="TextBoxEmail" runat="server" Width="195px"></asp:TextBox>
+					<asp:TextBox ID="TextBoxName" runat="server" Width="195px"></asp:TextBox>
 				</td>
 				<td class="auto-style3"></td>
 				<td class="auto-style3"></td>
@@ -92,7 +92,7 @@
 				<td class="auto-style8">&nbsp;</td>
 				<td class="auto-style2">Почта:</td>
 				<td class="auto-style6">
-					<asp:TextBox ID="TextBoxPassword" runat="server" Width="195px"></asp:TextBox>
+					<asp:TextBox ID="TextBoxEmail" runat="server" Width="195px"></asp:TextBox>
 				</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
@@ -103,7 +103,7 @@
 				<td class="auto-style8">&nbsp;</td>
 				<td class="auto-style4">Пароль:</td>
 				<td class="auto-style5">
-					<asp:TextBox ID="TextBoxPassword0" runat="server" Width="195px"></asp:TextBox>
+					<asp:TextBox ID="TextBoxPassword" runat="server" Width="195px"></asp:TextBox>
 				</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
