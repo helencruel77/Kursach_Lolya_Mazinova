@@ -13,5 +13,7 @@ namespace AbstractUniversityBusinessLogic.Interfaces
         void CreateOrUpdate(ClientBindingModel model);
 
         void Delete(ClientBindingModel model);
+
+        ClientViewModel GetClient(int id);
     }
 }

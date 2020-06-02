@@ -209,6 +209,7 @@
     <Content Include="WebFormEnter.aspx" />
     <Content Include="WebFormMain.aspx" />
     <Content Include="WebFormRegister.aspx" />
+    <Content Include="WebFormUpdateData.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Program.cs" />
@@ -233,6 +234,13 @@
     </Compile>
     <Compile Include="WebFormRegister.aspx.designer.cs">
       <DependentUpon>WebFormRegister.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormUpdateData.aspx.cs">
+      <DependentUpon>WebFormUpdateData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormUpdateData.aspx.designer.cs">
+      <DependentUpon>WebFormUpdateData.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

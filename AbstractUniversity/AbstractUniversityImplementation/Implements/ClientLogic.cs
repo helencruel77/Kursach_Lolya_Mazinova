@@ -53,6 +53,28 @@ namespace AbstractUniversityImplementation.Implements
                 }
             }
         }
+
+        public ClientViewModel GetClient(int id)
+        {
+            using (var context = new AbstractUniversityDatabase())
+            {
+                Client element = context.Clients.FirstOrDefault(rec => rec.Id == id);
+                if (element != null)
+                {
+                    return new ClientViewModel
+                    {
+                        Id = element.Id,
+                        ClientName = element.ClientName,
+                        ClientLastName = element.ClientLastName,
+                        Email = element.Email,
+                        Password = element.Password,
+                        Login = element.Login
+                    };
+                }
+                throw new Exception("Элемент не найден");
+            }
+        }
+
         public List<ClientViewModel> Read(ClientBindingModel model)
         {
             using (var context = new AbstractUniversityDatabase())

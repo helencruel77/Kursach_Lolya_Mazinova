@@ -13,5 +13,10 @@ namespace AbstractUniversityClientView
         {
 
         }
+
+        protected void ButtonChangeData_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/WebFormUpdateData.aspx");
+        }
     }
 }

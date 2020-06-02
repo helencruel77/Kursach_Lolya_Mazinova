@@ -47,16 +47,16 @@
     <form id="form1" runat="server">
         <table cellspacing="5" class="auto-style1">
 			<tr>
-				<td>&nbsp;</td>
+				<td class="auto-style8">&nbsp;</td>
 				<td class="auto-style8">&nbsp;</td>
 				<td class="auto-style2">&nbsp;</td>
-				<td class="auto-style7">Регистрация</td>
+				<td class="auto-style7" style="font-family: 'Times New Roman', Times, serif; font-size: 30px; font-weight: bold;">Регистрация</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;</td>
+				<td class="auto-style8">&nbsp;</td>
 				<td class="auto-style8">&nbsp;</td>
 				<td class="auto-style2">&nbsp;</td>
 				<td class="auto-style5">&nbsp;</td>
@@ -65,7 +65,7 @@
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;</td>
+				<td class="auto-style8">&nbsp;</td>
 				<td class="auto-style8">&nbsp;</td>
 				<td class="auto-style2">
 					<asp:Label ID="LabelLastname" runat="server" Text="Фамилия:"></asp:Label>
@@ -78,7 +78,7 @@
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td class="auto-style3"></td>
+				<td class="auto-style9"></td>
 				<td class="auto-style9"></td>
 				<td class="auto-style2">
 					<asp:Label ID="LabelName" runat="server" Text="Имя:"></asp:Label>
@@ -91,7 +91,7 @@
 				<td class="auto-style3"></td>
 			</tr>
 			<tr>
-				<td>&nbsp;</td>
+				<td class="auto-style8">&nbsp;</td>
 				<td class="auto-style8">&nbsp;</td>
 				<td class="auto-style2">Почта:</td>
 				<td class="auto-style6">
@@ -102,7 +102,7 @@
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;</td>
+				<td class="auto-style8">&nbsp;</td>
 				<td class="auto-style8">&nbsp;</td>
 				<td class="auto-style4">Пароль:</td>
 				<td class="auto-style5">
@@ -113,7 +113,7 @@
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;</td>
+				<td class="auto-style8">&nbsp;</td>
 				<td class="auto-style8">&nbsp;</td>
 				<td class="auto-style2">
 						<asp:Button ID="ButtonRegister0" runat="server" OnClick="ButtonRegister_Click" Text="Регистрация" Width="116px" />
@@ -126,7 +126,7 @@
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;</td>
+				<td class="auto-style8">&nbsp;</td>
 				<td class="auto-style8">&nbsp;</td>
 				<td class="auto-style2">&nbsp;</td>
 				<td class="auto-style5">
