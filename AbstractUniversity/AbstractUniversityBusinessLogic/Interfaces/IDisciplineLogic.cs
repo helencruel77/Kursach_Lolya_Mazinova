@@ -13,5 +13,7 @@ namespace AbstractUniversityBusinessLogic.Interfaces
         void CreateOrUpdate(DisciplineBindingModel model);
 
         void Delete(DisciplineBindingModel model);
+        DisciplineViewModel GetElement(int disciplineId);
+        List<DisciplineViewModel> GetClientList(int ClientId);
     }
 }

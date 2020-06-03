@@ -11,7 +11,7 @@ namespace AbstractUniversityClientView
 {
 
 
-    public partial class WebFormMain
+    public partial class WebFormCourseDiscipline
     {
 
         /// <summary>
@@ -24,30 +24,48 @@ namespace AbstractUniversityClientView
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// ButtonUpdateData элемент управления.
+        /// DropDownList элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonUpdateData;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList;
 
         /// <summary>
-        /// ButtonCreateCourse элемент управления.
+        /// TextBoxCount элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonCreateCourse;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxCount;
 
         /// <summary>
-        /// dataGridView элемент управления.
+        /// TextBoxSum элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dataGridView;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxSum;
+
+        /// <summary>
+        /// ButtonSave элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonSave;
+
+        /// <summary>
+        /// ButtonCancel элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonCancel;
     }
 }

@@ -15,16 +15,8 @@ namespace AbstractUniversityBusinessLogic.ViewModels
         [DataMember]
         public int ClientId { get; set; }
         [DataMember]
-        [DisplayName("Имя клиента")]
-        public string ClientName { get; set; }
-        [DataMember]
-        [DisplayName("Фамилия клиента")]
-        public string ClientLastName { get; set; }
-        [DataMember]
-        [DisplayName("Название дисциплины")]
-        public string DisciplineName { get; set; }
-        [DisplayName("Количество")] 
-        public int Count { get; set; }
+        [DisplayName("Название курса")]
+        public string CourseName { get; set; }
         [DataMember]
         [DisplayName("Стоимость")]
         public int Price { get; set; }
@@ -34,6 +26,7 @@ namespace AbstractUniversityBusinessLogic.ViewModels
         [DataMember]
         [DisplayName("Дата создания")]
         public DateTime DataCreate { get; set; }
-     
+        public List<DisciplineCourseViewModel> DisciplineCourses { get; set; }
+
     }
 }

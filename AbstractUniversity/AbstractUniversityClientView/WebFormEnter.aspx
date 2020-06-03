@@ -81,7 +81,7 @@
 					<td>&nbsp;</td>
 					<td class="auto-style8">&nbsp;</td>
 					<td class="auto-style2">&nbsp;</td>
-					<td class="auto-style7">Вход</td>
+					<td class="auto-style7" style="font-family: 'Times New Roman', Times, serif; font-size: 30px; font-weight: bold;">Вход</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>

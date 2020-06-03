@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AbstractUniversityImplementation.Migrations
 {
     [DbContext(typeof(AbstractUniversityDatabase))]
-    [Migration("20200516152117_InitialCreate")]
+    [Migration("20200603153504_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,13 +63,16 @@ namespace AbstractUniversityImplementation.Migrations
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
+                    b.Property<string>("CourseName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("DataCreate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsReserved")
-                        .HasColumnType("bit");
-
                     b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -90,8 +93,8 @@ namespace AbstractUniversityImplementation.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -105,11 +108,17 @@ namespace AbstractUniversityImplementation.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
                     b.Property<int>("CourseId")
                         .HasColumnType("int");
 
                     b.Property<int>("DisciplineId")
                         .HasColumnType("int");
+
+                    b.Property<string>("DisciplineName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

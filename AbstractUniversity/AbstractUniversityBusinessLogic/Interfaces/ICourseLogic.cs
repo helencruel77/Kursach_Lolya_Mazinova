@@ -13,5 +13,8 @@ namespace AbstractUniversityBusinessLogic.Interfaces
         void CreateOrUpdate(CourseBindingModel model);
 
         void Delete(CourseBindingModel model);
+
+        List<CourseViewModel> GetClientList(int ClientId);
+        CourseViewModel GetCourse(int id);
     }
 }

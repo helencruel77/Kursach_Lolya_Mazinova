@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AbstractUniversityBusinessLogic.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,13 +10,14 @@ namespace AbstractUniversityImplementation.Models
     public class Course
     {
         public int Id { get; set; }
+        public string CourseName { get; set; }
         public int ClientId { get; set; }
         [Required]
         public int Price { get; set; }
         [Required]
         public DateTime DataCreate { get; set; }
         [Required]
-        public bool IsReserved { get; set; }
+        public CourseStatus Status { get; set; }
         public virtual List<DisciplineCourse> DisciplineCourse { get; set; }
         public virtual Client Client { get; set; }
     }

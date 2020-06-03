@@ -16,6 +16,12 @@
 		.auto-style3 {
 			width: 202px;
 		}
+		.auto-style4 {
+			width: 183px;
+		}
+		.auto-style5 {
+			width: 150px;
+		}
 	</style>
 </head>
 <body>
@@ -33,54 +39,51 @@
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 				</tr>
+				</table>
+        	<table class="auto-style1">
 				<tr>
 					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="auto-style2">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="auto-style3">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="auto-style2">
-						<asp:Button ID="ButtonUpdateData" runat="server" OnClick="ButtonChangeData_Click" Text="Изменить данные" Width="123px" />
+					<td class="auto-style5">
+						<asp:Button ID="ButtonUpdateData" runat="server" OnClick="ButtonChangeData_Click" Text="Изменить данные" Width="150px" />
 					</td>
-					<td>&nbsp;</td>
-					<td class="auto-style3">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="auto-style2">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="auto-style3">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="auto-style2">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td class="auto-style3">&nbsp;</td>
-					<td>&nbsp;</td>
+					<td class="auto-style5">
+						<asp:Button ID="ButtonCreateCourse" runat="server" OnClick="ButtonCreateCourse_Click" Text="Создать курс" Width="150px" />
+					</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 				</tr>
 			</table>
         </div>
+    	<table class="auto-style1">
+			<tr>
+				<td class="auto-style4">&nbsp;</td>
+				<td>
+					<asp:GridView ID="dataGridView" runat="server">
+					</asp:GridView>
+				</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="auto-style4">&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="auto-style4">&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="auto-style4">&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+		</table>
     </form>
 </body>
 </html>

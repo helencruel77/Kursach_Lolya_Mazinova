@@ -33,11 +33,38 @@ namespace AbstractUniversityImplementation.Implements
                 element.ClientId = model.ClientId == 0 ? element.ClientId : (int)model.ClientId;
                 element.Price = model.Price;
                 element.DataCreate = model.DataCreate;
-             //   element.IsReserved = model.IsReserved; 
-             //Я убрала потому что мы заменили на статус, не знаю надо тут че менять или нет
+                element.Status = model.Status; 
                 context.SaveChanges();
             }
         }
+
+        public List<CourseViewModel> GetClientList(int ClientId)
+        {
+            using (var context = new AbstractUniversityDatabase())
+            {
+                List<CourseViewModel> result = context.Courses.
+                Where(rec => rec.ClientId ==ClientId).
+                Select(rec => new CourseViewModel
+                {
+                    Id = rec.Id,
+                    DataCreate = rec.DataCreate,
+                    CourseName = rec.CourseName,
+                    ClientId = rec.ClientId,
+                    Price = rec.Price,
+                    Status = rec.Status,
+                    DisciplineCourses = context.DisciplineCourses
+                    .Where(recPC => recPC.CourseId == rec.Id)
+                    .Select(recPC => new DisciplineCourseViewModel
+                    {
+                        Id = recPC.Id,
+                        CourseId = recPC.CourseId,
+                        DisciplineId = recPC.DisciplineId,
+                    }).ToList()
+                }).ToList();
+                return result;
+            }
+        }
+
         public void Delete(CourseBindingModel model)
         {
             using (var context = new AbstractUniversityDatabase())
@@ -71,11 +98,38 @@ namespace AbstractUniversityImplementation.Implements
                      ClientId = rec.ClientId,
                      Price = rec.Price,
                      DataCreate = rec.DataCreate,
-             //        IsReserved = rec.IsReserved,
-                     ClientName = rec.Client.ClientName,
-                     ClientLastName = rec.Client.ClientLastName,
+                     Status = rec.Status
                  })
             .ToList();
+            }
+        }
+
+        public CourseViewModel GetCourse(int id)
+        {
+            using (var context = new AbstractUniversityDatabase())
+            {
+                Course element = context.Courses.FirstOrDefault(rec => rec.Id == id);
+                if (element != null)
+                {
+                    return new CourseViewModel
+                    {
+                        Id = element.Id,
+                        ClientId = element.ClientId,
+                        CourseName = element.CourseName,
+                        Price = element.Price,
+                        DataCreate = element.DataCreate,
+                        Status = element.Status,
+                        DisciplineCourses = context.DisciplineCourses
+                        .Where(recPC => recPC.CourseId == element.Id)
+                        .Select(recPC => new DisciplineCourseViewModel
+                        {
+                            Id = recPC.Id,
+                            CourseId = recPC.CourseId,
+                            DisciplineId = recPC.DisciplineId,
+                        }).ToList()
+                    };
+                }
+                throw new Exception("Элемент не найден");
             }
         }
     }

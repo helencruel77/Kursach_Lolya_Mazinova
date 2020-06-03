@@ -31,7 +31,7 @@ namespace AbstractUniversityImplementation.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DisciplineName = table.Column<string>(nullable: false),
-                    Price = table.Column<decimal>(nullable: false)
+                    Price = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -71,10 +71,11 @@ namespace AbstractUniversityImplementation.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    CourseName = table.Column<string>(nullable: true),
                     ClientId = table.Column<int>(nullable: false),
                     Price = table.Column<int>(nullable: false),
                     DataCreate = table.Column<DateTime>(nullable: false),
-                    IsReserved = table.Column<bool>(nullable: false)
+                    Status = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -148,7 +149,9 @@ namespace AbstractUniversityImplementation.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CourseId = table.Column<int>(nullable: false),
-                    DisciplineId = table.Column<int>(nullable: false)
+                    DisciplineId = table.Column<int>(nullable: false),
+                    Count = table.Column<int>(nullable: false),
+                    DisciplineName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

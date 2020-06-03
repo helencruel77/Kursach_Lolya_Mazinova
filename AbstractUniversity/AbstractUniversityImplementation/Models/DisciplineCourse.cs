@@ -13,6 +13,10 @@ namespace AbstractUniversityImplementation.Models
 
         public int DisciplineId { get; set; }
 
+        public int Count { get; set; }
+
+        public string DisciplineName { get; set; }
+
         public virtual Course Course { get; set; }
 
         public virtual Discipline Discipline { get; set; }

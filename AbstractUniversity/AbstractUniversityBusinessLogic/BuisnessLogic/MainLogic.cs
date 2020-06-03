@@ -20,10 +20,10 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
         {
             courseLogic.CreateOrUpdate(new CourseBindingModel
             {
+                Name = model.Name,
                 DisciplineId = model.DisciplineId,
                 ClientId = model.ClientId,
-                Count = model.Count,
-                Sum = model.Sum,
+                Price = model.Price,
                 DataCreate = DateTime.Now,
                 Status = CourseStatus.Зарезервирован
             });
@@ -47,8 +47,7 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
                 Id = order.Id,
                 ClientId = order.ClientId,
                 DisciplineId = order.DisciplineId,
-                Count = order.Count,
-                Sum = order.Price,
+                Price = order.Price,
                 DataCreate = order.DataCreate,
                 Status = CourseStatus.Выполняется
             });
@@ -73,8 +72,7 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
                 Id = order.Id,
                 ClientId = order.ClientId,
                 DisciplineId = order.DisciplineId,
-                Count = order.Count,
-                Sum = order.Price,
+                Price = order.Price,
                 DataCreate = order.DataCreate,
                 Status = CourseStatus.Пройден
             });
@@ -99,8 +97,7 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
                 Id = order.Id,
                 ClientId = order.ClientId,
                 DisciplineId = order.DisciplineId,
-                Count = order.Count,
-                Sum = order.Price,
+                Price = order.Price,
                 DataCreate = order.DataCreate,
                 Status = CourseStatus.Оплачен
             });
