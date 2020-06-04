@@ -10,5 +10,6 @@ namespace AbstractUniversityBusinessLogic.BindingModels
         public int RequestId { get; set; }
         public int PlaceId { get; set; }
         public int Count { get; set; }
+
     }
 }

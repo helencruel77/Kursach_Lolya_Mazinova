@@ -1,10 +1,10 @@
 ﻿using AbstractUniversityBusinessLogic.BuisnessLogic;
+using AbstractUniversityBusinessLogic.HelperModels;
 using AbstractUniversityBusinessLogic.Interfaces;
 using AbstractUniversityImplementation.Implements;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Configuration;
+using System.Threading;
 using System.Windows.Forms;
 using Unity;
 using Unity.Lifetime;
@@ -20,6 +20,14 @@ namespace AbstractUniversity
         static void Main()
         {
             var container = BuildUnityContainer();
+            MailLogic.MailConfig(new MailConfig
+            {
+                SmtpClientHost = ConfigurationManager.AppSettings["SmtpClientHost"],
+                SmtpClientPort = Convert.ToInt32(ConfigurationManager.AppSettings["SmtpClientPort"]),
+                MailLogin = ConfigurationManager.AppSettings["MailLogin"],
+                MailPassword = ConfigurationManager.AppSettings["MailPassword"],
+            });
+           
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(container.Resolve<FormMain>());
@@ -31,7 +39,10 @@ namespace AbstractUniversity
             currentContainer.RegisterType<IDisciplineLogic, DisciplineLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ICourseLogic, CourseLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IRequestLogic, RequestLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IClientLogic, ClientLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ReportLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<MainLogic>(new HierarchicalLifetimeManager());
+
             return currentContainer;
         }
     }

@@ -17,12 +17,6 @@ namespace AbstractUniversityImplementation.Implements
             using (var context = new AbstractUniversityDatabase())
             {
                 Request element = context.Requests.FirstOrDefault(rec => rec.RequestName == model.RequestName && rec.Id != model.Id);
-
-                if (element != null)
-                {
-                    throw new Exception("Уже есть заявка с таким названием");
-                }
-
                 if (model.Id.HasValue)
                 {
                     element = context.Requests.FirstOrDefault(rec => rec.Id == model.Id);
@@ -82,7 +76,7 @@ namespace AbstractUniversityImplementation.Implements
             using (var context = new AbstractUniversityDatabase())
             {
                 return context.Requests
-                .Where(rec => model == null || rec.Id == model.Id)
+                .Where(rec => model == null || rec.Id == model.Id) 
                 .ToList()
                 .Select(rec => new RequestViewModel
                 {
@@ -115,7 +109,6 @@ namespace AbstractUniversityImplementation.Implements
                 {
 
                     element = new RequestPlace();
-
                     context.RequestPlaces.Add(element);
                     element.RequestId = model.RequestId;
                     element.PlaceId = model.PlaceId;

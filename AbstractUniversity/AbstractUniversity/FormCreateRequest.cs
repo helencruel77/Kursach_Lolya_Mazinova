@@ -1,5 +1,6 @@
 ﻿using AbstractUniversityBusinessLogic.BindingModels;
 using AbstractUniversityBusinessLogic.BuisnessLogic;
+using AbstractUniversityBusinessLogic.HelperModels;
 using AbstractUniversityBusinessLogic.Interfaces;
 using AbstractUniversityBusinessLogic.ViewModels;
 using System;
@@ -8,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,14 +23,19 @@ namespace AbstractUniversity
         public new IUnityContainer Container { get; set; }
 
         private readonly MainLogic logic;
+
         private readonly IRequestLogic requestLogic;
         private readonly IPlaceLogic placeLogic;
-        public FormCreateRequest(MainLogic logic, IRequestLogic requestLogic, IPlaceLogic placeLogic)
+        private readonly ReportLogic reportLogic;
+
+        public FormCreateRequest(MainLogic logic, IRequestLogic requestLogic, ReportLogic reportLogic, IPlaceLogic placeLogic)
         {
             InitializeComponent();
             this.logic = logic;
             this.requestLogic = requestLogic;
             this.placeLogic = placeLogic;
+            this.reportLogic = reportLogic;
+
         }
         private void FormCreateRequest_Load(object sender, EventArgs e)
         {
@@ -93,6 +100,33 @@ namespace AbstractUniversity
                     RequestId = Convert.ToInt32(comboBoxRequest.SelectedValue),
                     Count = Convert.ToInt32(textBoxCount.Text)
                 });
+
+                string path = "D:\\улгту 2 курс\\2 СЕМЕСТРР\\тп\\курсач\\Отчет по заявкам.docx";
+                string path1 = "D:\\улгту 2 курс\\2 СЕМЕСТРР\\тп\\курсач\\Отчет по заявкам.xlsx";
+
+                try
+                {
+                    reportLogic.SaveProductsToWordFile(new ReportBindingModel
+                    {
+                        FileName = path,
+                        DateFrom = DateTime.Now,
+                        DateTo = DateTime.Now.AddMilliseconds(100)
+                    });
+
+                    reportLogic.SaveRequestPlaceToExcelFile(new ReportBindingModel
+                    {
+                        FileName = path1,
+                        DateFrom = DateTime.Now,
+                        DateTo = DateTime.Now.AddMilliseconds(100)
+                    });
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
 
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;

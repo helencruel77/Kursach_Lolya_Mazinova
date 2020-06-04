@@ -89,7 +89,9 @@ namespace AbstractUniversity
                 logic.CreateOrUpdate(new RequestBindingModel
                 {
                     Id = id,
-                    RequestName = textBoxName.Text
+                    RequestName = textBoxName.Text,
+                    DataCreate = DateTime.Now
+
                 });
 
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -41,7 +41,7 @@ namespace AbstractUniversity
                     {
                         textBoxName.Text = view.DisciplineName;
                         textBoxPrice.Text = view.Price.ToString();
-                        placeDisciplines = view.PlaceDisciplines;
+                   //     placeDisciplines = view.PlaceDisciplines;
                         LoadData();
                     }
                 }
@@ -101,8 +101,8 @@ namespace AbstractUniversity
                 {
                     Id = id,
                     DisciplineName = textBoxName.Text,
-                    Price = Convert.ToDecimal(textBoxPrice.Text),
-                    PlaceDisciplines = placeDisciplines
+                  //  Price = Convert.ToDecimal(textBoxPrice.Text),
+                //    PlaceDisciplines = placeDisciplines
                 });
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение",
                MessageBoxButtons.OK, MessageBoxIcon.Information);

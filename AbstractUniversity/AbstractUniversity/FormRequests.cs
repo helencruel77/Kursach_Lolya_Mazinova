@@ -1,4 +1,6 @@
 ﻿using AbstractUniversityBusinessLogic.BindingModels;
+using AbstractUniversityBusinessLogic.BuisnessLogic;
+using AbstractUniversityBusinessLogic.HelperModels;
 using AbstractUniversityBusinessLogic.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -102,6 +104,39 @@ namespace AbstractUniversity
         private void buttonRef_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void buttonSendReportWord_Click(object sender, EventArgs e)
+        {
+            string path = "D:\\улгту 2 курс\\2 СЕМЕСТРР\\тп\\курсач\\Отчет по заявкам.docx";
+
+
+            MailLogic.MailSend(new MailSendInfo
+            {
+                MailAddress = "olgailina1003@gmail.com",
+                Subject = $"Оповещение по заявке",
+                Text = $"Поступила заявка на места",
+                Path = path
+
+            }); ;
+            MessageBox.Show("Отчет отправлен!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //DialogResult = DialogResult.OK;
+        }
+
+        private void buttonSendReportExcel_Click(object sender, EventArgs e)
+        {
+            string path = "D:\\улгту 2 курс\\2 СЕМЕСТРР\\тп\\курсач\\Отчет по заявкам.xlsx";
+
+            MailLogic.MailSend(new MailSendInfo
+            {
+                MailAddress = "olgailina1003@gmail.com",
+                Subject = $"Оповещение по заявке",
+                Text = $"Поступила заявка на места",
+                Path = path
+
+            }); ;
+            MessageBox.Show("Отчет отправлен!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+          //  DialogResult = DialogResult.OK;
         }
     }
 }

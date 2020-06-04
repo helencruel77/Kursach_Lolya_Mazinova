@@ -33,6 +33,9 @@
             this.buttonUpd = new System.Windows.Forms.Button();
             this.buttonDel = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonSendReportWord = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonSendReportExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,11 +95,45 @@
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
+            // buttonSendReportWord
+            // 
+            this.buttonSendReportWord.Location = new System.Drawing.Point(647, 301);
+            this.buttonSendReportWord.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSendReportWord.Name = "buttonSendReportWord";
+            this.buttonSendReportWord.Size = new System.Drawing.Size(141, 27);
+            this.buttonSendReportWord.TabIndex = 15;
+            this.buttonSendReportWord.Text = "В doc формате";
+            this.buttonSendReportWord.UseVisualStyleBackColor = true;
+            this.buttonSendReportWord.Click += new System.EventHandler(this.buttonSendReportWord_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(644, 254);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(144, 34);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Отправка отчета \r\nпо заявкам на почту";
+            // 
+            // buttonSendReportExcel
+            // 
+            this.buttonSendReportExcel.Location = new System.Drawing.Point(646, 336);
+            this.buttonSendReportExcel.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSendReportExcel.Name = "buttonSendReportExcel";
+            this.buttonSendReportExcel.Size = new System.Drawing.Size(141, 27);
+            this.buttonSendReportExcel.TabIndex = 17;
+            this.buttonSendReportExcel.Text = "В excel формате";
+            this.buttonSendReportExcel.UseVisualStyleBackColor = true;
+            this.buttonSendReportExcel.Click += new System.EventHandler(this.buttonSendReportExcel_Click);
+            // 
             // FormRequests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonSendReportExcel);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonSendReportWord);
             this.Controls.Add(this.buttonRef);
             this.Controls.Add(this.buttonUpd);
             this.Controls.Add(this.buttonDel);
@@ -107,6 +144,7 @@
             this.Load += new System.EventHandler(this.FormRequests_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -117,5 +155,8 @@
         private System.Windows.Forms.Button buttonUpd;
         private System.Windows.Forms.Button buttonDel;
         private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonSendReportWord;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonSendReportExcel;
     }
 }
