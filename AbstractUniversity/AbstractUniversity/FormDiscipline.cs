@@ -21,7 +21,7 @@ namespace AbstractUniversity
         public int Id { set { id = value; } }
         private readonly IDisciplineLogic logic;
         private int? id;
-        private Dictionary<int, (string, int)> placeDisciplines;
+        private List<PlaceDisciplineViewModel> placeDisciplines;
         public FormDiscipline(IDisciplineLogic service)
         {
             InitializeComponent();
@@ -53,7 +53,9 @@ namespace AbstractUniversity
             }
             else
             {
-                placeDisciplines = new Dictionary<int, (string, int)>();
+                textBoxPrice.Text = "0";
+
+                placeDisciplines = new List<PlaceDisciplineViewModel>();
             }
         }
         private void LoadData()
@@ -62,11 +64,13 @@ namespace AbstractUniversity
             {
                 if (placeDisciplines != null)
                 {
-                    dataGridViewDiscipline.Rows.Clear();
-                    foreach (var pc in placeDisciplines)
-                    {
-                        dataGridViewDiscipline.Rows.Add(new object[] { pc.Key, pc.Value.Item1, pc.Value.Item2 });
-                    }
+                    dataGridViewDiscipline.DataSource = null;
+                    dataGridViewDiscipline.DataSource = placeDisciplines;
+                    dataGridViewDiscipline.Columns[0].Visible = false;
+                    dataGridViewDiscipline.Columns[1].Visible = false;
+                    dataGridViewDiscipline.Columns[2].Visible = false;
+                    dataGridViewDiscipline.Columns[3].AutoSizeMode =
+                    DataGridViewAutoSizeColumnMode.Fill;
                 }
             }
             catch (Exception ex)
@@ -97,13 +101,36 @@ namespace AbstractUniversity
             }
             try
             {
-                logic.CreateOrUpdate(new DisciplineBindingModel
+                List<PlaceDisciplineBindingModel> placeDisciplinePD = new List<PlaceDisciplineBindingModel>();
+                for (int i = 0; i < placeDisciplines.Count; ++i)
                 {
-                    Id = id,
-                    DisciplineName = textBoxName.Text,
-                  //  Price = Convert.ToDecimal(textBoxPrice.Text),
-                //    PlaceDisciplines = placeDisciplines
-                });
+                    placeDisciplinePD.Add(new PlaceDisciplineBindingModel
+                    {
+                        Id = placeDisciplines[i].Id,
+                        PlaceId = placeDisciplines[i].PlaceId,
+                        DisciplineId = placeDisciplines[i].DisciplineId,
+                        Count = placeDisciplines[i].Count
+                    });
+                }
+                if (id.HasValue)
+                {
+                    logic.UpdElement(new DisciplineBindingModel
+                    {
+                        Id = id.Value,
+                        DisciplineName = textBoxName.Text,
+                        Price = Int32.Parse(textBoxPrice.Text),
+                        PlaceDisciplines = placeDisciplinePD
+                    });
+                }
+                else
+                {
+                    logic.AddElement(new DisciplineBindingModel
+                    {
+                        DisciplineName = textBoxName.Text,
+                        Price = Int32.Parse(textBoxPrice.Text),
+                        PlaceDisciplines = placeDisciplinePD
+                    });
+                }
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение",
                MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
@@ -137,7 +164,7 @@ namespace AbstractUniversity
                     try
                     {
 
-                        placeDisciplines.Remove(Convert.ToInt32(dataGridViewDiscipline.SelectedRows[0].Cells[0].Value));
+                        placeDisciplines..RemoveAt(dataGridView.SelectedRows[0].Cells[0].RowIndex);
                     }
                     catch (Exception ex)
                     {

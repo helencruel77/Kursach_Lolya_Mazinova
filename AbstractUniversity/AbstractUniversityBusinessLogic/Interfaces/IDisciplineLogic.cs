@@ -9,15 +9,15 @@ namespace AbstractUniversityBusinessLogic.Interfaces
     public interface IDisciplineLogic
     {
 
-      
-        List<DisciplineBindingModel> GetList();
+        List<DisciplineViewModel> Read(DisciplineBindingModel model);
+        void Delete(DisciplineBindingModel model);
+
         DisciplineViewModel GetElement(int disciplineId);
 
         void AddElement(DisciplineBindingModel model);
 
         void UpdElement(DisciplineBindingModel model);
 
-        void DelElement(int id);
         List<DisciplineViewModel> GetClientList(int ClientId);
 
     }

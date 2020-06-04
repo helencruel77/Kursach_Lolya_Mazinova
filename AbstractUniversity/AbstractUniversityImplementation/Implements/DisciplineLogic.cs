@@ -12,32 +12,74 @@ namespace AbstractUniversityImplementation.Implements
 {
     public class DisciplineLogic : IDisciplineLogic
     {
-        public DisciplineViewModel GetList()
+        public void AddElement(DisciplineBindingModel model)
         {
             using (var context = new AbstractUniversityDatabase())
             {
-                return context.Disciplines
-             .ToList()
-            .Select(rec => new DisciplineViewModel
-            {
-                Id = rec.Id,
-                DisciplineName = rec.DisciplineName,
-                Price = rec.Price,
-                PlaceDisciplines = context.PlaceDisciplines
-                    .Where(recWD => recWD.DisciplineId == rec.Id)
-                    .Select(x => new PlaceDisciplineViewModel
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    Discipline element = context.Disciplines.FirstOrDefault(rec =>
+                                               rec.DisciplineName == model.DisciplineName && rec.Id != model.Id);
+                    if (element != null)
                     {
-                        Id = x.Id,
-                        DisciplineId = x.DisciplineId,
-                        PlaceId = x.PlaceId,
-                   //     TypePlace = context.Places.FirstOrDefault(y => y.Id == x.PlaceId).TypePlace,
-                        Count = x.Count
-                    }).ToList()
-                 }).ToList();
+                        throw new Exception("Уже есть дисциплина с таким названием");
+                    }
+                    if (model.Id.HasValue)
+                    {
+                        element = context.Disciplines.FirstOrDefault(rec => rec.Id ==
+                       model.Id);
+                        if (element == null)
+                        {
+                            throw new Exception("Элемент не найден");
+                        }
+                    }
+                    else
+                    {
+                        element = new Discipline();
+                        context.Disciplines.Add(element);
+                    }
+                    element.DisciplineName = model.DisciplineName;
+                    element.Price = model.Price;
+                    context.SaveChanges();
+              //      var item = context.PlaceDisciplines.FirstOrDefault(x => x.PlaceId == model.PlaceId && x.WarehouseId == model.WarehouseId);
+
+                    foreach (var pc in model.PlaceDisciplines)
+                    {
+                        context.PlaceDisciplines.Add(new PlaceDiscipline
+                        {
+                            PlaceId = element.Id,
+                            DisciplineId = pc.DisciplineId,
+                            Count = pc.Count
+                        });
+                        context.SaveChanges();
+                    }
+                    transaction.Commit();
+                }
+            }
+        }
+        public void UpdElement(DisciplineBindingModel model)
+        {
+            using (var context = new AbstractUniversityDatabase())
+            {
+                var elem = context.Disciplines.FirstOrDefault(x => x.DisciplineName == model.DisciplineName && x.Id != model.Id);
+                if (elem != null)
+                {
+                    throw new Exception("Уже есть дисциплина с таким названием");
+                }
+                var elemToUpdate = context.Disciplines.FirstOrDefault(x => x.Id == model.Id);
+                if (elemToUpdate != null)
+                {
+                    elemToUpdate.DisciplineName = model.DisciplineName;
+                    context.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("Элемент не найден");
+                }
             }
         }
 
-                public void CreateOrUpdate(DisciplineBindingModel model)
+        public void CreateOrUpdate(DisciplineBindingModel model)
         {
             using (var context = new AbstractUniversityDatabase())
             {
@@ -73,11 +115,10 @@ namespace AbstractUniversityImplementation.Implements
                             var placeDisciplines = context.PlaceDisciplines.Where(rec
                           => rec.DisciplineId == model.Id.Value).ToList();
 
-                            /*
-                            context.PlaceDisciplines.RemoveRange(placeDisciplines.Where(rec =>
-                           !model.PlaceDisciplines.ContainsKey(rec.PlaceId)).ToList());
+                            
+                         //   context.PlaceDisciplines.RemoveRange(placeDisciplines.Where(rec => !model.PlaceDisciplines.ContainsKey(rec.PlaceId)).ToList());
                             context.SaveChanges();
-                            */
+                            
                             foreach (var updatePlace in placeDisciplines)
                             {
                                 updatePlace.Count =
