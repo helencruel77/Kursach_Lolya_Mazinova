@@ -21,7 +21,7 @@ namespace AbstractUniversity
         public int Id { set { id = value; } }
         private readonly IDisciplineLogic logic;
         private int? id;
-        private List<PlaceDisciplineViewModel> placeDisciplines;
+        private Dictionary<int, (string, int)> placeDisciplines;
         public FormDiscipline(IDisciplineLogic service)
         {
             InitializeComponent();
@@ -53,9 +53,7 @@ namespace AbstractUniversity
             }
             else
             {
-                textBoxPrice.Text = "0";
-
-                placeDisciplines = new List<PlaceDisciplineViewModel>();
+                placeDisciplines = new Dictionary<int, (string, int)>();
             }
         }
         private void LoadData()
@@ -64,13 +62,11 @@ namespace AbstractUniversity
             {
                 if (placeDisciplines != null)
                 {
-                    dataGridViewDiscipline.DataSource = null;
-                    dataGridViewDiscipline.DataSource = placeDisciplines;
-                    dataGridViewDiscipline.Columns[0].Visible = false;
-                    dataGridViewDiscipline.Columns[1].Visible = false;
-                    dataGridViewDiscipline.Columns[2].Visible = false;
-                    dataGridViewDiscipline.Columns[3].AutoSizeMode =
-                    DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridViewDiscipline.Rows.Clear();
+                    foreach (var pc in placeDisciplines)
+                    {
+                        dataGridViewDiscipline.Rows.Add(new object[] { pc.Key, pc.Value.Item1, pc.Value.Item2 });
+                    }
                 }
             }
             catch (Exception ex)
@@ -101,36 +97,13 @@ namespace AbstractUniversity
             }
             try
             {
-                List<PlaceDisciplineBindingModel> placeDisciplinePD = new List<PlaceDisciplineBindingModel>();
-                for (int i = 0; i < placeDisciplines.Count; ++i)
+                logic.CreateOrUpdate(new DisciplineBindingModel
                 {
-                    placeDisciplinePD.Add(new PlaceDisciplineBindingModel
-                    {
-                        Id = placeDisciplines[i].Id,
-                        PlaceId = placeDisciplines[i].PlaceId,
-                        DisciplineId = placeDisciplines[i].DisciplineId,
-                        Count = placeDisciplines[i].Count
-                    });
-                }
-                if (id.HasValue)
-                {
-                    logic.UpdElement(new DisciplineBindingModel
-                    {
-                        Id = id.Value,
-                        DisciplineName = textBoxName.Text,
-                        Price = Int32.Parse(textBoxPrice.Text),
-                        PlaceDisciplines = placeDisciplinePD
-                    });
-                }
-                else
-                {
-                    logic.AddElement(new DisciplineBindingModel
-                    {
-                        DisciplineName = textBoxName.Text,
-                        Price = Int32.Parse(textBoxPrice.Text),
-                        PlaceDisciplines = placeDisciplinePD
-                    });
-                }
+                    Id = id,
+                    DisciplineName = textBoxName.Text,
+                    Price = Convert.ToDecimal(textBoxPrice.Text),
+                    PlaceDisciplines = placeDisciplines
+                });
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение",
                MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
@@ -159,17 +132,16 @@ namespace AbstractUniversity
             if (dataGridViewDiscipline.SelectedRows.Count == 1)
             {
                 if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo,
-               MessageBoxIcon.Question) == DialogResult.Yes)
+                MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     try
                     {
-
-                        placeDisciplines..RemoveAt(dataGridView.SelectedRows[0].Cells[0].RowIndex);
+                        placeDisciplines.Remove(Convert.ToInt32(dataGridViewDiscipline.SelectedRows[0].Cells[0].Value));
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-                       MessageBoxIcon.Error);
+                        MessageBoxIcon.Error);
                     }
                     LoadData();
                 }

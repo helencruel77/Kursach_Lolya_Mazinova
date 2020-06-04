@@ -11,7 +11,7 @@ namespace AbstractUniversityImplementation.Models
         [Required]
         public string DisciplineName { get; set; }
         [Required]
-        public int Price { get; set; }
+        public decimal Price { get; set; }
         public virtual List<DisciplineCourse> DisciplineCourse { get; set; }
         public virtual List<PlaceDiscipline> PlaceDiscipline { get; set; }
     }

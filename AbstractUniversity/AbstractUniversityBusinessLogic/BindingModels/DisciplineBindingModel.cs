@@ -8,7 +8,7 @@ namespace AbstractUniversityBusinessLogic.BindingModels
     {
         public int? Id { get; set; }
         public string DisciplineName { get; set; }
-        public int Price { get; set; }
-        public List<PlaceDisciplineBindingModel> PlaceDisciplines { get; set; }
+        public decimal Price { get; set; }
+        public Dictionary<int, (string, int)> PlaceDisciplines { get; set; }
     }
 }

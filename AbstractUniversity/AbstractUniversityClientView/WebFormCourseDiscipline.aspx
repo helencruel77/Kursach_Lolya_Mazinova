@@ -58,7 +58,7 @@
 					<td>&nbsp;</td>
 					<td class="auto-style2">Количество:</td>
 					<td class="auto-style3">
-						<asp:TextBox ID="TextBoxCount" runat="server" Width="275px"></asp:TextBox>
+						<asp:TextBox ID="TextBoxCount" runat="server" Width="275px" OnTextChanged="TextBoxCount_TextChanged" AutoPostBack="True"></asp:TextBox>
 					</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
@@ -84,7 +84,7 @@
 					<td>&nbsp;</td>
 					<td class="auto-style2">Сумма:</td>
 					<td class="auto-style3">
-						<asp:TextBox ID="TextBoxSum" runat="server" Width="275px"></asp:TextBox>
+						<asp:TextBox ID="TextBoxSum" runat="server" Enabled="False" Width="275px"></asp:TextBox>
 					</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>

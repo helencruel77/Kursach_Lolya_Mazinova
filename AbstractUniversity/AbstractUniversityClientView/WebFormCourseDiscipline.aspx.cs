@@ -1,4 +1,5 @@
-﻿using AbstractUniversityBusinessLogic.Interfaces;
+﻿using AbstractUniversityBusinessLogic.BindingModels;
+using AbstractUniversityBusinessLogic.Interfaces;
 using AbstractUniversityBusinessLogic.ViewModels;
 using AbstractUniversityClientView.App_Start;
 using AbstractUniversityImplementation.Implements;
@@ -14,7 +15,7 @@ namespace AbstractUniversityClientView
 {
     public partial class WebFormCourseDiscipline : System.Web.UI.Page
     {
-        private readonly IDisciplineLogic serviceD = Program.Container.Resolve<DisciplineLogic>();
+        private readonly IDisciplineLogic logicD = Program.Container.Resolve<DisciplineLogic>();
         private DisciplineCourseViewModel model;
 
 
@@ -24,7 +25,7 @@ namespace AbstractUniversityClientView
             {
                 try
                 {
-                    List<DisciplineViewModel> listD = serviceD.GetClientList(Convert.ToInt32(Session["PatientId"]));
+                    var listD = logicD.Read(null);
                     if (listD != null)
                     {
                         DropDownList.DataSource = listD;
@@ -81,7 +82,7 @@ namespace AbstractUniversityClientView
                     Session["Change"] = "1";
                 }
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Сохранение прошло успешно');</script>");
-                Response.Redirect("FormCreateTreatment.aspx");
+                Response.Redirect("/WebFormCreateCourse.aspx");
             }
             catch (Exception ex)
             {
@@ -91,7 +92,7 @@ namespace AbstractUniversityClientView
 
         protected void ButtonCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("FormCreateCourse.aspx");
+            Response.Redirect("/WebFormCreateCourse.aspx");
         }
 
         protected void TextBoxCount_TextChanged(object sender, EventArgs e)
@@ -106,9 +107,13 @@ namespace AbstractUniversityClientView
                 try
                 {
                     int id = Convert.ToInt32(DropDownList.SelectedValue);
-                    DisciplineViewModel prescription = serviceD.GetElement(id);
+                    DisciplineViewModel discipline = logicD.Read(new DisciplineBindingModel
+                    {
+                        Id =
+                    id
+                    })?[0];
                     int count = Convert.ToInt32(TextBoxCount.Text);
-                    TextBoxSum.Text = (count * prescription.Price).ToString();
+                    TextBoxSum.Text = (count * discipline?.Price ?? 0).ToString();
                 }
                 catch (Exception ex)
                 {

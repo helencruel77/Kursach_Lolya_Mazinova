@@ -87,19 +87,19 @@ namespace AbstractUniversityClientView
                 Session["SECount"] = null;
                 Session["SEIs"] = null;
             }
-            List<DisciplineCourseBindingModel> disciplineCourse = new List<DisciplineCourseBindingModel>();
+            List<DisciplineCourseBindingModel> disciplineCourses = new List<DisciplineCourseBindingModel>();
             for (int i = 0; i < this.DisciplineCourses.Count; ++i)
             {
-                disciplineCourse.Add(new DisciplineCourseBindingModel
+                disciplineCourses.Add(new DisciplineCourseBindingModel
                 {
                     Id = this.DisciplineCourses[i].Id,
-                    DisciplineId = this.DisciplineCourses[i].DisciplineId,
                     CourseId = this.DisciplineCourses[i].CourseId,
+                    DisciplineId = this.DisciplineCourses[i].DisciplineId,
                     DisciplineName = this.DisciplineCourses[i].DisciplineName,
                     Count = this.DisciplineCourses[i].Count
                 });
             }
-            if (disciplineCourse.Count != 0)
+            if (disciplineCourses.Count != 0)
             {
                 CalcSum();
                 string name = "Введите название";
@@ -116,7 +116,7 @@ namespace AbstractUniversityClientView
                         Name = name,
                         Price = price,
                         Status = CourseStatus.Выполняется,
-                        DisciplineCourses = disciplineCourse
+                        DisciplineCourses = disciplineCourses
                     });
                 }
                 else
@@ -127,7 +127,7 @@ namespace AbstractUniversityClientView
                         Name = name,
                         Price = price,
                         Status = CourseStatus.Выполняется,
-                        DisciplineCourses = disciplineCourse
+                        DisciplineCourses = disciplineCourses
                     });
                     Session["id"] = logicC.Read(null).Last().Id.ToString();
                     Session["Change"] = "0";
@@ -144,7 +144,6 @@ namespace AbstractUniversityClientView
                 {
                     dataGridView.DataBind();
                     dataGridView.DataSource = DisciplineCourses;
-                    dataGridView.DataBind();
                     dataGridView.ShowHeaderWhenEmpty = true;
                     dataGridView.SelectedRowStyle.BackColor = Color.Silver;
                     dataGridView.Columns[1].Visible = false;
@@ -167,8 +166,12 @@ namespace AbstractUniversityClientView
                     price = 0;
                     for (int i = 0; i < DisciplineCourses.Count; i++)
                     {
-                        DisciplineViewModel discipline = logicD.GetElement(DisciplineCourses[i].DisciplineId);
-                        price += discipline.Price * DisciplineCourses[i].Count;
+                        DisciplineViewModel discipline = logicD.Read(new DisciplineBindingModel
+                        {
+                            Id =
+                    id
+                        })?[0];
+                        price += Convert.ToInt32(discipline.Price * DisciplineCourses[i].Count);
                     }
                     TextBoxPrice.Text = price.ToString();
                 }
@@ -181,12 +184,86 @@ namespace AbstractUniversityClientView
 
         protected void ButtonAdd_Click(object sender, EventArgs e)
         {
-            Response.Redirect("WebFormCourseDiscipline.aspx");
+            Response.Redirect("/WebFormCourseDiscipline.aspx");
         }
 
-        protected void GridView_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void dataGridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
+            e.Row.Cells[1].Visible = false;
+            e.Row.Cells[2].Visible = false;
+            e.Row.Cells[3].Visible = false;
         }
+
+        protected void ButtonSave_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(TextBoxName.Text))
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Заполните название');</script>");
+                return;
+            }
+            if (DisciplineCourses == null || DisciplineCourses.Count == 0)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Добавьте дисциплины');</script>");
+                return;
+            }
+            try
+            {
+                List<DisciplineCourseBindingModel> disciplineCourses = new List<DisciplineCourseBindingModel>();
+                for (int i = 0; i < DisciplineCourses.Count; ++i)
+                {
+                    disciplineCourses.Add(new DisciplineCourseBindingModel
+                    {
+                        Id = DisciplineCourses[i].Id,
+                        CourseId = DisciplineCourses[i].CourseId,
+                        DisciplineId = DisciplineCourses[i].DisciplineId,
+                        DisciplineName = DisciplineCourses[i].DisciplineName,
+                        Count = DisciplineCourses[i].Count
+                    });
+                }
+                if (Int32.TryParse((string)Session["id"], out id))
+                {
+                    logicC.CreateOrUpdate(new CourseBindingModel
+                    {
+                        Id = id,
+                        ClientId = Int32.Parse(Session["ClientId"].ToString()),
+                        Name = TextBoxName.Text,
+                        Price = Convert.ToInt32(TextBoxPrice.Text),
+                        Status = CourseStatus.Выполняется,
+                        DisciplineCourses = disciplineCourses
+                    });
+                }
+                Session["id"] = null;
+                Session["Change"] = null;
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Сохранение прошло успешно');</script>");
+                Response.Redirect("/WebFormMain.aspx");
+            }
+            catch (Exception ex)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('" + ex.Message + "');</script>");
+            }
+        }
+
+        protected void ButtonCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/WebFormMain.aspx");
+        }
+
+        protected void ButtonChange_Click(object sender, EventArgs e)
+        {
+            if (dataGridView.SelectedIndex >= 0)
+            {
+                model = logicC.GetCourse(id).DisciplineCourses[dataGridView.SelectedIndex];
+                Session["SEId"] = model.Id;
+                Session["SECourseId"] = model.CourseId;
+                Session["SEDisciplineId"] = model.DisciplineId;
+                Session["SEDisciplineName"] = model.DisciplineName;
+                Session["SEStatus"] = logicC.GetCourse(id).Status;
+                Session["SECount"] = model.Count;
+                Session["SEIs"] = dataGridView.SelectedIndex;
+                Session["Change"] = "0";
+                Response.Redirect("/WebFormCourseDiscipline.aspx");
+            }
+        }
+
     }
 }

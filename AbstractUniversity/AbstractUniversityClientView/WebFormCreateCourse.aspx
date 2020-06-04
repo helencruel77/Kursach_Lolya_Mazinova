@@ -126,7 +126,7 @@
 				</td>
 				<td class="auto-style13">&nbsp;</td>
 				<td class="auto-style10">
-					<asp:Button ID="ButtonChange" runat="server" Text="Изменить" Width="110px" />
+					<asp:Button ID="ButtonChange" runat="server" Text="Изменить" Width="110px" OnClick="ButtonChange_Click" />
 				</td>
 				<td class="auto-style13">&nbsp;</td>
 				<td class="auto-style10">
@@ -161,9 +161,9 @@
 				<td class="auto-style16">&nbsp;</td>
 				<td>&nbsp;</td>
 				<td class="auto-style15">
-					<asp:GridView ID="dataGridView" runat="server" OnRowDataBound="GridView_RowDataBound">
+					<asp:GridView ID="dataGridView" runat="server" OnRowDataBound="dataGridView_RowDataBound">
 						<Columns>
-							<asp:CommandField SelectText="&gt;&gt;" ShowSelectButton="true" />
+							 <asp:CommandField ShowSelectButton="true" SelectText=">>" />
 						</Columns>
 						<SelectedRowStyle BackColor="#CCCCCC" />
 					</asp:GridView>
@@ -193,11 +193,11 @@
 				<td class="auto-style17">&nbsp;</td>
 				<td>&nbsp;</td>
 				<td class="auto-style10">
-					<asp:Button ID="ButtonSave" runat="server" Text="Сохранить" Width="110px" />
+					<asp:Button ID="ButtonSave" runat="server" Text="Сохранить" Width="110px" OnClick="ButtonSave_Click" />
 				</td>
 				<td>&nbsp;</td>
 				<td class="auto-style10">
-					<asp:Button ID="ButtonCancel" runat="server" Text="Отмена" Width="110px" />
+					<asp:Button ID="ButtonCancel" runat="server" Text="Отмена" Width="110px" OnClick="ButtonCancel_Click" />
 				</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>

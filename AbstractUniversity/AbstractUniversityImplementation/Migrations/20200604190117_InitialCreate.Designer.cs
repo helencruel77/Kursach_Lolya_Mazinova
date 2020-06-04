@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AbstractUniversityImplementation.Migrations
 {
     [DbContext(typeof(AbstractUniversityDatabase))]
-    [Migration("20200603153504_InitialCreate")]
+    [Migration("20200604190117_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,8 +93,8 @@ namespace AbstractUniversityImplementation.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
