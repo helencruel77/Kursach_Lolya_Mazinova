@@ -41,7 +41,7 @@ namespace AbstractUniversity
                     {
                         textBoxName.Text = view.DisciplineName;
                         textBoxPrice.Text = view.Price.ToString();
-                   //     placeDisciplines = view.PlaceDisciplines;
+                        placeDisciplines = view.PlaceDisciplines;
                         LoadData();
                     }
                 }

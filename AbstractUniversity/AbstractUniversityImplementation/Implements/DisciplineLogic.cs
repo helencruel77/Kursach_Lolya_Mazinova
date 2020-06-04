@@ -12,7 +12,32 @@ namespace AbstractUniversityImplementation.Implements
 {
     public class DisciplineLogic : IDisciplineLogic
     {
-        public void CreateOrUpdate(DisciplineBindingModel model)
+        public DisciplineViewModel GetList()
+        {
+            using (var context = new AbstractUniversityDatabase())
+            {
+                return context.Disciplines
+             .ToList()
+            .Select(rec => new DisciplineViewModel
+            {
+                Id = rec.Id,
+                DisciplineName = rec.DisciplineName,
+                Price = rec.Price,
+                PlaceDisciplines = context.PlaceDisciplines
+                    .Where(recWD => recWD.DisciplineId == rec.Id)
+                    .Select(x => new PlaceDisciplineViewModel
+                    {
+                        Id = x.Id,
+                        DisciplineId = x.DisciplineId,
+                        PlaceId = x.PlaceId,
+                   //     TypePlace = context.Places.FirstOrDefault(y => y.Id == x.PlaceId).TypePlace,
+                        Count = x.Count
+                    }).ToList()
+                 }).ToList();
+            }
+        }
+
+                public void CreateOrUpdate(DisciplineBindingModel model)
         {
             using (var context = new AbstractUniversityDatabase())
             {
