@@ -21,10 +21,10 @@ namespace AbstractUniversityImplementation.Implements
                     try
                     {
                         Discipline element = context.Disciplines.FirstOrDefault(rec =>
-                                               rec.DisciplineName == model.DisciplineName && rec.Id != model.Id);
+                       rec.DisciplineName == model.DisciplineName && rec.Id != model.Id);
                         if (element != null)
                         {
-                            throw new Exception("Уже есть дисциплина с таким названием");
+                            throw new Exception("Уже есть изделие с таким названием");
                         }
                         if (model.Id.HasValue)
                         {
@@ -45,35 +45,36 @@ namespace AbstractUniversityImplementation.Implements
                         context.SaveChanges();
                         if (model.Id.HasValue)
                         {
-                            var placeDisciplines = context.PlaceDisciplines.Where(rec
-                          => rec.DisciplineId == model.Id.Value).ToList();
+                            var placeDiscipline = context.PlaceDisciplines.Where(rec
+                           => rec.DisciplineId == model.Id.Value).ToList();
+                            // удалили те, которых нет в модели
 
-                            context.PlaceDisciplines.RemoveRange(placeDisciplines.Where(rec =>
-                           !model.PlaceDisciplines.ContainsKey(rec.PlaceId)).ToList());
+                            context.PlaceDisciplines.RemoveRange(placeDiscipline.Where(rec =>
+                            !model.PlaceDisciplines.ContainsKey(rec.PlaceId)).ToList());
                             context.SaveChanges();
-
-                            foreach (var updatePlace in placeDisciplines)
+                            // обновили количество у существующих записей
+                            foreach (var updateDiscipline in placeDiscipline)
                             {
-                                updatePlace.Count =
-                               model.PlaceDisciplines[updatePlace.PlaceId].Item2;
+                                updateDiscipline.Count =
+                               model.PlaceDisciplines[updateDiscipline.PlaceId].Item2;
 
-                                model.PlaceDisciplines.Remove(updatePlace.PlaceId);
+                                model.PlaceDisciplines.Remove(updateDiscipline.PlaceId);
                             }
                             context.SaveChanges();
                         }
+                        // добавили новые
                         foreach (var pc in model.PlaceDisciplines)
                         {
                             context.PlaceDisciplines.Add(new PlaceDiscipline
                             {
-                                PlaceId = element.Id,
-                                DisciplineId = pc.Key,
+                                DisciplineId = element.Id,
+                                PlaceId = pc.Key,
                                 Count = pc.Value.Item2
                             });
                             context.SaveChanges();
                         }
                         transaction.Commit();
                     }
-
                     catch (Exception)
                     {
                         transaction.Rollback();

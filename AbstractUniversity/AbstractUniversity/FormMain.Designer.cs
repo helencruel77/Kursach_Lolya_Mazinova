@@ -37,9 +37,7 @@
             this.списокЗаказовExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокЗаказовWordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonCreateRequest = new System.Windows.Forms.Button();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -111,23 +109,13 @@
             // 
             // buttonCreateRequest
             // 
-            this.buttonCreateRequest.Location = new System.Drawing.Point(897, 31);
+            this.buttonCreateRequest.Location = new System.Drawing.Point(895, 31);
             this.buttonCreateRequest.Name = "buttonCreateRequest";
             this.buttonCreateRequest.Size = new System.Drawing.Size(150, 34);
             this.buttonCreateRequest.TabIndex = 8;
-            this.buttonCreateRequest.Text = "Создать заявку";
+            this.buttonCreateRequest.Text = "Пополнить заявку";
             this.buttonCreateRequest.UseVisualStyleBackColor = true;
             this.buttonCreateRequest.Click += new System.EventHandler(this.buttonCreateRequest_Click);
-            // 
-            // dataGridView
-            // 
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(13, 32);
-            this.dataGridView.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.RowHeadersWidth = 51;
-            this.dataGridView.Size = new System.Drawing.Size(867, 428);
-            this.dataGridView.TabIndex = 7;
             // 
             // FormMain
             // 
@@ -135,7 +123,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1068, 473);
             this.Controls.Add(this.buttonCreateRequest);
-            this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -144,7 +131,6 @@
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,7 +147,6 @@
         private System.Windows.Forms.ToolStripMenuItem отчетToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem списокЗаказовExcelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem списокЗаказовWordToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dataGridView;
     }
 }
 
