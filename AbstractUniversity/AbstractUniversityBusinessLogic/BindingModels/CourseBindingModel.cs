@@ -11,7 +11,7 @@ namespace AbstractUniversityBusinessLogic.BindingModels
         public string Name { get; set; }
         public int? ClientId { get; set; }
         public int Price { get; set; }
-        public DateTime DataCreate { get; set; }
+        public DateTime DateCreate { get; set; }
         public CourseStatus Status { get; set; }
         public int DisciplineId { get; set; }
         public List<DisciplineCourseBindingModel> DisciplineCourses { get; set; }

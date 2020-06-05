@@ -11,7 +11,7 @@ namespace AbstractUniversityImplementation.Models
         [Required]
         public string RequestName { get; set; }
         [Required]
-        public DateTime DataCreate { get; set; }
+        public DateTime DateCreate { get; set; }
 
         public virtual List<RequestPlace> RequestPlace { get; set; }
     }

@@ -33,7 +33,7 @@ namespace AbstractUniversityImplementation.Implements
                 }
 
                 element.RequestName = model.RequestName;
-                element.DataCreate = model.DataCreate;
+                element.DateCreate = model.DateCreate;
 
                 context.SaveChanges();
             }
@@ -76,13 +76,18 @@ namespace AbstractUniversityImplementation.Implements
             using (var context = new AbstractUniversityDatabase())
             {
                 return context.Requests
-                .Where(rec => model == null || rec.Id == model.Id) 
+               .Where(
+                    rec => model == null
+                    || (rec.Id == model.Id && model.Id.HasValue)
+                    || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo)
+                )
+
                 .ToList()
                 .Select(rec => new RequestViewModel
                 {
                     Id = rec.Id,
                     RequestName = rec.RequestName,
-                    DataCreate = rec.DataCreate,
+                    DateCreate = rec.DateCreate,
                     RequestPlaces = context.RequestPlaces
                                                 .Include(recWC => recWC.Place)
                                                 .Where(recWC => recWC.RequestId == rec.Id)

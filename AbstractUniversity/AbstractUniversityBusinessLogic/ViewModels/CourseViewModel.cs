@@ -25,7 +25,7 @@ namespace AbstractUniversityBusinessLogic.ViewModels
         public CourseStatus Status { get; set; }
         [DataMember]
         [DisplayName("Дата создания")]
-        public DateTime DataCreate { get; set; }
+        public DateTime DateCreate { get; set; }
         public List<DisciplineCourseViewModel> DisciplineCourses { get; set; }
 
     }

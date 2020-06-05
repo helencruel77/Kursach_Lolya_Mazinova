@@ -32,7 +32,7 @@ namespace AbstractUniversityImplementation.Implements
                 }
                 element.ClientId = model.ClientId == 0 ? element.ClientId : (int)model.ClientId;
                 element.Price = model.Price;
-                element.DataCreate = model.DataCreate;
+                element.DataCreate = model.DateCreate;
                 element.Status = model.Status; 
                 context.SaveChanges();
             }
@@ -47,7 +47,7 @@ namespace AbstractUniversityImplementation.Implements
                 Select(rec => new CourseViewModel
                 {
                     Id = rec.Id,
-                    DataCreate = rec.DataCreate,
+                    DateCreate = rec.DataCreate,
                     CourseName = rec.CourseName,
                     ClientId = rec.ClientId,
                     Price = rec.Price,
@@ -97,7 +97,7 @@ namespace AbstractUniversityImplementation.Implements
                      Id = rec.Id,
                      ClientId = rec.ClientId,
                      Price = rec.Price,
-                     DataCreate = rec.DataCreate,
+                     DateCreate = rec.DataCreate,
                      Status = rec.Status
                  })
             .ToList();
@@ -117,7 +117,7 @@ namespace AbstractUniversityImplementation.Implements
                         ClientId = element.ClientId,
                         CourseName = element.CourseName,
                         Price = element.Price,
-                        DataCreate = element.DataCreate,
+                        DateCreate = element.DataCreate,
                         Status = element.Status,
                         DisciplineCourses = context.DisciplineCourses
                         .Where(recPC => recPC.CourseId == element.Id)

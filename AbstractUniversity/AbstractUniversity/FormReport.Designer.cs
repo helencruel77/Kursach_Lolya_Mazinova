@@ -46,6 +46,7 @@
             this.buttonMake.TabIndex = 16;
             this.buttonMake.Text = "Отправить на почту";
             this.buttonMake.UseVisualStyleBackColor = true;
+            this.buttonMake.Click += new System.EventHandler(this.buttonMake_Click);
             // 
             // dateTimePickerTo
             // 
@@ -92,10 +93,11 @@
             this.buttonReport.TabIndex = 17;
             this.buttonReport.Text = "Сформировать";
             this.buttonReport.UseVisualStyleBackColor = true;
+            this.buttonReport.Click += new System.EventHandler(this.buttonReport_Click);
             // 
             // reportViewer
             // 
-            this.reportViewer.LocalReport.ReportEmbeddedResource = "HospitalAdministrationView.Report.rdlc";
+            this.reportViewer.LocalReport.ReportEmbeddedResource = "AbstractUniversity.Report.rdlc";
             this.reportViewer.Location = new System.Drawing.Point(13, 56);
             this.reportViewer.Margin = new System.Windows.Forms.Padding(4);
             this.reportViewer.Name = "reportViewer";
@@ -117,7 +119,6 @@
             this.Controls.Add(this.labelFrom);
             this.Name = "FormReport";
             this.Text = "FormReport";
-            this.Load += new System.EventHandler(this.FormReport_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

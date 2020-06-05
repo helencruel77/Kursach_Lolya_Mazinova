@@ -90,7 +90,7 @@ namespace AbstractUniversity
                 {
                     Id = id,
                     RequestName = textBoxName.Text,
-                    DataCreate = DateTime.Now
+                    DateCreate = DateTime.Now
 
                 });
 

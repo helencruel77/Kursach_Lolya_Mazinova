@@ -24,7 +24,7 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
                 DisciplineId = model.DisciplineId,
                 ClientId = model.ClientId,
                 Price = model.Price,
-                DataCreate = DateTime.Now,
+                DateCreate = DateTime.Now,
                 Status = CourseStatus.Зарезервирован
             });
         }
@@ -48,7 +48,7 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
                 ClientId = order.ClientId,
                 DisciplineId = order.DisciplineId,
                 Price = order.Price,
-                DataCreate = order.DataCreate,
+                DateCreate = order.DateCreate,
                 Status = CourseStatus.Выполняется
             });
         }
@@ -73,7 +73,7 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
                 ClientId = order.ClientId,
                 DisciplineId = order.DisciplineId,
                 Price = order.Price,
-                DataCreate = order.DataCreate,
+                DateCreate = order.DateCreate,
                 Status = CourseStatus.Пройден
             });
         }
@@ -98,7 +98,7 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
                 ClientId = order.ClientId,
                 DisciplineId = order.DisciplineId,
                 Price = order.Price,
-                DataCreate = order.DataCreate,
+                DateCreate = order.DateCreate,
                 Status = CourseStatus.Оплачен
             });
         }

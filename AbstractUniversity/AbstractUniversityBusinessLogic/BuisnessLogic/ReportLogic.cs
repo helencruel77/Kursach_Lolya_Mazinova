@@ -50,11 +50,12 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
         {
             return requestLogic.Read(new RequestBindingModel
             {
-                DataCreate = model.DataCreate,
+                DateFrom = model.DateFrom,
+                DateTo = model.DateTo
             })
             .Select(x => new ReportRequestsViewModel
             {
-                DateCreate = x.DataCreate,
+                DateCreate = x.DateCreate,
                 Title = x.RequestName,
                 Count = x.Count,
                 TypePlace = x.TypePlace
@@ -87,7 +88,8 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
             {
                 FileName = model.FileName,
                 Title = "Список заявок и дисциплин",
-                DateCreate = model.DataCreate.Value,
+                DateFrom = model.DateFrom.Value,
+                DateTo = model.DateTo.Value,
                 RequestPlaces = GetPlaces(model)
             });
         }

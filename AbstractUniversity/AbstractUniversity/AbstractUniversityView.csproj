@@ -306,6 +306,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report.rdlc" />
+    <None Include="AbstractUniversityBusinessLogic.ViewModels.ReportRequestsViewModel.datasource" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
