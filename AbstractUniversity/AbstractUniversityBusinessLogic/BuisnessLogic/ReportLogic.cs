@@ -4,6 +4,7 @@ using AbstractUniversityBusinessLogic.Interfaces;
 using AbstractUniversityBusinessLogic.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AbstractUniversityBusinessLogic.BuisnessLogic
@@ -18,7 +19,7 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
             this.requestLogic = requestLogic;
             this.placeLogic = placeLogic;
         }
-        public List<ReportRequestPlacesViewModel> GetProductComponent()
+        public List<ReportRequestPlacesViewModel> GetRequestPlaces()
         {
             var places = placeLogic.Read(null);
             var requests = requestLogic.Read(null);
@@ -45,13 +46,30 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
             }
             return list;
         }
+        public List<ReportRequestsViewModel> GetPlaces(ReportBindingModel model)
+        {
+            return requestLogic.Read(new RequestBindingModel
+            {
+                DataCreate = model.DataCreate,
+            })
+            .Select(x => new ReportRequestsViewModel
+            {
+                DateCreate = x.DataCreate,
+                Title = x.RequestName,
+                Count = x.Count,
+                TypePlace = x.TypePlace
+            })
+           .ToList();
+        }
+
+
         public void SaveRequestPlaceToExcelFile(ReportBindingModel model)
         {
             SaveToExcel.CreateDoc(new ExcelInfo
             {
                 FileName = model.FileName,
                 Title = "Список заявок",
-                RequestPlaces = GetProductComponent()
+                RequestPlaces = GetRequestPlaces()
             });
         }
         public void SaveProductsToWordFile(ReportBindingModel model)
@@ -60,10 +78,19 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
             {
                 FileName = model.FileName,
                 Title = "Список заявок",
-                RequestPlaces = GetProductComponent()
+                RequestPlaces = GetRequestPlaces()
             });
         }
-
+        public void SaveRequestDisciplineToPdfFile(ReportBindingModel model)
+        {
+            SaveToPdf.CreateDoc(new PdfInfo
+            {
+                FileName = model.FileName,
+                Title = "Список заявок и дисциплин",
+                DateCreate = model.DataCreate.Value,
+                RequestPlaces = GetPlaces(model)
+            });
+        }
 
     }
 }

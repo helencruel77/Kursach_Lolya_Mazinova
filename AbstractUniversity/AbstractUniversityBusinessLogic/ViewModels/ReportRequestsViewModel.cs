@@ -4,8 +4,9 @@ using System.Text;
 
 namespace AbstractUniversityBusinessLogic.ViewModels
 {
-    class ReportRequestsViewModel
+    public class ReportRequestsViewModel
     {
+        public string Title { get; set; }
         public DateTime DateCreate { get; set; }
         public int Count { get; set; }
         public string TypePlace { get; set; }

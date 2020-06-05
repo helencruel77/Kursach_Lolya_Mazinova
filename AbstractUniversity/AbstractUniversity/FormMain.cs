@@ -72,40 +72,10 @@ namespace AbstractUniversity
             form.ShowDialog();
         }
 
-        private void списокЗаказовExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        private void отчетToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var dialog = new SaveFileDialog { Filter = "xlsx|*.xlsx" })
-            {
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        reportLogic.SaveRequestPlaceToExcelFile(new ReportBindingModel
-                        {
-                            FileName = dialog.FileName
-                        });
-                        MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-                       MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }
-
-        private void списокЗаказовWordToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (var dialog = new SaveFileDialog { Filter = "docx|*.docx" })
-            {
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    reportLogic.SaveProductsToWordFile(new ReportBindingModel { FileName = dialog.FileName });
-                    MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
+            var form = Container.Resolve<FormReport>();
+            form.ShowDialog();
         }
     }
 }

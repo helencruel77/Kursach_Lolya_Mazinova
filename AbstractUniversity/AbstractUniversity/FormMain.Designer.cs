@@ -33,10 +33,8 @@
             this.местоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.дисциплиныToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.заявкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.отчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.списокЗаказовExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.списокЗаказовWordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonCreateRequest = new System.Windows.Forms.Button();
+            this.отчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,46 +64,23 @@
             // местоToolStripMenuItem
             // 
             this.местоToolStripMenuItem.Name = "местоToolStripMenuItem";
-            this.местоToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.местоToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.местоToolStripMenuItem.Text = "Места";
             this.местоToolStripMenuItem.Click += new System.EventHandler(this.местоToolStripMenuItem_Click);
             // 
             // дисциплиныToolStripMenuItem
             // 
             this.дисциплиныToolStripMenuItem.Name = "дисциплиныToolStripMenuItem";
-            this.дисциплиныToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.дисциплиныToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.дисциплиныToolStripMenuItem.Text = "Дисциплины";
             this.дисциплиныToolStripMenuItem.Click += new System.EventHandler(this.дисциплиныToolStripMenuItem_Click);
             // 
             // заявкиToolStripMenuItem
             // 
             this.заявкиToolStripMenuItem.Name = "заявкиToolStripMenuItem";
-            this.заявкиToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.заявкиToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.заявкиToolStripMenuItem.Text = "Заявки";
             this.заявкиToolStripMenuItem.Click += new System.EventHandler(this.заявкиToolStripMenuItem_Click);
-            // 
-            // отчетToolStripMenuItem
-            // 
-            this.отчетToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.списокЗаказовExcelToolStripMenuItem,
-            this.списокЗаказовWordToolStripMenuItem});
-            this.отчетToolStripMenuItem.Name = "отчетToolStripMenuItem";
-            this.отчетToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
-            this.отчетToolStripMenuItem.Text = "Отчет";
-            // 
-            // списокЗаказовExcelToolStripMenuItem
-            // 
-            this.списокЗаказовExcelToolStripMenuItem.Name = "списокЗаказовExcelToolStripMenuItem";
-            this.списокЗаказовExcelToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
-            this.списокЗаказовExcelToolStripMenuItem.Text = "Список заказов Excel";
-            this.списокЗаказовExcelToolStripMenuItem.Click += new System.EventHandler(this.списокЗаказовExcelToolStripMenuItem_Click);
-            // 
-            // списокЗаказовWordToolStripMenuItem
-            // 
-            this.списокЗаказовWordToolStripMenuItem.Name = "списокЗаказовWordToolStripMenuItem";
-            this.списокЗаказовWordToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
-            this.списокЗаказовWordToolStripMenuItem.Text = "Список заказов Word";
-            this.списокЗаказовWordToolStripMenuItem.Click += new System.EventHandler(this.списокЗаказовWordToolStripMenuItem_Click);
             // 
             // buttonCreateRequest
             // 
@@ -116,6 +91,13 @@
             this.buttonCreateRequest.Text = "Пополнить заявку";
             this.buttonCreateRequest.UseVisualStyleBackColor = true;
             this.buttonCreateRequest.Click += new System.EventHandler(this.buttonCreateRequest_Click);
+            // 
+            // отчетToolStripMenuItem
+            // 
+            this.отчетToolStripMenuItem.Name = "отчетToolStripMenuItem";
+            this.отчетToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
+            this.отчетToolStripMenuItem.Text = "Отчет";
+            this.отчетToolStripMenuItem.Click += new System.EventHandler(this.отчетToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -145,8 +127,6 @@
         private System.Windows.Forms.ToolStripMenuItem заявкиToolStripMenuItem;
         private System.Windows.Forms.Button buttonCreateRequest;
         private System.Windows.Forms.ToolStripMenuItem отчетToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem списокЗаказовExcelToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem списокЗаказовWordToolStripMenuItem;
     }
 }
 
