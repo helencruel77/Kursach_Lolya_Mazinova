@@ -59,9 +59,14 @@
 			<tr>
 				<td class="auto-style4">&nbsp;</td>
 				<td>
-					<asp:GridView ID="dataGridView" runat="server">
+					<asp:GridView ID="dataGridView" runat="server" AutoGenerateColumns="False">
 						<Columns>
-							<asp:CommandField ShowSelectButton="True"  SelectText=">>"  />
+							 <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
+                <asp:CommandField ShowSelectButton="true" SelectText=">>" />
+                <asp:BoundField DataField="CourseName" HeaderText="Наименование" SortExpression="CourseName" />
+                <asp:BoundField DataField="DateCreate" HeaderText="Дата" SortExpression="DateCreate" />
+                <asp:BoundField DataField="Price" HeaderText="Стоимость" SortExpression="Price" />
+                <asp:BoundField DataField="Status" HeaderText="Бронь" SortExpression="Status" />
 						</Columns>
 						<SelectedRowStyle BackColor="#CCCCCC" />
 					</asp:GridView>

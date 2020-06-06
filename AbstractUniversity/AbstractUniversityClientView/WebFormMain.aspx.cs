@@ -37,7 +37,6 @@ namespace AbstractUniversityClientView
                 dataGridView.ShowHeaderWhenEmpty = true;
                 dataGridView.SelectedRowStyle.BackColor = Color.Silver;
                 dataGridView.Columns[0].Visible = false;
-                dataGridView.Columns[1].Visible = false;
             }
             catch (Exception ex)
             {

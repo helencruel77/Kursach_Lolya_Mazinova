@@ -20,6 +20,7 @@ namespace AbstractUniversityClientView
             {
                 try
                 {
+                    // List<DisciplineViewModel> listD = logicD.GetClientList(Convert.ToInt32(Session["ClientId"])); //////////////////////доделать
                     List<DisciplineViewModel> listD = logicD.Read(null);
                     if (listD != null)
                     {

@@ -99,15 +99,19 @@ namespace AbstractUniversityClientView
             }
             if (disciplineCourses.Count != 0)
             {
-                logicC.CreateOrUpdate(new CourseBindingModel
+                CalcSum();
+                if (Int32.TryParse((string)Session["id"], out id))
                 {
-                    Id = id,
-                    ClientId = Int32.Parse(Session["ClientId"].ToString()),
-                    CourseName = TextBoxName.Text,
-                    Price = price,
-                    Status = CourseStatus.Выполняется,
-                    DisciplineCourses = disciplineCourses
-                });
+                    logicC.CreateOrUpdate(new CourseBindingModel
+                    {
+                        Id = id,
+                        ClientId = Int32.Parse(Session["ClientId"].ToString()),
+                        CourseName = TextBoxName.Text,
+                        Price = price,
+                        Status = CourseStatus.Выполняется,
+                        DisciplineCourses = disciplineCourses
+                    });
+                }
                 Session["id"] = logicC.Read(null).Last().Id.ToString();
                 Session["Change"] = "0";
             }
@@ -152,7 +156,7 @@ namespace AbstractUniversityClientView
                             Id =
                     id
                         })?[0];
-                        price += Convert.ToInt32(discipline.Price * DisciplineCourses[i].Count);
+                        price += (int)discipline.Price * DisciplineCourses[i].Count;
                     }
                     TextBoxPrice.Text = price.ToString();
                 }
@@ -221,24 +225,27 @@ namespace AbstractUniversityClientView
                          DisciplineName = DisciplineCourses[i].DisciplineName,
                     });
                 }
-                logicC.CreateOrUpdate(new CourseBindingModel
+                if (Int32.TryParse((string)Session["id"], out id))
                 {
-                    Id = id,
-                    ClientId = Int32.Parse(Session["ClientId"].ToString()),
-                    CourseName = TextBoxName.Text,
-                    Price = Convert.ToInt32(TextBoxPrice.Text),
-                    Status = CourseStatus.Выполняется,
-                    DisciplineCourses = disciplineCourses
-                });
+                    logicC.CreateOrUpdate(new CourseBindingModel
+                    {
+                        Id = id,
+                        ClientId = Int32.Parse(Session["ClientId"].ToString()),
+                        CourseName = TextBoxName.Text,
+                        Price = Convert.ToInt32(TextBoxPrice.Text),
+                        Status = CourseStatus.Выполняется,
+                        DisciplineCourses = disciplineCourses
+                    });
+                }
                 Session["id"] = null;
                 Session["Change"] = null;
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Сохранение прошло успешно');</script>");
-                Response.Redirect("/WebFormMain.aspx");
             }
             catch (Exception ex)
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('" + ex.Message + "');</script>");
             }
+            Response.Redirect("/WebFormMain.aspx");
         }
 
         protected void ButtonCancel_Click(object sender, EventArgs e)

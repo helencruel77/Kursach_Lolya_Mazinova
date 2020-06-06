@@ -100,7 +100,7 @@
 				<td>&nbsp;</td>
 				<td class="auto-style7">Цена:</td>
 				<td class="auto-style9">
-					<asp:TextBox ID="TextBoxPrice" runat="server" Width="150px"></asp:TextBox>
+					<asp:TextBox ID="TextBoxPrice" runat="server" Width="150px" ReadOnly="True" AutoPostBack="True"></asp:TextBox>
 				</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
