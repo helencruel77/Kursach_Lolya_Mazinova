@@ -20,7 +20,7 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
         {
             courseLogic.CreateOrUpdate(new CourseBindingModel
             {
-                Name = model.Name,
+                CourseName = model.Name,
                 DisciplineId = model.DisciplineId,
                 ClientId = model.ClientId,
                 Price = model.Price,

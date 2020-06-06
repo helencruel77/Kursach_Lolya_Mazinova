@@ -130,11 +130,11 @@
 				</td>
 				<td class="auto-style13">&nbsp;</td>
 				<td class="auto-style10">
-					<asp:Button ID="ButtonDelete" runat="server" Text="Удалить" Width="110px" />
+					<asp:Button ID="ButtonDelete" runat="server" Text="Удалить" Width="110px" OnClick="ButtonDelete_Click" />
 				</td>
 				<td class="auto-style13">&nbsp;</td>
 				<td class="auto-style10">
-					<asp:Button ID="ButtonUpdate" runat="server" Text="Обновить" Width="110px" />
+					<asp:Button ID="ButtonUpdate" runat="server" Text="Обновить" Width="110px" OnClick="ButtonUpd_Click" />
 				</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
@@ -161,7 +161,7 @@
 				<td class="auto-style16">&nbsp;</td>
 				<td>&nbsp;</td>
 				<td class="auto-style15">
-					<asp:GridView ID="dataGridView" runat="server" OnRowDataBound="dataGridView_RowDataBound">
+					<asp:GridView ID="dataGridView" runat="server" ShowHeaderWhenEmpty="True" OnRowDataBound="dataGridView_RowDataBound" OnSelectedIndexChanged="dataGridView_SelectedIndexChanged">
 						<Columns>
 							 <asp:CommandField ShowSelectButton="true" SelectText=">>" />
 						</Columns>

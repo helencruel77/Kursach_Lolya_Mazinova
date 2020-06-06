@@ -5,10 +5,7 @@ using AbstractUniversityClientView.App_Start;
 using AbstractUniversityImplementation.Implements;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using Unity;
 
 namespace AbstractUniversityClientView
@@ -17,15 +14,13 @@ namespace AbstractUniversityClientView
     {
         private readonly IDisciplineLogic logicD = Program.Container.Resolve<DisciplineLogic>();
         private DisciplineCourseViewModel model;
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 try
                 {
-                    var listD = logicD.Read(null);
+                    List<DisciplineViewModel> listD = logicD.Read(null);
                     if (listD != null)
                     {
                         DropDownList.DataSource = listD;
@@ -52,7 +47,7 @@ namespace AbstractUniversityClientView
             }
             if (DropDownList.SelectedValue == null)
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Выберите ингредиент');</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Выберите дисциплину');</script>");
                 return;
             }
             try

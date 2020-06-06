@@ -60,6 +60,10 @@
 				<td class="auto-style4">&nbsp;</td>
 				<td>
 					<asp:GridView ID="dataGridView" runat="server">
+						<Columns>
+							<asp:CommandField ShowSelectButton="True"  SelectText=">>"  />
+						</Columns>
+						<SelectedRowStyle BackColor="#CCCCCC" />
 					</asp:GridView>
 				</td>
 				<td>&nbsp;</td>

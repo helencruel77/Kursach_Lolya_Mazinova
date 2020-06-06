@@ -16,29 +16,66 @@ namespace AbstractUniversityImplementation.Implements
         {
             using (var context = new AbstractUniversityDatabase())
             {
-                Course element;
-                if (model.Id.HasValue)
+                using (var transaction = context.Database.BeginTransaction())
                 {
-                    element = context.Courses.FirstOrDefault(rec => rec.Id == model.Id);
-                    if (element == null)
+                    try
                     {
-                        throw new Exception("Элемент не найден");
+                        Course element = context.Courses.FirstOrDefault(rec =>
+                         rec.CourseName == model.CourseName);
+                       
+                        element = new Course
+                        {
+                            DataCreate = DateTime.Now,
+                            ClientId = model.ClientId,
+                            CourseName = model.CourseName,
+                            Price = model.Price,
+                        };
+                        context.Courses.Add(element);
+                        context.SaveChanges();
+                        var groupDisciplines = model.DisciplineCourses
+                            .GroupBy(rec => rec.DisciplineId)
+                            .Select(rec => new
+                            {
+                                DisciplineId = rec.Key,
+                                Count = rec.Sum(r => r.Count)
+                            });
+                        var disciplineName = model.DisciplineCourses.Select(rec => new
+                        {
+                            DisciplineId = rec.DisciplineId,
+                            DisciplineName = rec.DisciplineName
+                        });
+
+                        foreach (var groupDiscipline in groupDisciplines)
+                        {
+                            string Name = null;
+                            foreach (var discipline in disciplineName)
+                            {
+                                if (groupDiscipline.DisciplineId == discipline.DisciplineId)
+                                {
+                                    Name = discipline.DisciplineName;
+                                }
+                            }
+                            context.DisciplineCourses.Add(new DisciplineCourse
+                            {
+                                CourseId = element.Id,
+                                DisciplineId = groupDiscipline.DisciplineId,
+                                DisciplineName = Name,
+                                Count = groupDiscipline.Count
+                            });
+                            context.SaveChanges();
+                        }
+                        transaction.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        transaction.Rollback();
+                        throw;
                     }
                 }
-                else
-                {
-                    element = new Course { };
-                    context.Courses.Add(element);
-                }
-                element.ClientId = model.ClientId == 0 ? element.ClientId : (int)model.ClientId;
-                element.Price = model.Price;
-                element.DataCreate = model.DateCreate;
-                element.Status = model.Status; 
-                context.SaveChanges();
             }
         }
 
-        public List<CourseViewModel> GetClientList(int ClientId)
+            public List<CourseViewModel> GetClientList(int ClientId)
         {
             using (var context = new AbstractUniversityDatabase())
             {
@@ -65,6 +102,7 @@ namespace AbstractUniversityImplementation.Implements
             }
         }
 
+
         public void Delete(CourseBindingModel model)
         {
             using (var context = new AbstractUniversityDatabase())
@@ -86,26 +124,31 @@ namespace AbstractUniversityImplementation.Implements
         {
             using (var context = new AbstractUniversityDatabase())
             {
-                return context.Courses
-                 .Where(rec => model == null || rec.Id == model.Id && model.Id.HasValue
-                    ///////////////////тут datato datafrom надо или нет хз но оно тут 
-                    /// || model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo
-                    || model.ClientId.HasValue && rec.ClientId == model.ClientId)
-                 .Include(rec => rec.Client)
-                 .Select(rec => new CourseViewModel
-                 {
-                     Id = rec.Id,
-                     ClientId = rec.ClientId,
-                     Price = rec.Price,
-                     DateCreate = rec.DataCreate,
-                     Status = rec.Status
-                 })
-            .ToList();
+                List<CourseViewModel> result = context.Courses.Select(rec =>
+            new CourseViewModel
+            {
+                Id = rec.Id,
+                DateCreate = rec.DataCreate,
+                ClientId = rec.ClientId,
+                CourseName = rec.CourseName,
+                Price = rec.Price,
+                Status = rec.Status,
+                DisciplineCourses = context.DisciplineCourses
+                    .Where(recPC => recPC.CourseId == rec.Id)
+                    .Select(recPC => new DisciplineCourseViewModel
+                    {
+                        Id = recPC.Id,
+                        CourseId = recPC.CourseId,
+                        DisciplineId = recPC.DisciplineId,
+                        DisciplineName = recPC.Discipline.DisciplineName,
+                        Count = recPC.Count,
+                    }).ToList()
+            }).ToList();
+                return result;
             }
         }
-
-        public CourseViewModel GetCourse(int id)
-        {
+            public CourseViewModel GetCourse(int id)
+            {
             using (var context = new AbstractUniversityDatabase())
             {
                 Course element = context.Courses.FirstOrDefault(rec => rec.Id == id);
@@ -126,6 +169,8 @@ namespace AbstractUniversityImplementation.Implements
                             Id = recPC.Id,
                             CourseId = recPC.CourseId,
                             DisciplineId = recPC.DisciplineId,
+                            DisciplineName = recPC.DisciplineName,
+                            Count = recPC.Count
                         }).ToList()
                     };
                 }
