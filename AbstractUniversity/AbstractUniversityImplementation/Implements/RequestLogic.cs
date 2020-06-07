@@ -76,12 +76,7 @@ namespace AbstractUniversityImplementation.Implements
             using (var context = new AbstractUniversityDatabase())
             {
                 return context.Requests
-               .Where(
-                    rec => model == null
-                    || (rec.Id == model.Id && model.Id.HasValue)
-                    || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo)
-                )
-
+                 .Where(rec => model == null || rec.Id == model.Id)
                 .ToList()
                 .Select(rec => new RequestViewModel
                 {

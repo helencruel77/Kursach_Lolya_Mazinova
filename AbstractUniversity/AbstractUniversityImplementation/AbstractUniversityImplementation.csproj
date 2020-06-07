@@ -10,6 +10,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="PDFsharp-MigraDoc" Version="1.50.5147" />
     <PackageReference Include="UIAComWrapper" Version="1.1.0.14" />
   </ItemGroup>
   <ItemGroup>

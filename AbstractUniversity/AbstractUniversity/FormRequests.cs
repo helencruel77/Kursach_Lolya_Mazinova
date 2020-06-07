@@ -41,9 +41,11 @@ namespace AbstractUniversity
                 {
                     dataGridView.DataSource = list;
                     dataGridView.Columns[0].Visible = false;
-                    //      dataGridView.Columns[1].AutoSizeMode = ;
                     dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     dataGridView.Columns[3].Visible = false;
+                    dataGridView.Columns[4].Visible = false;
+                    dataGridView.Columns[5].Visible = false;
+
                 }
             }
             catch (Exception ex)
@@ -120,7 +122,6 @@ namespace AbstractUniversity
 
             }); ;
             MessageBox.Show("Отчет отправлен!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //DialogResult = DialogResult.OK;
         }
 
         private void buttonSendReportExcel_Click(object sender, EventArgs e)
@@ -136,7 +137,6 @@ namespace AbstractUniversity
 
             }); ;
             MessageBox.Show("Отчет отправлен!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-          //  DialogResult = DialogResult.OK;
         }
     }
 }

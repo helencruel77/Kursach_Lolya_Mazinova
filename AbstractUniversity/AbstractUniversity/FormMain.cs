@@ -5,6 +5,7 @@ using System;
 using System.Windows.Forms;
 using Unity;
 using AbstractUniversityBusinessLogic.BuisnessLogic;
+using AbstractUniversityBusinessLogic.HelperModels;
 
 namespace AbstractUniversity
 {
@@ -15,14 +16,15 @@ namespace AbstractUniversity
         private readonly MainLogic logic;
         private readonly ICourseLogic сourseLogic;
         private readonly ReportLogic reportLogic;
+        private readonly BackUpAbstractLogic backUpAbstractLogic;
 
-
-        public FormMain(MainLogic logic, ReportLogic reportLogic, ICourseLogic сourseLogic)
+        public FormMain(MainLogic logic, ReportLogic reportLogic, BackUpAbstractLogic backUpAbstractLogic, ICourseLogic сourseLogic)
         {
             InitializeComponent();
             this.logic = logic;
             this.reportLogic = reportLogic;
             this.сourseLogic = сourseLogic;
+            this.backUpAbstractLogic = backUpAbstractLogic;
         }
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -76,6 +78,29 @@ namespace AbstractUniversity
         {
             var form = Container.Resolve<FormReport>();
             form.ShowDialog();
+        }
+
+        private void jSONToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (backUpAbstractLogic != null)
+                {
+                    var fbd = new FolderBrowserDialog();
+                    if (fbd.ShowDialog() == DialogResult.OK)
+                    {
+                        backUpAbstractLogic.CreateArchive(fbd.SelectedPath);
+                        MessageBox.Show("Бекап создан", "Сообщение",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }            
+             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
+            }
+
         }
     }
 }

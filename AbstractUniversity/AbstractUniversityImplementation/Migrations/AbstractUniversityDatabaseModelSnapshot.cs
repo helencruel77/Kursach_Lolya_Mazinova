@@ -175,7 +175,7 @@ namespace AbstractUniversityImplementation.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DataCreate")
+                    b.Property<DateTime>("DateCreate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("RequestName")

@@ -22,7 +22,7 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
             paragraph.Style = "NormalTitle";
 
             var table = document.LastSection.AddTable();
-            List<string> columns = new List<string> { "8cm","4cm", "6cm", "3cm" };
+            List<string> columns = new List<string> { "4cm","4cm", "4cm", "2cm" };
 
             foreach (var elem in columns)
             {

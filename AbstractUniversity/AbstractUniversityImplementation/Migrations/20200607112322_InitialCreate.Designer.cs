@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AbstractUniversityImplementation.Migrations
 {
     [DbContext(typeof(AbstractUniversityDatabase))]
-    [Migration("20200605105010_InitialCreate")]
+    [Migration("20200607112322_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -177,7 +177,7 @@ namespace AbstractUniversityImplementation.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DataCreate")
+                    b.Property<DateTime>("DateCreate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("RequestName")

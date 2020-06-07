@@ -58,7 +58,7 @@ namespace AbstractUniversityImplementation.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RequestName = table.Column<string>(nullable: false),
-                    DataCreate = table.Column<DateTime>(nullable: false)
+                    DateCreate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
