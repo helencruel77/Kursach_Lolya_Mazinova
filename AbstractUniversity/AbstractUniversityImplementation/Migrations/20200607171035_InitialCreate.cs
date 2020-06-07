@@ -75,7 +75,7 @@ namespace AbstractUniversityImplementation.Migrations
                     ClientId = table.Column<int>(nullable: false),
                     Price = table.Column<int>(nullable: false),
                     DataCreate = table.Column<DateTime>(nullable: false),
-                    Status = table.Column<int>(nullable: false)
+                    isReserved = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

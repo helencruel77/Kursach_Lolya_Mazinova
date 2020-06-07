@@ -37,7 +37,7 @@ namespace AbstractUniversityClientView
                         Password = password
                     });
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Регистрация прошла успешно');</script>");
-
+                    Response.Redirect("/WebFormEnter.aspx");
                 }
                 else
                 {

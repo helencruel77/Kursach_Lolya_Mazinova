@@ -1,5 +1,4 @@
 ﻿using AbstractUniversityBusinessLogic.BindingModels;
-using AbstractUniversityBusinessLogic.Enums;
 using AbstractUniversityBusinessLogic.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -16,93 +15,6 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
             this.courseLogic = courseLogic;
             this.requestLogic = requestLogic;
         }
-        public void CreateCourse(CreateCourseBindingModel model)
-        {
-            courseLogic.CreateOrUpdate(new CourseBindingModel
-            {
-                CourseName = model.Name,
-                DisciplineId = model.DisciplineId,
-                ClientId = model.ClientId,
-                Price = model.Price,
-                DateCreate = DateTime.Now,
-                Status = CourseStatus.Зарезервирован
-            });
-        }
-        public void TakeCourseInWork(ChangeStatusBindingModel model)
-        {
-            var order = courseLogic.Read(new CourseBindingModel { Id = model.CourseId })?[0];
-
-            if (order == null)
-            {
-                throw new Exception("Не найден курс");
-            }
-
-            if (order.Status != CourseStatus.Оплачен)
-            {
-                throw new Exception("Заказ не в статусе \"Оплачен\"");
-            }
-
-            courseLogic.CreateOrUpdate(new CourseBindingModel
-            {
-                Id = order.Id,
-                ClientId = order.ClientId,
-                DisciplineId = order.DisciplineId,
-                Price = order.Price,
-                DateCreate = order.DateCreate,
-                Status = CourseStatus.Выполняется
-            });
-        }
-
-        public void FinishCourse(ChangeStatusBindingModel model)
-        {
-            var order = courseLogic.Read(new CourseBindingModel { Id = model.CourseId })?[0];
-
-            if (order == null)
-            {
-                throw new Exception("Не найден курс");
-            }
-
-            if (order.Status != CourseStatus.Выполняется)
-            {
-                throw new Exception("Заказ не в статусе \"Выполняется\"");
-            }
-
-            courseLogic.CreateOrUpdate(new CourseBindingModel
-            {
-                Id = order.Id,
-                ClientId = order.ClientId,
-                DisciplineId = order.DisciplineId,
-                Price = order.Price,
-                DateCreate = order.DateCreate,
-                Status = CourseStatus.Пройден
-            });
-        }
-
-        public void PayOrder(ChangeStatusBindingModel model)
-        {
-            var order = courseLogic.Read(new CourseBindingModel { Id = model.CourseId })?[0];
-
-            if (order == null)
-            {
-                throw new Exception("Не найден курс");
-            }
-
-            if (order.Status != CourseStatus.Зарезервирован)
-            {
-                throw new Exception("Заказ не в статусе \"Принят\"");
-            }
-
-            courseLogic.CreateOrUpdate(new CourseBindingModel
-            {
-                Id = order.Id,
-                ClientId = order.ClientId,
-                DisciplineId = order.DisciplineId,
-                Price = order.Price,
-                DateCreate = order.DateCreate,
-                Status = CourseStatus.Оплачен
-            });
-        }
-
         public void CreateRequest(RequestPlaceBindingModel model)
         {
             requestLogic.AddPlace(model);

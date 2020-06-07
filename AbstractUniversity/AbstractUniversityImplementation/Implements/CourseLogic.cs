@@ -12,7 +12,94 @@ namespace AbstractUniversityImplementation.Implements
 {
     public class CourseLogic : ICourseLogic
     {
-        public void CreateOrUpdate(CourseBindingModel model)
+       
+        public List<CourseViewModel> GetClientList(int ClientId)
+        {
+            using (var context = new AbstractUniversityDatabase())
+            {
+                List<CourseViewModel> result = context.Courses.
+                Where(rec => rec.ClientId ==ClientId).
+                Select(rec => new CourseViewModel
+                {
+                    Id = rec.Id,
+                    DateCreate = rec.DataCreate,
+                    CourseName = rec.CourseName,
+                    ClientId = rec.ClientId,
+                    Price = rec.Price,
+                    isReserved = rec.isReserved,
+                    DisciplineCourses = context.DisciplineCourses
+                    .Where(recPC => recPC.CourseId == rec.Id)
+                    .Select(recPC => new DisciplineCourseViewModel
+                    {
+                        Id = recPC.Id,
+                        CourseId = recPC.CourseId,
+                        DisciplineId = recPC.DisciplineId,
+                    }).ToList()
+                }).ToList();
+                return result;
+            }
+        }
+
+
+        public void Delete(int id)
+        {
+            using (var context = new AbstractUniversityDatabase())
+            {
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        Course element = context.Courses.FirstOrDefault(rec => rec.Id == id);
+                        if (element != null)
+                        {
+                            context.DisciplineCourses.RemoveRange(context.DisciplineCourses.Where(rec => rec.CourseId == id));
+                            context.Courses.Remove(element);
+                            context.SaveChanges();
+                        }
+                        else
+                        {
+                            throw new Exception("Элемент не найден");
+                        }
+                        transaction.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
+        public List<CourseViewModel> GetList()
+        {
+            using (var context = new AbstractUniversityDatabase())
+            {
+                List<CourseViewModel> result = context.Courses.Select(rec =>
+                new CourseViewModel
+                {
+                    Id = rec.Id,
+                    DateCreate = rec.DataCreate,
+                    ClientId = rec.ClientId,
+                    CourseName = rec.CourseName,
+                    Price = rec.Price,
+                    isReserved = rec.isReserved,
+                    DisciplineCourses = context.DisciplineCourses
+                        .Where(recPC => recPC.CourseId == rec.Id)
+                        .Select(recPC => new DisciplineCourseViewModel
+                        {
+                            Id = recPC.Id,
+                            CourseId = recPC.CourseId,
+                            DisciplineId = recPC.DisciplineId,
+                            DisciplineName = recPC.Discipline.DisciplineName,
+                            Count = recPC.Count,
+                        }).ToList()
+                }).ToList();
+                    return result;
+            }
+        }
+
+        public void CreateCourse(CourseBindingModel model)
         {
             using (var context = new AbstractUniversityDatabase())
             {
@@ -22,7 +109,7 @@ namespace AbstractUniversityImplementation.Implements
                     {
                         Course element = context.Courses.FirstOrDefault(rec =>
                          rec.CourseName == model.CourseName);
-                       
+
                         element = new Course
                         {
                             DataCreate = DateTime.Now,
@@ -32,6 +119,7 @@ namespace AbstractUniversityImplementation.Implements
                         };
                         context.Courses.Add(element);
                         context.SaveChanges();
+                        //// убираем дубли 
                         var groupDisciplines = model.DisciplineCourses
                             .GroupBy(rec => rec.DisciplineId)
                             .Select(rec => new
@@ -39,12 +127,13 @@ namespace AbstractUniversityImplementation.Implements
                                 DisciplineId = rec.Key,
                                 Count = rec.Sum(r => r.Count)
                             });
+                        // запоминаем id и названия 
                         var disciplineName = model.DisciplineCourses.Select(rec => new
                         {
                             DisciplineId = rec.DisciplineId,
                             DisciplineName = rec.DisciplineName
                         });
-
+                        // добавляем 
                         foreach (var groupDiscipline in groupDisciplines)
                         {
                             string Name = null;
@@ -75,80 +164,79 @@ namespace AbstractUniversityImplementation.Implements
             }
         }
 
-            public List<CourseViewModel> GetClientList(int ClientId)
+        public void UpdateCourse(CourseBindingModel model)
         {
             using (var context = new AbstractUniversityDatabase())
             {
-                List<CourseViewModel> result = context.Courses.
-                Where(rec => rec.ClientId ==ClientId).
-                Select(rec => new CourseViewModel
+                using (var transaction = context.Database.BeginTransaction())
                 {
-                    Id = rec.Id,
-                    DateCreate = rec.DataCreate,
-                    CourseName = rec.CourseName,
-                    ClientId = rec.ClientId,
-                    Price = rec.Price,
-                    Status = rec.Status,
-                    DisciplineCourses = context.DisciplineCourses
-                    .Where(recPC => recPC.CourseId == rec.Id)
-                    .Select(recPC => new DisciplineCourseViewModel
+                    try
                     {
-                        Id = recPC.Id,
-                        CourseId = recPC.CourseId,
-                        DisciplineId = recPC.DisciplineId,
-                    }).ToList()
-                }).ToList();
-                return result;
+                        Course element = context.Courses.FirstOrDefault(rec =>
+                        rec.CourseName == model.CourseName && rec.Id != model.Id);
+                        element = context.Courses.FirstOrDefault(rec => rec.Id == model.Id);
+                        if (element == null)
+                        {
+                            throw new Exception("Элемент не найден");
+                        }
+                        element.CourseName = model.CourseName;
+                        element.Price = model.Price;
+                        context.SaveChanges();
+
+                        // обновляем существуюущие
+                        var compIds = model.DisciplineCourses.Select(rec => rec.DisciplineId).Distinct();
+                        var updateDisciplines = context.DisciplineCourses.Where(rec =>
+                        rec.CourseId == model.Id && compIds.Contains(rec.DisciplineId));
+                        foreach (var updateDiscipline in updateDisciplines)
+                        {
+                            updateDiscipline.Count = model.DisciplineCourses.FirstOrDefault(rec =>
+                            rec.Id == updateDiscipline.Id).Count;
+                        }
+                        context.SaveChanges();
+                        context.DisciplineCourses.RemoveRange(context.DisciplineCourses.Where(rec =>
+                        rec.CourseId == model.Id && !compIds.Contains(rec.DisciplineId)));
+                        context.SaveChanges();
+                        // новые записи  
+                        var groupDisciplines = model.DisciplineCourses.Where(rec =>
+                        rec.Id == 0).GroupBy(rec => rec.DisciplineId).Select(rec => new
+                        {
+                            DisciplineId = rec.Key,
+                            Count = rec.Sum(r => r.Count)
+                        });
+                        foreach (var groupDiscipline in groupDisciplines)
+
+                        {
+                            DisciplineCourse elementPC = context.DisciplineCourses.FirstOrDefault(rec =>
+                            rec.CourseId == model.Id && rec.DisciplineId == groupDiscipline.DisciplineId);
+                            if (elementPC != null)
+                            {
+                                elementPC.Count += groupDiscipline.Count;
+                                context.SaveChanges();
+                            }
+                            else
+                            {
+                                context.DisciplineCourses.Add(new DisciplineCourse
+                                {
+                                    CourseId = (int)model.Id,
+                                    DisciplineId = groupDiscipline.DisciplineId,
+                                    Count = groupDiscipline.Count
+                                });
+                                context.SaveChanges();
+                            }
+                        }
+                        transaction.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
             }
         }
 
-
-        public void Delete(CourseBindingModel model)
+        public CourseViewModel GetCourse(int id)
         {
-            using (var context = new AbstractUniversityDatabase())
-            {
-                Course element = context.Courses.FirstOrDefault(rec => rec.Id ==
-          model.Id);
-                if (element != null)
-                {
-                    context.Courses.Remove(element);
-                    context.SaveChanges();
-                }
-                else
-                {
-                    throw new Exception("Элемент не найден");
-                }
-            }
-        }
-        public List<CourseViewModel> Read(CourseBindingModel model)
-        {
-            using (var context = new AbstractUniversityDatabase())
-            {
-                List<CourseViewModel> result = context.Courses.Select(rec =>
-            new CourseViewModel
-            {
-                Id = rec.Id,
-                DateCreate = rec.DataCreate,
-                ClientId = rec.ClientId,
-                CourseName = rec.CourseName,
-                Price = rec.Price,
-                Status = rec.Status,
-                DisciplineCourses = context.DisciplineCourses
-                    .Where(recPC => recPC.CourseId == rec.Id)
-                    .Select(recPC => new DisciplineCourseViewModel
-                    {
-                        Id = recPC.Id,
-                        CourseId = recPC.CourseId,
-                        DisciplineId = recPC.DisciplineId,
-                        DisciplineName = recPC.Discipline.DisciplineName,
-                        Count = recPC.Count,
-                    }).ToList()
-            }).ToList();
-                return result;
-            }
-        }
-            public CourseViewModel GetCourse(int id)
-            {
             using (var context = new AbstractUniversityDatabase())
             {
                 Course element = context.Courses.FirstOrDefault(rec => rec.Id == id);
@@ -161,7 +249,7 @@ namespace AbstractUniversityImplementation.Implements
                         CourseName = element.CourseName,
                         Price = element.Price,
                         DateCreate = element.DataCreate,
-                        Status = element.Status,
+                        isReserved = element.isReserved,
                         DisciplineCourses = context.DisciplineCourses
                         .Where(recPC => recPC.CourseId == element.Id)
                         .Select(recPC => new DisciplineCourseViewModel

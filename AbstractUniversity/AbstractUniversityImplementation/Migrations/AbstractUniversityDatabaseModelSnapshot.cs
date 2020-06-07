@@ -70,8 +70,8 @@ namespace AbstractUniversityImplementation.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
+                    b.Property<bool>("isReserved")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

@@ -1,5 +1,4 @@
-﻿using AbstractUniversityBusinessLogic.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,7 +16,7 @@ namespace AbstractUniversityImplementation.Models
         [Required]
         public DateTime DataCreate { get; set; }
         [Required]
-        public CourseStatus Status { get; set; }
+        public bool isReserved { get; set; }
         public virtual List<DisciplineCourse> DisciplineCourse { get; set; }
         public virtual Client Client { get; set; }
     }

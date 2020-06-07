@@ -83,7 +83,8 @@ namespace AbstractUniversityImplementation.Implements
                 }
             }
         }
-        public void Delete(DisciplineBindingModel model)
+
+    public void Delete(DisciplineBindingModel model)
         {
             using (var context = new AbstractUniversityDatabase())
             {
@@ -113,6 +114,7 @@ namespace AbstractUniversityImplementation.Implements
                 }
             }
         }
+
         public List<DisciplineViewModel> Read(DisciplineBindingModel model)
         {
             using (var context = new AbstractUniversityDatabase())

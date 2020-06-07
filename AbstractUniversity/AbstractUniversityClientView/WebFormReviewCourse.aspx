@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebFormCreateCourse.aspx.cs" Inherits="AbstractUniversityClientView.WebFormCreateCourse" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebFormReviewCourse.aspx.cs" Inherits="AbstractUniversityClientView.WebFormReviewCourse" %>
 
 <!DOCTYPE html>
 
@@ -40,15 +40,6 @@
 		.auto-style10 {
 			width: 110px;
 		}
-		.auto-style12 {
-			width: 19px;
-		}
-		.auto-style13 {
-			width: 10px;
-		}
-		.auto-style14 {
-			width: 33px;
-		}
 		.auto-style15 {
 			width: 174px;
 		}
@@ -57,6 +48,19 @@
 		}
 		.auto-style17 {
 			width: 109px;
+		}
+		.auto-style18 {
+			width: 271px;
+		}
+		.auto-style19 {
+			width: 195px;
+		}
+		.auto-style20 {
+			height: 23px;
+			width: 274px;
+		}
+		.auto-style21 {
+			width: 274px;
 		}
 	</style>
 </head>
@@ -77,7 +81,7 @@
     	<table class="auto-style1">
 			<tr>
 				<td class="auto-style4">&nbsp;</td>
-				<td class="auto-style5"></td>
+				<td class="auto-style20"></td>
 				<td class="auto-style6">Название:</td>
 				<td class="auto-style8">
 					<asp:TextBox ID="TextBoxName" runat="server" Width="150px"></asp:TextBox>
@@ -88,7 +92,7 @@
 			</tr>
 			<tr>
 				<td class="auto-style3">&nbsp;</td>
-				<td>&nbsp;</td>
+				<td class="auto-style21">&nbsp;</td>
 				<td class="auto-style7">&nbsp;</td>
 				<td class="auto-style9">&nbsp;</td>
 				<td>&nbsp;</td>
@@ -97,7 +101,7 @@
 			</tr>
 			<tr>
 				<td class="auto-style3">&nbsp;</td>
-				<td>&nbsp;</td>
+				<td class="auto-style21">&nbsp;</td>
 				<td class="auto-style7">Цена:</td>
 				<td class="auto-style9">
 					<asp:TextBox ID="TextBoxPrice" runat="server" Width="150px" ReadOnly="True" AutoPostBack="True"></asp:TextBox>
@@ -108,48 +112,10 @@
 			</tr>
 			<tr>
 				<td class="auto-style3">&nbsp;</td>
-				<td>&nbsp;</td>
+				<td class="auto-style21">&nbsp;</td>
 				<td class="auto-style7">&nbsp;</td>
 				<td class="auto-style9">&nbsp;</td>
 				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-		</table>
-		<table class="auto-style1">
-			<tr>
-				<td>&nbsp;</td>
-				<td class="auto-style12">&nbsp;</td>
-				<td class="auto-style14">&nbsp;</td>
-				<td class="auto-style10">
-					<asp:Button ID="ButtonAdd" runat="server" OnClick="ButtonAdd_Click" Text="Добавить" Width="110px" />
-				</td>
-				<td class="auto-style13">&nbsp;</td>
-				<td class="auto-style10">
-					<asp:Button ID="ButtonChange" runat="server" Text="Изменить" Width="110px" OnClick="ButtonChange_Click" />
-				</td>
-				<td class="auto-style13">&nbsp;</td>
-				<td class="auto-style10">
-					<asp:Button ID="ButtonDelete" runat="server" Text="Удалить" Width="110px" OnClick="ButtonDelete_Click" />
-				</td>
-				<td class="auto-style13">&nbsp;</td>
-				<td class="auto-style10">
-					<asp:Button ID="ButtonUpdate" runat="server" Text="Обновить" Width="110px" OnClick="ButtonUpd_Click" />
-				</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td class="auto-style12">&nbsp;</td>
-				<td class="auto-style14">&nbsp;</td>
-				<td class="auto-style10">&nbsp;</td>
-				<td class="auto-style13">&nbsp;</td>
-				<td class="auto-style10">&nbsp;</td>
-				<td class="auto-style13">&nbsp;</td>
-				<td class="auto-style10">&nbsp;</td>
-				<td class="auto-style13">&nbsp;</td>
-				<td class="auto-style10">&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 			</tr>
@@ -161,13 +127,13 @@
 				<td class="auto-style16">&nbsp;</td>
 				<td>&nbsp;</td>
 				<td class="auto-style15">
-					<asp:GridView ID="dataGridView" runat="server"  OnRowDataBound="dataGridView_RowDataBound "
-						OnSelectedIndexChanged="dataGridView_SelectedIndexChanged">
-						<Columns>
-							 <asp:CommandField ShowSelectButton="true" SelectText=">>" />
-						</Columns>
-						<SelectedRowStyle BackColor="#CCCCCC" />
-					</asp:GridView>
+					<asp:GridView ID="dataGridView" runat="server" AutoGenerateColumns="False">
+                <Columns>
+                    <asp:BoundField DataField="DisciplineName" HeaderText="Дисциплина" SortExpression="PrescriptionTitle" />
+                    <asp:BoundField DataField="Count" HeaderText="Количество" SortExpression="Count" />
+                </Columns>
+                <SelectedRowStyle BackColor="#CCCCCC" />
+            </asp:GridView>
 				</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
@@ -180,9 +146,9 @@
 			<tr>
 				<td>&nbsp;</td>
 				<td class="auto-style17">&nbsp;</td>
+				<td class="auto-style19">&nbsp;</td>
 				<td>&nbsp;</td>
-				<td class="auto-style10">&nbsp;</td>
-				<td>&nbsp;</td>
+				<td class="auto-style18">&nbsp;</td>
 				<td class="auto-style10">&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
@@ -192,14 +158,14 @@
 			<tr>
 				<td>&nbsp;</td>
 				<td class="auto-style17">&nbsp;</td>
-				<td>&nbsp;</td>
-				<td class="auto-style10">
-					<asp:Button ID="ButtonSave" runat="server" Text="Сохранить" Width="110px" OnClick="ButtonSave_Click" />
-				</td>
-				<td>&nbsp;</td>
-				<td class="auto-style10">
+				<td class="auto-style19">&nbsp;</td>
+				<td>
+					&nbsp;</td>
+				<td class="auto-style18">
 					<asp:Button ID="ButtonCancel" runat="server" Text="Отмена" Width="110px" OnClick="ButtonCancel_Click" />
 				</td>
+				<td class="auto-style10">
+					&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>

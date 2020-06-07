@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AbstractUniversityImplementation.Migrations
 {
     [DbContext(typeof(AbstractUniversityDatabase))]
-    [Migration("20200607112322_InitialCreate")]
+    [Migration("20200607171035_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,8 +72,8 @@ namespace AbstractUniversityImplementation.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
+                    b.Property<bool>("isReserved")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

@@ -1,5 +1,4 @@
-﻿using AbstractUniversityBusinessLogic.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.Serialization;
@@ -22,7 +21,7 @@ namespace AbstractUniversityBusinessLogic.ViewModels
         public int Price { get; set; }
         [DataMember]
         [DisplayName("Статус")]
-        public CourseStatus Status { get; set; }
+        public bool isReserved { get; set; }
         [DataMember]
         [DisplayName("Дата создания")]
         public DateTime DateCreate { get; set; }

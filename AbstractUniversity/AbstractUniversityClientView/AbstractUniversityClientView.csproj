@@ -339,6 +339,7 @@
     <Content Include="WebFormEnter.aspx" />
     <Content Include="WebFormMain.aspx" />
     <Content Include="WebFormRegister.aspx" />
+    <Content Include="WebFormReviewCourse.aspx" />
     <Content Include="WebFormUpdateData.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -379,6 +380,13 @@
     </Compile>
     <Compile Include="WebFormRegister.aspx.designer.cs">
       <DependentUpon>WebFormRegister.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormReviewCourse.aspx.cs">
+      <DependentUpon>WebFormReviewCourse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormReviewCourse.aspx.designer.cs">
+      <DependentUpon>WebFormReviewCourse.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebFormUpdateData.aspx.cs">
       <DependentUpon>WebFormUpdateData.aspx</DependentUpon>

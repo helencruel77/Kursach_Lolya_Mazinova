@@ -117,7 +117,7 @@
 				</td>
 				<td>&nbsp;</td>
 				<td class="auto-style4">
-					<asp:Button ID="ButtonCancel" runat="server" OnClick="ButtonSave_Click" Text="Отмена" Width="90px" />
+					<asp:Button ID="ButtonCancel" runat="server" OnClick="ButtonCancel_Click" Text="Отмена" Width="90px" />
 				</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>

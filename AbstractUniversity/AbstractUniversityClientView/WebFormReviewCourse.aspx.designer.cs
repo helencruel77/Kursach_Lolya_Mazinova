@@ -11,7 +11,7 @@ namespace AbstractUniversityClientView
 {
 
 
-    public partial class WebFormMain
+    public partial class WebFormReviewCourse
     {
 
         /// <summary>
@@ -24,31 +24,22 @@ namespace AbstractUniversityClientView
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// ButtonUpdateData элемент управления.
+        /// TextBoxName элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonUpdateData;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxName;
 
         /// <summary>
-        /// ButtonCreateCourse элемент управления.
+        /// TextBoxPrice элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonCreateCourse;
-
-        /// <summary>
-        /// ButtonReviewCourse элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonReviewCourse;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxPrice;
 
         /// <summary>
         /// dataGridView элемент управления.
@@ -58,5 +49,14 @@ namespace AbstractUniversityClientView
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView dataGridView;
+
+        /// <summary>
+        /// ButtonCancel элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonCancel;
     }
 }

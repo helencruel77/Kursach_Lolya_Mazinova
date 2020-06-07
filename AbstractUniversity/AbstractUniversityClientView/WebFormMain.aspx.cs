@@ -48,5 +48,20 @@ namespace AbstractUniversityClientView
         {
             Response.Redirect("/WebFormCreateCourse.aspx");
         }
+
+
+        protected void ButtonReviewCourse_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string index = list[dataGridView.SelectedIndex].Id.ToString();
+                Session["id"] = index;
+                Response.Redirect("/WebFormReviewCourse.aspx");
+            }
+            catch (Exception ex)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('" + ex.Message + "');</script>");
+            }
+        }
     }
 }

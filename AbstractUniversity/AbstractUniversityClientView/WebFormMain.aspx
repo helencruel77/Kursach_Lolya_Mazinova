@@ -49,7 +49,9 @@
 					<td class="auto-style5">
 						<asp:Button ID="ButtonCreateCourse" runat="server" OnClick="ButtonCreateCourse_Click" Text="Создать курс" Width="150px" />
 					</td>
-					<td>&nbsp;</td>
+					<td class="auto-style5">
+						<asp:Button ID="ButtonReviewCourse" runat="server" OnClick="ButtonReviewCourse_Click" Text="Показать курс" Width="150px" />
+					</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 				</tr>
@@ -59,14 +61,10 @@
 			<tr>
 				<td class="auto-style4">&nbsp;</td>
 				<td>
-					<asp:GridView ID="dataGridView" runat="server" AutoGenerateColumns="False">
+					<asp:GridView ID="dataGridView" runat="server" AutoGenerateColumns="True">
 						<Columns>
 							 <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
                 <asp:CommandField ShowSelectButton="true" SelectText=">>" />
-                <asp:BoundField DataField="CourseName" HeaderText="Наименование" SortExpression="CourseName" />
-                <asp:BoundField DataField="DateCreate" HeaderText="Дата" SortExpression="DateCreate" />
-                <asp:BoundField DataField="Price" HeaderText="Стоимость" SortExpression="Price" />
-                <asp:BoundField DataField="Status" HeaderText="Бронь" SortExpression="Status" />
 						</Columns>
 						<SelectedRowStyle BackColor="#CCCCCC" />
 					</asp:GridView>

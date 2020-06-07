@@ -34,7 +34,7 @@ namespace AbstractUniversity
         {
             try
             {
-                var list = сourseLogic.Read(null);
+                var list = сourseLogic.GetList();
                 if (list != null)
                 {
                     //dataGridView.DataSource = list;

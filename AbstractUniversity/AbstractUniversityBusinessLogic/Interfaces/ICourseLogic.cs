@@ -8,13 +8,11 @@ namespace AbstractUniversityBusinessLogic.Interfaces
 {
     public interface ICourseLogic
     {
-        List<CourseViewModel> Read(CourseBindingModel model);
-
-        void CreateOrUpdate(CourseBindingModel model);
-
-        void Delete(CourseBindingModel model);
-
+        void Delete(int id);
+        void CreateCourse(CourseBindingModel model);
+        void UpdateCourse(CourseBindingModel model);
         List<CourseViewModel> GetClientList(int ClientId);
         CourseViewModel GetCourse(int id);
+        List<CourseViewModel> GetList();
     }
 }
