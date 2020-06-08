@@ -17,6 +17,7 @@ namespace AbstractUniversityImplementation
                 /////// спасибо
                 /////// DESKTOP-1L0DP37\SQLEXPRESS а это твое
                 ///спасибо
+                ///студия заработай пожалуйста
             }
             base.OnConfiguring(optionsBuilder);
         }
