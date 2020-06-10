@@ -71,6 +71,14 @@ namespace AbstractUniversityImplementation.Implements
             }
         }
 
+        public DateTime CourseReservation(int id)
+        {
+             using (var context = new AbstractUniversityDatabase())
+            {
+           
+            }
+        }
+
         public List<CourseViewModel> GetList()
         {
             using (var context = new AbstractUniversityDatabase())

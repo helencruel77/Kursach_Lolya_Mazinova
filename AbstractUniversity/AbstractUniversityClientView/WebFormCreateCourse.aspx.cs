@@ -163,9 +163,8 @@ namespace AbstractUniversityClientView
             {
                 try
                 {
-                    price = 0;
-                    
-                    TextBoxPrice.Text = price.ToString();
+                    var form = new WebFormCourseDiscipline();
+                    TextBoxPrice.Text = (Int32.Parse(TextBoxPrice.Text) + form.Price).ToString();
                 }
                 catch (Exception ex)
                 {

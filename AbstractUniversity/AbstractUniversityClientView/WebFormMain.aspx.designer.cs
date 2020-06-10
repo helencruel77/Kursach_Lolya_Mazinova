@@ -24,15 +24,6 @@ namespace AbstractUniversityClientView
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// ButtonUpdateData элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonUpdateData;
-
-        /// <summary>
         /// ButtonCreateCourse элемент управления.
         /// </summary>
         /// <remarks>
@@ -49,6 +40,15 @@ namespace AbstractUniversityClientView
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonReviewCourse;
+
+        /// <summary>
+        /// ButtonCourseReservation элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonCourseReservation;
 
         /// <summary>
         /// dataGridView элемент управления.

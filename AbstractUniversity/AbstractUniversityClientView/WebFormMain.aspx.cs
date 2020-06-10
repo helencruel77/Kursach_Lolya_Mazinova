@@ -63,5 +63,20 @@ namespace AbstractUniversityClientView
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('" + ex.Message + "');</script>");
             }
         }
+
+        protected void ButtonCourseReservation_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime date = logic.CourseReservation(list[dataGridView.SelectedIndex].Id);
+               
+                LoadData();
+                Response.Redirect("/WebFormMain.aspx");
+            }
+            catch (Exception ex)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('" + ex.Message + "');</script>");
+            }
+        }
     }
 }

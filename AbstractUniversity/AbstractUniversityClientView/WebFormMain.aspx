@@ -44,13 +44,13 @@
 				<tr>
 					<td>&nbsp;</td>
 					<td class="auto-style5">
-						<asp:Button ID="ButtonUpdateData" runat="server" OnClick="ButtonChangeData_Click" Text="Изменить данные" Width="150px" />
-					</td>
-					<td class="auto-style5">
 						<asp:Button ID="ButtonCreateCourse" runat="server" OnClick="ButtonCreateCourse_Click" Text="Создать курс" Width="150px" />
 					</td>
 					<td class="auto-style5">
 						<asp:Button ID="ButtonReviewCourse" runat="server" OnClick="ButtonReviewCourse_Click" Text="Показать курс" Width="150px" />
+					</td>
+					<td class="auto-style5">
+						<asp:Button ID="ButtonCourseReservation" runat="server" OnClick="ButtonCourseReservation_Click" Text="Зарезервировать" Width="150px" />
 					</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
@@ -64,6 +64,10 @@
 					<asp:GridView ID="dataGridView" runat="server" AutoGenerateColumns="True">
 						<Columns>
 							 <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
+							 <asp:BoundField DataField="CourseName" HeaderText="Наименование" SortExpression="CourseName" />
+							<asp:BoundField DataField="DateCreate" HeaderText="Дата" SortExpression="DateCreate" />
+							<asp:BoundField DataField="Price" HeaderText="Стоимость" SortExpression="Price" />
+							<asp:BoundField DataField="isReserved" HeaderText="Бронь" SortExpression="isReserved" />
                 <asp:CommandField ShowSelectButton="true" SelectText=">>" />
 						</Columns>
 						<SelectedRowStyle BackColor="#CCCCCC" />

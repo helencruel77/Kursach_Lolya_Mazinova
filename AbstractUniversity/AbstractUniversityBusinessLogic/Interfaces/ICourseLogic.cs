@@ -14,5 +14,6 @@ namespace AbstractUniversityBusinessLogic.Interfaces
         List<CourseViewModel> GetClientList(int ClientId);
         CourseViewModel GetCourse(int id);
         List<CourseViewModel> GetList();
+        DateTime CourseReservation(int id);
     }
 }
