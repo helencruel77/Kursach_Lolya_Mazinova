@@ -38,7 +38,32 @@ namespace AbstractUniversityImplementation.Implements
                 }
 
                 element.TypePlace = model.TypePlace;
+                element.Count = model.Count;
 
+                context.SaveChanges();
+            }
+        }
+
+        public void PlaceRefill(RequestPlaceBindingModel model)
+        {
+            using (var context = new AbstractUniversityDatabase())
+            {
+                RequestPlace element = context.RequestPlaces.FirstOrDefault(rec => rec.RequestId == model.RequestId && rec.PlaceId == model.PlaceId);
+
+                if (element != null)
+                {
+                    element.Count += model.Count;
+                }
+                else
+                {
+                    context.RequestPlaces.Add(new RequestPlace
+                    {
+                        PlaceId = model.PlaceId,
+                        RequestId = model.RequestId,
+                        Count = model.Count
+                    });
+                }
+                context.Places.FirstOrDefault(res => res.Id == model.PlaceId).Count += model.Count;
                 context.SaveChanges();
             }
         }
@@ -70,7 +95,8 @@ namespace AbstractUniversityImplementation.Implements
                 .Select(rec => new PlaceViewModel
                 {
                     Id = rec.Id,
-                    TypePlace = rec.TypePlace
+                    TypePlace = rec.TypePlace,
+                    Count = rec.Count
                 })
                 .ToList();
             }

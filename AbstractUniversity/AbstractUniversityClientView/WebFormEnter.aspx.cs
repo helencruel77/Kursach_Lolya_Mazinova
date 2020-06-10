@@ -34,19 +34,23 @@ namespace AbstractUniversityClientView
             if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password))
             {
                 var list = logic.Read(null);
-                foreach (ClientViewModel client in list)
+                if (list != null)
                 {
-                    if (client.Login.Equals(login) && client.Password.Equals(password))
+                    foreach (ClientViewModel client in list)
                     {
-                        Session["ClientId"] = client.Id.ToString();
-                        Session["Login"] = client.Login;
-                        Response.Redirect("/WebFormMain.aspx");
-                    }
-                    else
-                    {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Нет такого пользователя');</script>");
+                        if (client.Login.Equals(login) && client.Password.Equals(password))
+                        {
+                            Session["ClientId"] = client.Id.ToString();
+                            Session["Login"] = client.Login;
+                            Response.Redirect("/WebFormMain.aspx");
+                        }
                     }
                 }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Нет такого пользователя');</script>");
+                }
+                
             }
             else
             {

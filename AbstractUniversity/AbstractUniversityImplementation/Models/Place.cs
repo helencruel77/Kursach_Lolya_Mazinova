@@ -11,7 +11,8 @@ namespace AbstractUniversityImplementation.Models
         public int Id { get; set; }
         [Required]
         public string TypePlace { get; set; }
-
+        [Required]
+        public int Count { get; set; }
         [ForeignKey("PlaceId")]
         public virtual List<PlaceDiscipline> PlaceDiscipline { get; set; }
 

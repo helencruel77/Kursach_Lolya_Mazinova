@@ -12,13 +12,13 @@ namespace AbstractUniversityImplementation.Implements
 {
     public class CourseLogic : ICourseLogic
     {
-       
+
         public List<CourseViewModel> GetClientList(int ClientId)
         {
             using (var context = new AbstractUniversityDatabase())
             {
                 List<CourseViewModel> result = context.Courses.
-                Where(rec => rec.ClientId ==ClientId).
+                Where(rec => rec.ClientId == ClientId).
                 Select(rec => new CourseViewModel
                 {
                     Id = rec.Id,
@@ -73,9 +73,90 @@ namespace AbstractUniversityImplementation.Implements
 
         public DateTime CourseReservation(int id)
         {
-             using (var context = new AbstractUniversityDatabase())
+            using (var context = new AbstractUniversityDatabase())
             {
-           
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        Course element = context.Courses.FirstOrDefault(rec => rec.Id == id);
+                        if (element == null)
+                        {
+                            throw new Exception("Элемент не найден");
+                        }
+                        if (element.isReserved)
+                        {
+                            throw new Exception("Курс уже зарезервирован");
+                        }
+                        else
+                        {
+                            element.isReserved = true;
+                        }
+                        List<PlaceDisciplineViewModel> placeDisciplines = new List<PlaceDisciplineViewModel>();
+                        var disciplineCourses = context.DisciplineCourses.Where(rec => rec.CourseId == element.Id).Select(rec => new DisciplineCourseViewModel
+                        {
+                            DisciplineId = rec.DisciplineId,
+                            Count = rec.Count
+                        });
+                        foreach (var dis in disciplineCourses)
+                        {
+                            var placeDiscipline = context.PlaceDisciplines.Where(rec => rec.DisciplineId == dis.DisciplineId).Select(rec => new PlaceDisciplineViewModel
+                            {
+                                PlaceId = rec.PlaceId,
+                                Count = rec.Count
+                            });
+                            foreach (var place in placeDiscipline)
+                            {
+                                bool flag = false;
+                                for (int i = 0; i < placeDisciplines.Count(); i++)
+                                {
+                                    if (placeDisciplines[i].PlaceId == place.PlaceId)
+                                    {
+                                        placeDisciplines[i].Count += place.Count;
+                                        flag = true;
+                                    }
+                                }
+                                if (!flag)
+                                {
+                                    placeDisciplines.Add(place);
+                                    placeDisciplines.Last().Count = place.Count * dis.Count;
+                                }
+                            }
+                        }
+                        var places = context.Places.Select(rec => new PlaceViewModel
+                        {
+                            Id = rec.Id,
+                            Count = rec.Count
+                        }).ToList();
+
+                        for (int i = 0; i < placeDisciplines.Count(); i++)
+                        {
+                            var index = placeDisciplines[i].PlaceId;
+                            var Place = context.Places.Where(rec => rec.Id == index);
+                            foreach (var pl in Place)
+                            {
+                                if (placeDisciplines[i].Count <= pl.Count)
+                                {
+                                    pl.Count -= placeDisciplines[i].Count;
+                                    context.SaveChanges();
+                                }
+                                else
+                                {
+                                    throw new Exception("Курс забронировать невозможно, попробуйте позже");
+                                }
+                            }
+                        }
+                        context.SaveChanges();
+                        transaction.Commit();
+
+                        return element.DataCreate;
+                    }
+                    catch (Exception)
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
             }
         }
 
@@ -103,7 +184,7 @@ namespace AbstractUniversityImplementation.Implements
                             Count = recPC.Count,
                         }).ToList()
                 }).ToList();
-                    return result;
+                return result;
             }
         }
 

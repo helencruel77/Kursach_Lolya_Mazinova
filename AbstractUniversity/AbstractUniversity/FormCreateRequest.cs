@@ -100,7 +100,12 @@ namespace AbstractUniversity
                     RequestId = Convert.ToInt32(comboBoxRequest.SelectedValue),
                     Count = Convert.ToInt32(textBoxCount.Text)
                 });
-
+                placeLogic.PlaceRefill(new RequestPlaceBindingModel
+                {
+                    PlaceId = Convert.ToInt32(comboBoxTypePlace.SelectedValue),
+                    RequestId = Convert.ToInt32(comboBoxRequest.SelectedValue),
+                    Count = Convert.ToInt32(textBoxCount.Text)
+                });
                 string path = "D:\\улгту 2 курс\\2 СЕМЕСТРР\\тп\\курсач\\Отчет по заявкам.docx";
                 string path1 = "D:\\улгту 2 курс\\2 СЕМЕСТРР\\тп\\курсач\\Отчет по заявкам.xlsx";
 

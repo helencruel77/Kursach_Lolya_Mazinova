@@ -9,10 +9,8 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
     public class MainLogic
     {
         private readonly IRequestLogic requestLogic;
-        private readonly ICourseLogic courseLogic;
-        public MainLogic(IRequestLogic requestLogic, ICourseLogic courseLogic)
+        public MainLogic(IRequestLogic requestLogic)
         {
-            this.courseLogic = courseLogic;
             this.requestLogic = requestLogic;
         }
         public void CreateRequest(RequestPlaceBindingModel model)

@@ -8,5 +8,6 @@ namespace AbstractUniversityBusinessLogic.BindingModels
     {
         public int? Id { get; set; }
         public string TypePlace { get; set; }
+        public int Count { get; set; }
     }
 }
