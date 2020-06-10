@@ -12,6 +12,9 @@
 		}
 		.auto-style2 {
 			width: 402px;
+			font-family: "Times New Roman", Times, serif;
+			font-weight: bold;
+			font-size: 30px;
 		}
 		.auto-style3 {
 			width: 80px;
@@ -72,7 +75,7 @@
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
-					<td class="auto-style2" style="font-family: 'Times New Roman', Times, serif; font-size: 30px; font-weight: bold;">Создание курса</td>
+					<td class="auto-style2">Курс</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 				</tr>

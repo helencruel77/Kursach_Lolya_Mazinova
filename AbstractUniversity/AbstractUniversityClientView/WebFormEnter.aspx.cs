@@ -9,6 +9,7 @@ using Unity;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using AbstractUniversityBusinessLogic.ViewModels;
+using System.Text.RegularExpressions;
 
 namespace AbstractUniversityClientView
 {
@@ -34,7 +35,11 @@ namespace AbstractUniversityClientView
             if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password))
             {
                 var list = logic.Read(null);
-                if (list != null)
+                if (!Regex.IsMatch(login, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('В качестве логина должна быть указана почта');</script>");
+                }
+                else if (list != null)
                 {
                     foreach (ClientViewModel client in list)
                     {

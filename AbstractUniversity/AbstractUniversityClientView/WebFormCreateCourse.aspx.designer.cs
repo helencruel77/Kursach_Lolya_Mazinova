@@ -51,13 +51,13 @@ namespace AbstractUniversityClientView
         protected global::System.Web.UI.WebControls.Button ButtonAdd;
 
         /// <summary>
-        /// ButtonChange элемент управления.
+        /// ButtonReviewDiscipline элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonChange;
+        protected global::System.Web.UI.WebControls.Button ButtonReviewDiscipline;
 
         /// <summary>
         /// ButtonDelete элемент управления.

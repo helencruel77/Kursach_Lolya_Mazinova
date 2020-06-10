@@ -15,14 +15,6 @@ namespace AbstractUniversityClientView
         private readonly IDisciplineLogic logicD = Program.Container.Resolve<DisciplineLogic>();
         private DisciplineCourseViewModel model;
         private int price;
-        public int Price
-        {
-            set { price = value; }
-            get
-            {
-                return price;
-            }
-        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -38,7 +30,6 @@ namespace AbstractUniversityClientView
                         DropDownList.DataValueField = "Id";
                     }
                     Page.DataBind();
-
                 }
                 catch (Exception ex)
                 {
@@ -119,6 +110,7 @@ namespace AbstractUniversityClientView
                     int count = Convert.ToInt32(TextBoxCount.Text);
                     price = (int)(count * discipline?.Price ?? 0);
                     TextBoxSum.Text = (price).ToString();
+                    Session["Price"] = price + Convert.ToInt32(Session["Price"]);
                 }
                 catch (Exception ex)
                 {

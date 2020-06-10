@@ -339,8 +339,8 @@
     <Content Include="WebFormEnter.aspx" />
     <Content Include="WebFormMain.aspx" />
     <Content Include="WebFormRegister.aspx" />
+    <Content Include="WebFormReviewDiscipline.aspx" />
     <Content Include="WebFormReviewCourse.aspx" />
-    <Content Include="WebFormUpdateData.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Program.cs" />
@@ -381,19 +381,19 @@
     <Compile Include="WebFormRegister.aspx.designer.cs">
       <DependentUpon>WebFormRegister.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebFormReviewDiscipline.aspx.cs">
+      <DependentUpon>WebFormReviewDiscipline.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormReviewDiscipline.aspx.designer.cs">
+      <DependentUpon>WebFormReviewDiscipline.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebFormReviewCourse.aspx.cs">
       <DependentUpon>WebFormReviewCourse.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebFormReviewCourse.aspx.designer.cs">
       <DependentUpon>WebFormReviewCourse.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebFormUpdateData.aspx.cs">
-      <DependentUpon>WebFormUpdateData.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebFormUpdateData.aspx.designer.cs">
-      <DependentUpon>WebFormUpdateData.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

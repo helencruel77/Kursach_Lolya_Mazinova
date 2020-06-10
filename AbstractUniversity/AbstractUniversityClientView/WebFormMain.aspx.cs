@@ -54,9 +54,15 @@ namespace AbstractUniversityClientView
         {
             try
             {
-                string index = list[dataGridView.SelectedIndex].Id.ToString();
-                Session["id"] = index;
-                Response.Redirect("/WebFormReviewCourse.aspx");
+                if(dataGridView.SelectedIndex >= 0) { 
+                    string index = list[dataGridView.SelectedIndex].Id.ToString();
+                    Session["id"] = index;
+                    Response.Redirect("/WebFormReviewCourse.aspx");
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Курс не выбран');</script>");
+                }
             }
             catch (Exception ex)
             {
@@ -68,10 +74,16 @@ namespace AbstractUniversityClientView
         {
             try
             {
-                DateTime date = logic.CourseReservation(list[dataGridView.SelectedIndex].Id);
-               
-                LoadData();
-                Response.Redirect("/WebFormMain.aspx");
+                if (dataGridView.SelectedIndex >= 0)
+                {
+                    DateTime date = logic.CourseReservation(list[dataGridView.SelectedIndex].Id);
+                    LoadData();
+                    Response.Redirect("/WebFormMain.aspx");
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Курс не выбран');</script>");
+                }
             }
             catch (Exception ex)
             {
