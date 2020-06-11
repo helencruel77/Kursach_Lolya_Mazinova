@@ -106,33 +106,7 @@ namespace AbstractUniversity
                     RequestId = Convert.ToInt32(comboBoxRequest.SelectedValue),
                     Count = Convert.ToInt32(textBoxCount.Text)
                 });
-                string path = "D:\\улгту 2 курс\\2 СЕМЕСТРР\\тп\\курсач\\Отчет по заявкам.docx";
-                string path1 = "D:\\улгту 2 курс\\2 СЕМЕСТРР\\тп\\курсач\\Отчет по заявкам.xlsx";
-
-                try
-                {
-                    reportLogic.SaveProductsToWordFile(new ReportBindingModel
-                    {
-                        FileName = path,
-                        DateFrom = DateTime.Now,
-                        DateTo = DateTime.Now.AddMilliseconds(100)
-                    });
-
-                    reportLogic.SaveRequestPlaceToExcelFile(new ReportBindingModel
-                    {
-                        FileName = path1,
-                        DateFrom = DateTime.Now,
-                        DateTo = DateTime.Now.AddMilliseconds(100)
-                    });
-
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
-                }
-
+            
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
 

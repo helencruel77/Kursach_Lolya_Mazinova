@@ -39,7 +39,7 @@
             // 
             // buttonMake
             // 
-            this.buttonMake.Location = new System.Drawing.Point(421, 11);
+            this.buttonMake.Location = new System.Drawing.Point(576, 14);
             this.buttonMake.Margin = new System.Windows.Forms.Padding(4);
             this.buttonMake.Name = "buttonMake";
             this.buttonMake.Size = new System.Drawing.Size(156, 24);
@@ -86,7 +86,7 @@
             // 
             // buttonReport
             // 
-            this.buttonReport.Location = new System.Drawing.Point(585, 11);
+            this.buttonReport.Location = new System.Drawing.Point(750, 14);
             this.buttonReport.Margin = new System.Windows.Forms.Padding(4);
             this.buttonReport.Name = "buttonReport";
             this.buttonReport.Size = new System.Drawing.Size(186, 24);
@@ -102,14 +102,14 @@
             this.reportViewer.Margin = new System.Windows.Forms.Padding(4);
             this.reportViewer.Name = "reportViewer";
             this.reportViewer.ServerReport.BearerToken = null;
-            this.reportViewer.Size = new System.Drawing.Size(774, 381);
+            this.reportViewer.Size = new System.Drawing.Size(940, 381);
             this.reportViewer.TabIndex = 18;
             // 
             // FormReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(966, 450);
             this.Controls.Add(this.reportViewer);
             this.Controls.Add(this.buttonReport);
             this.Controls.Add(this.buttonMake);

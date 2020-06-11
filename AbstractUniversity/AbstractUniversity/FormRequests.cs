@@ -21,10 +21,14 @@ namespace AbstractUniversity
         public new IUnityContainer Container { get; set; }
 
         private readonly IRequestLogic logic;
-        public FormRequests(IRequestLogic logic)
+        private readonly ReportLogic reportLogic;
+
+        public FormRequests(IRequestLogic logic, ReportLogic reportLogic)
         {
             InitializeComponent();
             this.logic = logic;
+            this.reportLogic = reportLogic;
+
         }
         private void FormRequests_Load(object sender, EventArgs e)
         {
@@ -110,33 +114,66 @@ namespace AbstractUniversity
 
         private void buttonSendReportWord_Click(object sender, EventArgs e)
         {
-            string path = "D:\\улгту 2 курс\\2 СЕМЕСТРР\\тп\\курсач\\Отчет по заявкам.docx";
-
-
-            MailLogic.MailSend(new MailSendInfo
+            using (var dialog = new SaveFileDialog { Filter = "docx|*.docx" })
             {
-                MailAddress = "olgailina1003@gmail.com",
-                Subject = $"Оповещение по заявке",
-                Text = $"Поступила заявка на места",
-                Path = path
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        reportLogic.SaveProductsToWordFile(new ReportBindingModel
+                        {
+                            FileName = dialog.FileName
+                        });
+                        MailLogic.MailSend(new MailSendInfo
+                        {
+                            MailAddress = "olgailina1003@gmail.com",
+                            Subject = $"Оповещение по заявке",
+                            Text = $"Поступила заявка на места",
+                            Path = dialog.FileName
 
-            }); ;
-            MessageBox.Show("Отчет отправлен!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        });
+                        MessageBox.Show("Отчет отправлен!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+            }
         }
 
         private void buttonSendReportExcel_Click(object sender, EventArgs e)
         {
-            string path = "D:\\улгту 2 курс\\2 СЕМЕСТРР\\тп\\курсач\\Отчет по заявкам.xlsx";
-
-            MailLogic.MailSend(new MailSendInfo
+            using (var dialog = new SaveFileDialog { Filter = "xlsx|*.xlsx" })
             {
-                MailAddress = "olgailina1003@gmail.com",
-                Subject = $"Оповещение по заявке",
-                Text = $"Поступила заявка на места",
-                Path = path
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        reportLogic.SaveRequestPlaceToExcelFile(new ReportBindingModel
+                        {
+                            FileName = dialog.FileName
+                        });
+                        MailLogic.MailSend(new MailSendInfo
+                        {
+                            MailAddress = "olgailina1003@gmail.com",
+                            Subject = $"Оповещение по заявке",
+                            Text = $"Поступила заявка на места",
+                            Path = dialog.FileName
 
-            }); ;
-            MessageBox.Show("Отчет отправлен!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        });
+                        MessageBox.Show("Отчет отправлен!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+            }
         }
     }
 }

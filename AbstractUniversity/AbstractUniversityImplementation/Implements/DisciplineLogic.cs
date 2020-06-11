@@ -126,6 +126,7 @@ namespace AbstractUniversityImplementation.Implements
                {
                    Id = rec.Id,
                    DisciplineName = rec.DisciplineName,
+                   
                    Price = rec.Price,
                    PlaceDisciplines = context.PlaceDisciplines
                 .Include(recPC => recPC.Place)

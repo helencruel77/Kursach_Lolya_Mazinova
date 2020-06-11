@@ -14,8 +14,6 @@ namespace AbstractUniversityBusinessLogic.ViewModels
         [DataMember]
         [DisplayName("Дата создания")]
         public DateTime DateCreate { get; set; }
-        public int Count { get; set; }
-        public string TypePlace { get; set; }
         public Dictionary<int, (string, int)> RequestPlaces { get; set; }
     }
 }

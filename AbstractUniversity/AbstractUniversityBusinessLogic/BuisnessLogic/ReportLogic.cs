@@ -14,10 +14,16 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
         
         private readonly IRequestLogic requestLogic;
         private readonly IPlaceLogic placeLogic;
-        public ReportLogic(IRequestLogic requestLogic, IPlaceLogic placeLogic)
+        private readonly ICourseLogic courseLogic;
+        private readonly IDisciplineLogic disciplineLogic;
+
+        public ReportLogic(IRequestLogic requestLogic, IPlaceLogic placeLogic, IDisciplineLogic disciplineLogic, ICourseLogic courseLogic)
         {
             this.requestLogic = requestLogic;
+            this.courseLogic = courseLogic;
+            this.disciplineLogic = disciplineLogic;
             this.placeLogic = placeLogic;
+
         }
         public List<ReportRequestPlacesViewModel> GetRequestPlaces()
         {
@@ -48,19 +54,47 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
         }
         public List<ReportRequestsViewModel> GetPlaces(ReportBindingModel model)
         {
-            return requestLogic.Read(new RequestBindingModel
+            List<ReportRequestsViewModel> reportRD = new List<ReportRequestsViewModel>();
             {
-                DateFrom = model.DateFrom,
-                DateTo = model.DateTo
-            })
-            .Select(x => new ReportRequestsViewModel
-            {
-                DateCreate = x.DateCreate,
-                Title = x.RequestName,
-                Count = x.Count,
-                TypePlace = x.TypePlace
-            })
-           .ToList();
+                var requests = requestLogic.Read(new RequestBindingModel
+                {
+                    DateFrom = model.DateFrom,
+                    DateTo = model.DateTo
+                });
+
+                var courses = courseLogic.GetList(); 
+                var places = placeLogic.Read(null);
+                foreach (var course in courses.Where(rec => rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo))
+                {
+                    foreach (var courseDis in course.DisciplineCourses.Where(rec => rec.CourseId == course.Id))
+                    {
+                        foreach (var place in places.Where(x => x.Id == courseDis.DisciplineId))
+
+                            reportRD.Add(new ReportRequestsViewModel()
+                            {
+                                DateCreate = course.DateCreate,
+                                TypePlace = place.TypePlace,
+                                Count = courseDis.Count,
+                                Title = course.CourseName
+                            });
+                    }
+                }
+                foreach (var request in requests)
+                {
+                    foreach (var place in request.RequestPlaces)
+                    {
+                        reportRD.Add(new ReportRequestsViewModel()
+                        {
+                            DateCreate = request.DateCreate,
+                            TypePlace = place.Value.Item1,
+                            Count = place.Value.Item2,
+                            Title = request.RequestName
+                        });
+                    }
+                }
+            }
+            return reportRD.OrderBy(x => x.DateCreate).ToList();
+
         }
 
 
@@ -84,7 +118,7 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
         }
         public void SaveRequestDisciplineToPdfFile(ReportBindingModel model)
         {
-            SaveToPdf.CreateDoc(new PdfInfo
+            SaveToPdf.CreateDoc(new PdfInfo()
             {
                 FileName = model.FileName,
                 Title = "Список заявок и дисциплин",

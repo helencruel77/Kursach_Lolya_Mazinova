@@ -1,5 +1,6 @@
 ﻿using AbstractUniversityBusinessLogic.BindingModels;
 using AbstractUniversityBusinessLogic.BuisnessLogic;
+using AbstractUniversityBusinessLogic.HelperModels;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
@@ -45,8 +46,16 @@ namespace AbstractUniversity
                             DateFrom = dateTimePickerFrom.Value,
                             DateTo = dateTimePickerTo.Value
                         });
-                        MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                        MailLogic.MailSend(new MailSendInfo
+                        {
+                            MailAddress = "olgailina1003@gmail.com",
+                            Subject = $"Отчет",
+                            Text = $"Отчет за определенный период",
+                            Path = dialog.FileName
+
+                        });
+                        MessageBox.Show("Отчет отправлен!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
                     }
                     catch (Exception ex)
                     {
@@ -54,7 +63,6 @@ namespace AbstractUniversity
                     }
                 }
             }
-
         }
 
         private void buttonReport_Click(object sender, EventArgs e)
@@ -68,11 +76,8 @@ namespace AbstractUniversity
             try
             {
                 ReportParameter parameter = new ReportParameter("ReportParameterPeriod",
-                "c " +
-               dateTimePickerFrom.Value.ToShortDateString() +
-                " по " +
-               dateTimePickerTo.Value.ToShortDateString());
-                reportViewer.LocalReport.SetParameters(parameter);
+                "c " +  dateTimePickerFrom.Value.ToShortDateString() + " по " +
+               dateTimePickerTo.Value.ToShortDateString());  reportViewer.LocalReport.SetParameters(parameter);
                 var dataSource = logic.GetPlaces(new ReportBindingModel
                 {
                     DateFrom = dateTimePickerFrom.Value,

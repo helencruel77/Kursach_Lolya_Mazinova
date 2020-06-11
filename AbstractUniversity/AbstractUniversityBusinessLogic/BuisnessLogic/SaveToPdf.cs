@@ -21,8 +21,13 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
             paragraph.Format.Alignment = ParagraphAlignment.Center;
             paragraph.Style = "NormalTitle";
 
+            paragraph = section.AddParagraph($"с {info.DateFrom.ToShortDateString()} по { info.DateTo.ToShortDateString()}");
+            paragraph.Format.SpaceAfter = "1cm";
+            paragraph.Format.Alignment = ParagraphAlignment.Center;
+            paragraph.Style = "Normal";
+
             var table = document.LastSection.AddTable();
-            List<string> columns = new List<string> { "4cm","4cm", "4cm", "2cm" };
+            List<string> columns = new List<string> { "4cm","4cm", "4cm", "4cm" };
 
             foreach (var elem in columns)
             {
@@ -32,7 +37,7 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
             CreateRow(new PdfRowParameters
             {
                 Table = table,
-                Texts = new List<string> { "Название", "Дата создания", "Тип места", "Количество" },
+                Texts = new List<string> { "Дата создания", "Название", "Количество", "Тип места" },
                 Style = "NormalTitle",
                 ParagraphAlignment = ParagraphAlignment.Center
             });
@@ -45,7 +50,7 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
                     Texts = new List<string>
                     {
                         rp.DateCreate.ToShortDateString(),
-                        rp.Title,
+                        rp.Title.ToString(),
                         rp.Count.ToString(),
                         rp.TypePlace.ToString()
                     },
