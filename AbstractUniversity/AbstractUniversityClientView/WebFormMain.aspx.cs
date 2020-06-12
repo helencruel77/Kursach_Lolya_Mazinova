@@ -5,12 +5,10 @@ using AbstractUniversityClientView.App_Start;
 using AbstractUniversityImplementation.Implements;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Unity;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
+using Unity;
 using AbstractUniversityBusinessLogic.BuisnessLogic;
 using AbstractUniversityBusinessLogic.BindingModels;
 
@@ -134,6 +132,11 @@ namespace AbstractUniversityClientView
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('" + ex.Message + "');</script>");
             }
+        }
+
+        protected void ButtonGetPdf_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/WebFormReport.aspx");
         }
     }
 }

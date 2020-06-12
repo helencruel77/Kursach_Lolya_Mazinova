@@ -53,6 +53,37 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
             }
             return list;
         }
+
+        public List<ReportCoursePlaceViewModel> GetCoursePlace(ReportBindingModel model)
+        {
+            List<ReportCoursePlaceViewModel> reportRD = new List<ReportCoursePlaceViewModel>();
+            {
+                var Courses = requestLogic.Read(new RequestBindingModel
+                {
+                    DateFrom = model.DateFrom,
+                    DateTo = model.DateTo
+                });
+
+                var courses = courseLogic.GetList();
+                var places = placeLogic.Read(null);
+                foreach (var course in courses.Where(rec => rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo))
+                {
+                    foreach (var courseDis in course.DisciplineCourses.Where(rec => rec.CourseId == course.Id))
+                    {
+                        foreach (var place in places.Where(x => x.Id == courseDis.DisciplineId))
+
+                            reportRD.Add(new ReportCoursePlaceViewModel()
+                            {
+                                DateCreate = course.DateCreate,
+                                TypePlace = place.TypePlace,
+                                CourseName = course.CourseName
+                            });
+                    }
+                }
+            }
+            return reportRD.ToList();
+        }
+
         public List<ReportRequestsViewModel> GetPlaces(ReportBindingModel model)
         {
             List<ReportRequestsViewModel> reportRD = new List<ReportRequestsViewModel>();
@@ -104,6 +135,7 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
             {
                 FileName = model.FileName,
                 Title = "Список заявок",
+                DisciplineCourses = null, 
                 RequestPlaces = GetRequestPlaces()
             });
         }
@@ -113,6 +145,7 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
             {
                 FileName = model.FileName,
                 Title = "Список заявок",
+                DisciplineCourses = null,
                 RequestPlaces = GetRequestPlaces()
             });
         }
@@ -124,7 +157,20 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
                 Title = "Список заявок и дисциплин",
                 DateFrom = model.DateFrom.Value,
                 DateTo = model.DateTo.Value,
+                CoursePlaces = null,
                 RequestPlaces = GetPlaces(model)
+            });
+        }
+        public void SaveCoursePlaceToPdfFile(ReportBindingModel model)
+        {
+            SaveToPdf.CreateDoc(new PdfInfo()
+            {
+                FileName = model.FileName,
+                Title = "Список курсов",
+                DateFrom = model.DateFrom.Value,
+                DateTo = model.DateTo.Value,
+                RequestPlaces = null,
+                CoursePlaces = GetCoursePlace(model)
             });
         }
 

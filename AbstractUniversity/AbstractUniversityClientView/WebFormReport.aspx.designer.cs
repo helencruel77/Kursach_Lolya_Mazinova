@@ -11,7 +11,7 @@ namespace AbstractUniversityClientView
 {
 
 
-    public partial class WebFormMain
+    public partial class WebFormReport
     {
 
         /// <summary>
@@ -24,66 +24,57 @@ namespace AbstractUniversityClientView
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// ButtonCreateCourse элемент управления.
+        /// ButtonReport элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonCreateCourse;
+        protected global::System.Web.UI.WebControls.Button ButtonReport;
 
         /// <summary>
-        /// ButtonReviewCourse элемент управления.
+        /// ButtonCancel элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonReviewCourse;
+        protected global::System.Web.UI.WebControls.Button ButtonCancel;
 
         /// <summary>
-        /// ButtonCourseReservation элемент управления.
+        /// ScriptManager1 элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonCourseReservation;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
-        /// ButtonGetDoc элемент управления.
+        /// ReportViewer элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonGetDoc;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer;
 
         /// <summary>
-        /// ButtonGetXls элемент управления.
+        /// Calendar1 элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonGetXls;
+        protected global::System.Web.UI.WebControls.Calendar Calendar1;
 
         /// <summary>
-        /// ButtonGetPdf элемент управления.
+        /// Calendar2 элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonGetPdf;
-
-        /// <summary>
-        /// dataGridView элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dataGridView;
+        protected global::System.Web.UI.WebControls.Calendar Calendar2;
     }
 }

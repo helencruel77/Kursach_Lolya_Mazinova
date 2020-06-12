@@ -15,8 +15,6 @@ namespace AbstractUniversityClientView
 {
     public partial class WebFormReviewDiscipline : System.Web.UI.Page
     {
-        private readonly ICourseLogic logic = Program.Container.Resolve<CourseLogic>();
-
         private int id;
 
         protected void Page_Load(object sender, EventArgs e)

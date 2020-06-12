@@ -4,9 +4,10 @@ using System.Text;
 
 namespace AbstractUniversityBusinessLogic.ViewModels
 {
-    public class ReportDisciplineCourseViewModel
+    public class ReportCoursePlaceViewModel
     {
         public string CourseName { get; set; }
-        public List<Tuple<string, int>> DisciplineCourses { get; set; }
+        public DateTime DateCreate { get; set; }
+        public string TypePlace { get; set; }
     }
 }

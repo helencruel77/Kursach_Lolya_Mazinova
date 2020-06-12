@@ -8,7 +8,7 @@ using AbstractUniversityBusinessLogic.HelperModels;
 
 namespace AbstractUniversityBusinessLogic.BuisnessLogic
 {
-    class SaveToPdf
+    public class SaveToPdf
     {
         public static void CreateDoc(PdfInfo info)
         {
@@ -42,12 +42,14 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
                 ParagraphAlignment = ParagraphAlignment.Center
             });
 
-            foreach (var rp in info.RequestPlaces)
+            if (info.RequestPlaces != null)
             {
-                CreateRow(new PdfRowParameters
+                foreach (var rp in info.RequestPlaces)
                 {
-                    Table = table,
-                    Texts = new List<string>
+                    CreateRow(new PdfRowParameters
+                    {
+                        Table = table,
+                        Texts = new List<string>
                     {
                         rp.DateCreate.ToShortDateString(),
                         rp.Title.ToString(),
@@ -55,11 +57,30 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
                         rp.TypePlace.ToString()
                     },
 
-                    Style = "Normal",
-                    ParagraphAlignment = ParagraphAlignment.Left
-                });
+                        Style = "Normal",
+                        ParagraphAlignment = ParagraphAlignment.Left
+                    });
+                }
             }
+            else if (info.CoursePlaces != null)
+            {
+                foreach (var rp in info.CoursePlaces)
+                {
+                    CreateRow(new PdfRowParameters
+                    {
+                        Table = table,
+                        Texts = new List<string>
+                    {
+                        rp.DateCreate.ToShortDateString(),
+                        rp.CourseName.ToString(),
+                        rp.TypePlace.ToString()
+                    },
 
+                        Style = "Normal",
+                        ParagraphAlignment = ParagraphAlignment.Left
+                    });
+                }
+            }
             PdfDocumentRenderer renderer = new PdfDocumentRenderer(true, PdfSharp.Pdf.PdfFontEmbedding.Always) { Document = document };
             renderer.RenderDocument();
             renderer.PdfDocument.Save(info.FileName);

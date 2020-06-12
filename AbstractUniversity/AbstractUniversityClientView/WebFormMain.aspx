@@ -16,11 +16,14 @@
 		.auto-style3 {
 			width: 202px;
 		}
-		.auto-style4 {
-			width: 183px;
-		}
 		.auto-style5 {
 			width: 150px;
+		}
+		.auto-style6 {
+			width: 322px;
+		}
+		.auto-style7 {
+			width: 196px;
 		}
 	</style>
 </head>
@@ -42,7 +45,7 @@
 				</table>
         	<table class="auto-style1">
 				<tr>
-					<td>&nbsp;</td>
+					<td class="auto-style7">&nbsp;</td>
 					<td class="auto-style5">
 						<asp:Button ID="ButtonCreateCourse" runat="server" OnClick="ButtonCreateCourse_Click" Text="Создать курс" Width="150px" />
 					</td>
@@ -58,13 +61,15 @@
 					<td class="auto-style5">
 						<asp:Button ID="ButtonGetXls" runat="server" OnClick="ButtonGetXls_Click" Text="Отчет xls на почту" Width="150px" />
 					</td>
-					<td>&nbsp;</td>
+					<td>
+						<asp:Button ID="ButtonGetPdf" runat="server" OnClick="ButtonGetPdf_Click" Text="Отчет pdf" Width="150px" />
+					</td>
 				</tr>
 			</table>
         </div>
     	<table class="auto-style1">
 			<tr>
-				<td class="auto-style4">&nbsp;</td>
+				<td class="auto-style6">&nbsp;</td>
 				<td>
 					<asp:GridView ID="dataGridView" runat="server" AutoGenerateColumns="False">
 						<Columns>
@@ -82,19 +87,19 @@
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td class="auto-style4">&nbsp;</td>
+				<td class="auto-style6">&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td class="auto-style4">&nbsp;</td>
+				<td class="auto-style6">&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td class="auto-style4">&nbsp;</td>
+				<td class="auto-style6">&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
