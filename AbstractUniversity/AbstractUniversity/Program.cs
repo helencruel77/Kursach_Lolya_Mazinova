@@ -42,7 +42,7 @@ namespace AbstractUniversity
             currentContainer.RegisterType<IClientLogic, ClientLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ReportLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<MainLogic>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<BackUpAbstractLogic, BackUpLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IBackUp, BackUpLogic>(new HierarchicalLifetimeManager());
 
             return currentContainer;
         }

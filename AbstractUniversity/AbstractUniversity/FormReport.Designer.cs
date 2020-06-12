@@ -118,7 +118,7 @@
             this.Controls.Add(this.labelTo);
             this.Controls.Add(this.labelFrom);
             this.Name = "FormReport";
-            this.Text = "FormReport";
+            this.Text = "Отчет";
             this.ResumeLayout(false);
             this.PerformLayout();
 

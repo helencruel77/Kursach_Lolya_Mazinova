@@ -51,7 +51,7 @@ namespace AbstractUniversity
                             MailAddress = "olgailina1003@gmail.com",
                             Subject = $"Отчет",
                             Text = $"Отчет за определенный период",
-                            Path = dialog.FileName
+                            FileName = dialog.FileName
 
                         });
                         MessageBox.Show("Отчет отправлен!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);

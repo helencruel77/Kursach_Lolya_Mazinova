@@ -16,15 +16,15 @@ namespace AbstractUniversity
         private readonly MainLogic logic;
         private readonly ICourseLogic сourseLogic;
         private readonly ReportLogic reportLogic;
-        private readonly BackUpAbstractLogic backUpAbstractLogic;
+        private readonly IBackUp backUpLogic;
 
-        public FormMain(MainLogic logic, ReportLogic reportLogic, BackUpAbstractLogic backUpAbstractLogic, ICourseLogic сourseLogic)
+        public FormMain(MainLogic logic, ReportLogic reportLogic, IBackUp backUpAbstractLogic, ICourseLogic сourseLogic)
         {
             InitializeComponent();
             this.logic = logic;
             this.reportLogic = reportLogic;
             this.сourseLogic = сourseLogic;
-            this.backUpAbstractLogic = backUpAbstractLogic;
+            this.backUpLogic = backUpAbstractLogic;
         }
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -37,10 +37,10 @@ namespace AbstractUniversity
                 var list = сourseLogic.GetList();
                 if (list != null)
                 {
-                    //dataGridView.DataSource = list;
-                 //   dataGridView.Columns[0].Visible = false;
-                //    dataGridView.Columns[1].Visible = false;
-                //    dataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridView.DataSource = list;
+                    dataGridView.Columns[0].Visible = false;
+                    dataGridView.Columns[1].Visible = false; 
+                    dataGridView.Columns[2].Visible = false;
                 }
             }
             catch (Exception ex)
@@ -84,13 +84,26 @@ namespace AbstractUniversity
         {
             try
             {
-                if (backUpAbstractLogic != null)
+                if (backUpLogic != null)
                 {
                     var fbd = new FolderBrowserDialog();
                     if (fbd.ShowDialog() == DialogResult.OK)
                     {
-                        backUpAbstractLogic.CreateArchive(fbd.SelectedPath);
-                        MessageBox.Show("Бекап создан", "Сообщение",
+                        backUpLogic.SaveJsonRequest(fbd.SelectedPath);
+                        backUpLogic.SaveJsonRequestPlaces(fbd.SelectedPath);
+                        backUpLogic.SaveJsonPlace(fbd.SelectedPath);
+                        backUpLogic.SaveJsonPlaceDiscipline(fbd.SelectedPath);
+                        backUpLogic.SaveJsonDiscipline(fbd.SelectedPath);
+                        MailLogic.MailSendBackUp(new MailSendInfo
+                        {
+                            MailAddress = "olgailina1003@gmail.com",
+                            Subject = $"JSON бекап",
+                            Text = $"Бекап",
+                            Type = "json",
+                            FileName = fbd.SelectedPath
+
+                        });
+                        MessageBox.Show("Бекап создан и отправлен на почту", "Сообщение",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }            
@@ -101,6 +114,46 @@ namespace AbstractUniversity
                MessageBoxIcon.Error);
             }
 
+        }
+
+        private void xMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (backUpLogic != null)
+                {
+                    var fbd = new FolderBrowserDialog();
+                    if (fbd.ShowDialog() == DialogResult.OK)
+                    {
+                        backUpLogic.SaveXmlRequest(fbd.SelectedPath);
+                        backUpLogic.SaveXmlRequestPlaces(fbd.SelectedPath);
+                        backUpLogic.SaveXmlPlaceDiscipline(fbd.SelectedPath);
+                        backUpLogic.SaveXmlDiscipline(fbd.SelectedPath);
+                        backUpLogic.SaveXmlPlace(fbd.SelectedPath);
+                        MailLogic.MailSendBackUp(new MailSendInfo
+                        {
+                            MailAddress = "olgailina1003@gmail.com",
+                            Subject = $"XML бекап",
+                            Text = $"Бекап",
+                            Type = "xml",
+                            FileName = fbd.SelectedPath
+
+                        });
+                        MessageBox.Show("Бекап создан и отправлен на почту", "Сообщение",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonUpd_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

@@ -47,8 +47,6 @@ namespace AbstractUniversity
                     dataGridView.Columns[0].Visible = false;
                     dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     dataGridView.Columns[3].Visible = false;
-                    dataGridView.Columns[4].Visible = false;
-                    dataGridView.Columns[5].Visible = false;
 
                 }
             }
@@ -129,7 +127,7 @@ namespace AbstractUniversity
                             MailAddress = "olgailina1003@gmail.com",
                             Subject = $"Оповещение по заявке",
                             Text = $"Поступила заявка на места",
-                            Path = dialog.FileName
+                            FileName = dialog.FileName
 
                         });
                         MessageBox.Show("Отчет отправлен!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -161,7 +159,7 @@ namespace AbstractUniversity
                             MailAddress = "olgailina1003@gmail.com",
                             Subject = $"Оповещение по заявке",
                             Text = $"Поступила заявка на места",
-                            Path = dialog.FileName
+                            FileName = dialog.FileName
 
                         });
                         MessageBox.Show("Отчет отправлен!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
