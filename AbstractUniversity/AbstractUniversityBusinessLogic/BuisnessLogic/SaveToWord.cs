@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace AbstractUniversityBusinessLogic.BuisnessLogic
 {
-    static class SaveToWord
+     public class SaveToWord
     {
         public static void CreateDoc(WordInfo info)
         {
@@ -27,22 +27,46 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
                     }
                 }));
 
-                foreach (var rp in info.RequestPlaces)
+                if (info.RequestPlaces != null)
                 {
-                    foreach (var place in rp.Places)
-                    { 
-                        docBody.AppendChild(CreateParagraph(new WordParagraph
+                    foreach (var rp in info.RequestPlaces)
+                    {
+                        foreach (var place in rp.Places)
                         {
-
-                            Texts = new List<string> { "В заявке «" + rp.RequestName, "» " + place.Item2 + " " + place.Item1 + " мест"},
-                            TextProperties = new WordParagraphProperties
+                            docBody.AppendChild(CreateParagraph(new WordParagraph
                             {
-                                Bold = true,
-                                Size = "24",
-                                JustificationValues = JustificationValues.Both
-                            }
 
-                        }));
+                                Texts = new List<string> { "В заявке «" + rp.RequestName, "» " + place.Item2 + " " + place.Item1 + " мест" },
+                                TextProperties = new WordParagraphProperties
+                                {
+                                    Bold = true,
+                                    Size = "24",
+                                    JustificationValues = JustificationValues.Both
+                                }
+
+                            }));
+                        }
+                    }
+                }
+                else if (info.DisciplineCourses != null)
+                {
+                    foreach (var dc in info.DisciplineCourses)
+                    {
+                        foreach (var discipline in dc.DisciplineCourses)
+                        {
+                            docBody.AppendChild(CreateParagraph(new WordParagraph
+                            {
+
+                                Texts = new List<string> { "В курсе «" + dc.CourseName, "» есть дисциплина" + discipline.DisciplineName },
+                                TextProperties = new WordParagraphProperties
+                                {
+                                    Bold = true,
+                                    Size = "24",
+                                    JustificationValues = JustificationValues.Both
+                                }
+
+                            }));
+                        }
                     }
                 }
 

@@ -25,6 +25,7 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
             this.placeLogic = placeLogic;
 
         }
+       
         public List<ReportRequestPlacesViewModel> GetRequestPlaces()
         {
             var places = placeLogic.Read(null);
@@ -96,8 +97,7 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
             return reportRD.OrderBy(x => x.DateCreate).ToList();
 
         }
-
-
+        
         public void SaveRequestPlaceToExcelFile(ReportBindingModel model)
         {
             SaveToExcel.CreateDoc(new ExcelInfo

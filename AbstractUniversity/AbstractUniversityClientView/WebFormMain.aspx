@@ -52,7 +52,12 @@
 					<td class="auto-style5">
 						<asp:Button ID="ButtonCourseReservation" runat="server" OnClick="ButtonCourseReservation_Click" Text="Зарезервировать" Width="150px" />
 					</td>
-					<td>&nbsp;</td>
+					<td class="auto-style5">
+						<asp:Button ID="ButtonGetDoc" runat="server" OnClick="ButtonGetDoc_Click" Text="Отчет doc на почту" Width="150px" />
+					</td>
+					<td class="auto-style5">
+						<asp:Button ID="ButtonGetXls" runat="server" OnClick="ButtonGetXls_Click" Text="Отчет xls на почту" Width="150px" />
+					</td>
 					<td>&nbsp;</td>
 				</tr>
 			</table>

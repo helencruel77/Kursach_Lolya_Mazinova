@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace AbstractUniversityBusinessLogic.BuisnessLogic
 {
-    static class SaveToExcel
+    public class SaveToExcel
     {
         public static void CreateDoc(ExcelInfo info)
         {
@@ -59,50 +59,83 @@ namespace AbstractUniversityBusinessLogic.BuisnessLogic
                     CellToName = "C1"
                 });
                 uint rowIndex = 2;
-                foreach (var pc in info.RequestPlaces)
+                if (info.RequestPlaces != null)
                 {
-                    InsertCellInWorksheet(new ExcelCellParameters
-                    {
-                        Worksheet = worksheetPart.Worksheet,
-                        ShareStringPart = shareStringPart,
-                        ColumnName = "A",
-                        RowIndex = rowIndex,
-                        Text = pc.RequestName,
-                        StyleIndex = 0U
-                    });
-                    rowIndex++;
-                    foreach (var place in pc.Places)
+                    foreach (var pc in info.RequestPlaces)
                     {
                         InsertCellInWorksheet(new ExcelCellParameters
                         {
                             Worksheet = worksheetPart.Worksheet,
                             ShareStringPart = shareStringPart,
-                            ColumnName = "B",
+                            ColumnName = "A",
                             RowIndex = rowIndex,
-                            Text = place.Item1,
-                        StyleIndex = 1U
+                            Text = pc.RequestName,
+                            StyleIndex = 0U
                         });
+                        rowIndex++;
+                        foreach (var place in pc.Places)
+                        {
+                            InsertCellInWorksheet(new ExcelCellParameters
+                            {
+                                Worksheet = worksheetPart.Worksheet,
+                                ShareStringPart = shareStringPart,
+                                ColumnName = "B",
+                                RowIndex = rowIndex,
+                                Text = place.Item1,
+                                StyleIndex = 1U
+                            });
+                            InsertCellInWorksheet(new ExcelCellParameters
+                            {
+                                Worksheet = worksheetPart.Worksheet,
+                                ShareStringPart = shareStringPart,
+                                ColumnName = "C",
+                                RowIndex = rowIndex,
+                                Text = place.Item2.ToString(),
+                                StyleIndex = 1U
+                            });
+                            rowIndex++;
+                        }
                         InsertCellInWorksheet(new ExcelCellParameters
                         {
                             Worksheet = worksheetPart.Worksheet,
                             ShareStringPart = shareStringPart,
                             ColumnName = "C",
                             RowIndex = rowIndex,
-                            Text = place.Item2.ToString(),
-                            StyleIndex = 1U
+                            Text = pc.TotalCount.ToString(),
+                            StyleIndex = 0U
                         });
                         rowIndex++;
                     }
-                    InsertCellInWorksheet(new ExcelCellParameters
+                }
+                else if (info.DisciplineCourses != null)
+                {
+                    foreach (var dc in info.DisciplineCourses)
                     {
-                        Worksheet = worksheetPart.Worksheet,
-                        ShareStringPart = shareStringPart,
-                        ColumnName = "C",
-                        RowIndex = rowIndex,
-                        Text = pc.TotalCount.ToString(),
-                        StyleIndex = 0U
-                    });
-                    rowIndex++;
+                        InsertCellInWorksheet(new ExcelCellParameters
+                        {
+                            Worksheet = worksheetPart.Worksheet,
+                            ShareStringPart = shareStringPart,
+                            ColumnName = "A",
+                            RowIndex = rowIndex,
+                            Text = dc.CourseName,
+                            StyleIndex = 0U
+                        });
+                        rowIndex++;
+                        foreach (var discipline in dc.DisciplineCourses)
+                        {
+                            InsertCellInWorksheet(new ExcelCellParameters
+                            {
+                                Worksheet = worksheetPart.Worksheet,
+                                ShareStringPart = shareStringPart,
+                                ColumnName = "B",
+                                RowIndex = rowIndex,
+                                Text = discipline.DisciplineName,
+                                StyleIndex = 1U
+                            });
+                            rowIndex++;
+                        }
+                        rowIndex++;
+                    }
                 }
                 workbookpart.Workbook.Save();
             }

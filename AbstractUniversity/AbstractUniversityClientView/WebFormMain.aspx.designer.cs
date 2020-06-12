@@ -51,6 +51,24 @@ namespace AbstractUniversityClientView
         protected global::System.Web.UI.WebControls.Button ButtonCourseReservation;
 
         /// <summary>
+        /// ButtonGetDoc элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonGetDoc;
+
+        /// <summary>
+        /// ButtonGetXls элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonGetXls;
+
+        /// <summary>
         /// dataGridView элемент управления.
         /// </summary>
         /// <remarks>

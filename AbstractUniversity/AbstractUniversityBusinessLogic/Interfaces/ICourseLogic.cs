@@ -15,5 +15,6 @@ namespace AbstractUniversityBusinessLogic.Interfaces
         CourseViewModel GetCourse(int id);
         List<CourseViewModel> GetList();
         DateTime CourseReservation(int id);
+        void SendEmail(string mailAddress, string subject, string text, string path);
     }
 }

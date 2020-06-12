@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace AbstractUniversityBusinessLogic.BuisnessLogic
 {
-    public static class MailLogic
+    public class MailLogic
     {
         private static string smtpClientHost;
         private static int smtpClientPort;

@@ -1,5 +1,6 @@
 ﻿using AbstractUniversityBusinessLogic.Interfaces;
 using AbstractUniversityBusinessLogic.ViewModels;
+using AbstractUniversityBusinessLogic.HelperModels;
 using AbstractUniversityClientView.App_Start;
 using AbstractUniversityImplementation.Implements;
 using System;
@@ -10,6 +11,8 @@ using Unity;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
+using AbstractUniversityBusinessLogic.BuisnessLogic;
+using AbstractUniversityBusinessLogic.BindingModels;
 
 namespace AbstractUniversityClientView
 {
@@ -84,6 +87,48 @@ namespace AbstractUniversityClientView
                 {
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Курс не выбран');</script>");
                 }
+            }
+            catch (Exception ex)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('" + ex.Message + "');</script>");
+            }
+        }
+
+        protected void ButtonGetDoc_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string path = "C:\\Users\\helen\\Desktop\\Courses.docx";
+                SaveToWord.CreateDoc(new WordInfo
+                {
+                    FileName = path,
+                    Title = "Дисциплины по курсу",
+                    RequestPlaces = null,
+                    DisciplineCourses = logic.GetList()
+                });
+                logic.SendEmail(Session["Login"].ToString(), "Курсы клиента", "Отчет в формате doc", path);
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Отчет отправлен на вашу почту');</script>");
+            }
+            catch (Exception ex)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('" + ex.Message + "');</script>");
+            }
+        }
+
+        protected void ButtonGetXls_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string path = "C:\\Users\\helen\\Desktop\\Courses.xlsx";
+                SaveToExcel.CreateDoc(new ExcelInfo
+                {
+                    FileName = path,
+                    Title = "Дисциплины по курсу",
+                    RequestPlaces = null,
+                    DisciplineCourses = logic.GetList()
+                });
+                logic.SendEmail(Session["Login"].ToString(), "Курсы клиента", "Отчет в формате xls", path);
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Отчет отправлен на вашу почту');</script>");
             }
             catch (Exception ex)
             {
